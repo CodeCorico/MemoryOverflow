@@ -11,6 +11,7 @@ Follow the project
 * [Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CHANGELOG.md)
 * [Milestone](https://github.com/XavierBoubert/MemoryOverflow/blob/master/MILESTONE.md)
 * [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTE.md)
+* [Discussion group](https://groups.google.com/d/forum/memoryoverflow)
 
 
 Build your cards
