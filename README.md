@@ -12,7 +12,6 @@ Follow the project
 * [Licence](https://github.com/XavierBoubert/MemoryOverflow/blob/master/LICENSE)
 * [Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CHANGELOG.md)
 * [Milestones](https://github.com/XavierBoubert/MemoryOverflow/issues/milestones?state=open)
-* [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTING.md)
 * [Discussion group](https://groups.google.com/d/forum/memoryoverflow)
 * [Ideas to suggest?](http://www.google.com/moderator/#15/e=2138af&t=2138af.41)
 
@@ -35,6 +34,13 @@ Memory League
 ---------
 
 * Become a Developer Master
+
+
+Contribute
+---------
+
+To contribute to the project, read the [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTING.md).
+After that, you can create your own Pull Requests (PR) and submit them here.
 
 
 Lead contribution team
