@@ -7,10 +7,11 @@ today! Here are the guidelines we'd like you to follow:
  - [Question or Problem?](#question)
  - [Issues and Bugs](#issue)
  - [Feature Requests](#feature)
+ - [Want a Wiki Fix?](#wiki)
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
  - [Commit Message Guidelines](#commit)
- - [Signing the CLA](#cla)
+ - [Releases](#releases)
  - [Further Info](#info)
 
 ## <a name="coc"></a> Code of Conduct
@@ -47,7 +48,8 @@ project.
 * **Small Changes** can be crafted and submitted to the [GitHub Repository](https://github.com/XavierBoubert/MemoryOverflow) as a Pull Request.
 
 
-## <a name="docs"></a> Want a Wiki Fix?
+## <a name="wiki"></a> Want a Wiki Fix?
+The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the ay it works.
 If you want to help improve the wiki, it's a good idea to let others know what you're working on to
 minimize duplication of effort. Before starting, check out the issue queue for
 [Tag: wiki](https://github.com/XavierBoubert/MemoryOverflow/issues?labels=wiki&page=1&state=open).
@@ -205,4 +207,19 @@ The body should include the motivation for the change and contrast this with pre
 The footer should contain any information about **Breaking Changes** and is also the place to
 reference GitHub issues that this commit **Closes**.
 
-(inspired file from https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md)
+## <a name="releases"></a> Releases
+
+Only the lead contribution team can publish a new version. To do that, it requires that the milestone is completely finished ([Milestones](https://github.com/XavierBoubert/MemoryOverflow/issues/milestones?state=open)).
+
+Publish the new version:
+* Pull the last version of `master` branch
+* Update CHANGELOG.md file with the actual date and links of the milestone
+* Create commit with its last changes named: `Version [new version number]`
+* Create a new tag on this commit named `[new version number]`
+* Push this branch to `GitHub:master`
+* Push this branch to a new branch `GitHub:release/[new version number]`
+
+
+## <a name="infos"></a> Further Info
+
+Inspired file from https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md
