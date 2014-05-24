@@ -9,7 +9,7 @@ Follow the project
 
 * [Licence](https://github.com/XavierBoubert/MemoryOverflow/blob/master/LICENSE)
 * [Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CHANGELOG.md)
-* [Milestone](https://github.com/XavierBoubert/MemoryOverflow/blob/master/MILESTONE.md)
+* [Milestones](https://github.com/XavierBoubert/MemoryOverflow/issues/milestones?state=open)
 * [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTING.md)
 * [Discussion group](https://groups.google.com/d/forum/memoryoverflow)
 
