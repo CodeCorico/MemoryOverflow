@@ -1,4 +1,4 @@
-#Contributing to MemoryOverflow game
+# Contributing to MemoryOverflow game
 
 We'd love for you to contribute to our source code and to make this game even better and fun than it is
 today! Here are the guidelines we'd like you to follow:
