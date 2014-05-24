@@ -176,7 +176,7 @@ to read on github as well as in various git tools.
 ### Type
 Must be one of the following:
 
-* **mo**: Modifications on MemoryOverflow project details
+* **mo**: Modifications on MemoryOverflow project details (wiki)
 * **feat**: A new feature
 * **fix**: A bug fix
 * **card**: Card modification or added
