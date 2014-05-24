@@ -38,5 +38,3 @@ Lead contribution team
 ---------
 
 * [Xavier Boubert](http://xavierboubert.fr) [@xavierboubert](http://twitter.com/XavierBoubert)
-* [Boris Seremes](http://boris-seremes.com) [@bseremes](https://twitter.com/bseremes)
-* Patrice Dervaux
