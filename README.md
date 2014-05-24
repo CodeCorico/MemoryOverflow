@@ -1,13 +1,11 @@
-MemoryOverflow
-=========
+# MemoryOverflow
 
 MemoryOverflow is a card game designed by developers for developers.
 
 The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the ay it works.
 
 
-Follow the project
----------
+## Follow the project
 
 * [Licence](https://github.com/XavierBoubert/MemoryOverflow/blob/master/LICENSE)
 * [Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CHANGELOG.md)
@@ -16,28 +14,19 @@ Follow the project
 * [Ideas to suggest?](http://www.google.com/moderator/#15/e=2138af&t=2138af.41)
 
 
-Build your cards
----------
+## Build your cards
 
-* [Templates](https://github.com/XavierBoubert/MemoryOverflow/templates/blob/master/README.md)
-* [Generator](https://github.com/XavierBoubert/MemoryOverflow/generator/blob/master/README.md)
-* [Cards](https://github.com/XavierBoubert/MemoryOverflow/cards/blob/master/README.md)
-
-
-Game
----------
-
-* [Rules](https://github.com/XavierBoubert/MemoryOverflow/rules/blob/master/README.md)
+* [Templates](https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/README.md)
+* [Generator](https://github.com/XavierBoubert/MemoryOverflow/blob/master/generator/README.md)
+* [Cards](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/README.md)
 
 
-Memory League
----------
+## Game
 
-* Become a Developer Master
+* [Rules](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/README.md)
 
 
-Contribute
----------
+## Contribute
 
 To contribute to the project, read the [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTING.md).
 After that, you can create your own Pull Requests (PR) and submit them here.
