@@ -1,4 +1,7 @@
 {
+  "status": "working",
+  "edition": "fundamentals",
   "title": "foo",
+  "uid": "FF3",
   "type": "variable"
 }

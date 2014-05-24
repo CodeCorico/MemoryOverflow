@@ -3,5 +3,5 @@
 msgid ""
 msgstr ""
 
-msgid ""
-msgstr ""
+msgid "All starts with foo."
+msgstr "All starts with foo."
