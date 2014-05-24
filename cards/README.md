@@ -10,7 +10,7 @@ Cards are grouped by editions which represent different themes.
 ## <a name="editions"></a> Editions
 
 Here are the list of all editions:
-* [Fundamentals edition](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/Fundamentals/README.md) (0 card)
+* [Fundamentals edition](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/README.md)
 
 ## <a name="create"></a> Create a new card
 
