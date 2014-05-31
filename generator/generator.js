@@ -2,9 +2,9 @@
 
 Header + Footer : http://themeforest.net/item/gamecity-a-flat-responsive-gaming-template/full_screen_preview/7615416
 
-Slideshow for last/random cards : http://themeforest.net/item/sevenmag-html5-blogmagazinegamesnews-template/full_screen_preview/7805540
+Options : http://demo.bossthemes.com/gameworld2/index.php?route=common/home
 
-Paralax ? : http://themeforest.net/item/clouds-3d-interactive-coming-soon-page/full_screen_preview/7318254
+Slideshow for last/random cards : http://themeforest.net/item/sevenmag-html5-blogmagazinegamesnews-template/full_screen_preview/7805540
 
 Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
 
@@ -26,7 +26,6 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
  * /print/                   : Wizard pour fabriquer des sets de cartes à imprimer
  *
  * Responsive
- * selection du JS, du en_EN et du template ? Header !
  * Au début on prompt un choix (ou on force par les arguments) :
  * Tout regenerer - Mettre à jour
  * Il faudrait un hook pour qu'au push ca regénère les cartes (ou un truc dans le genre)
