@@ -3,5 +3,8 @@
 msgid ""
 msgstr ""
 
+msgid "foo"
+msgstr "foo"
+
 msgid "All starts with foo."
 msgstr "All starts with foo."
