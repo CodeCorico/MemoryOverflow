@@ -1,7 +1,11 @@
-TODO
+# MemoryOverflow - Game rules
+
+* [Règles en Français](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/README-fr_FR.md)
 
 
-rules/readme.md -> Toutes les règls du jeu
+## TODO
+
+rules/readme.md -> Toutes les règles du jeu
 
                     - Types de cartes
                     - Shema d'une partie par tours
