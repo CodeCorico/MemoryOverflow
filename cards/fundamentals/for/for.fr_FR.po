@@ -1,0 +1,7 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "Enter in a loop with variable is a variable card."
+msgstr "Entrée dans une boucle où variable est une carte variable."
