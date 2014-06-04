@@ -6,4 +6,4 @@ All starts with a `foo` variable.
 * Languages: JavaScript, PHP
 * Translations: English, French
 
-- [Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/foo/CHANGELOG.md) -
+[Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/foo/CHANGELOG.md) -
