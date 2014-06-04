@@ -1,6 +1,6 @@
 # MemoryOverflow - Game rules
 
-* [Règles en Français](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/README-fr_FR.md)
+* [Règles du jeu en Français](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/README-fr_FR.md)
 
 
 ## TODO

@@ -2,7 +2,7 @@
 
 MemoryOverflow is a card game designed by developers for developers.
 
-The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the ay it works.
+The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works.
 
 
 ## Follow the project
