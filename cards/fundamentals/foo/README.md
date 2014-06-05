@@ -6,4 +6,11 @@ All starts with a `foo` variable.
 * Languages: JavaScript, PHP
 * Translations: English, French
 
-[Changelog](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/foo/CHANGELOG.md) -
+[Card configuration](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/foo/foo.md)
+
+<a name="1"></a>
+# v1 (2014-06-04)
+
+## Breaking changes
+
+- Creation
