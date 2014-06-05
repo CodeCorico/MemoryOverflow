@@ -1,6 +1,6 @@
 # title
 
-Foo
+foo
 
 # status
 
