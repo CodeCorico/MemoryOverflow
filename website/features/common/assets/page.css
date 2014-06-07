@@ -52,7 +52,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  background: url("background.jpg") no-repeat top center #151b2e;
+  background: url("background.jpg") no-repeat top center #231b1d;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -78,17 +78,119 @@ header {
 
 header .logo, header .logo:hover {
   position: absolute;
-  top: 90px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: white;
+  top: 30px;
+  left: 50%;
+  margin-left: -273px;
+  width: 546px;
+  height: 156px;
+  overflow: hidden;
   text-decoration: none;
 }
 
+@-webkit-keyframes logo-animation { 0% { -webkit-transform: rotate(0deg); } 100% {-webkit-transform: rotate(360deg); } }
+@-moz-keyframes logo-animation { 0% { -moz-transform: rotate(0deg); } 100% { -moz-transform: rotate(360deg); } }
+@-ms-keyframes logo-animation { 0% { -ms-transform: rotate(0deg); } 100% { -ms-transform: rotate(360deg); } }
+@-o-keyframes logo-animation { 0% { -o-transform: rotate(0deg); } 100% { -o-transform: rotate(360deg); } }
+@keyframes logo-animation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+@-webkit-keyframes logo-animation-back { 0% { -webkit-transform: rotate(0deg); } 100% {-webkit-transform: rotate(-360deg); } }
+@-moz-keyframes logo-animation-back { 0% { -moz-transform: rotate(0deg); } 100% { -moz-transform: rotate(-360deg); } }
+@-ms-keyframes logo-animation-back { 0% { -ms-transform: rotate(0deg); } 100% { -ms-transform: rotate(-360deg); } }
+@-o-keyframes logo-animation-back { 0% { -o-transform: rotate(0deg); } 100% { -o-transform: rotate(-360deg); } }
+@keyframes logo-animation-back { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+
+.logo-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 156px;
+  background: url('logo-animation.png') no-repeat;
+  background-size: 100% 100%;
+
+  -webkit-animation: logo-animation 120s linear infinite;
+  -moz-animation:    logo-animation 120s linear infinite;
+  -ms-animation:     logo-animation 120s linear infinite;
+  -o-animation:      logo-animation 120s linear infinite;
+  animation:         logo-animation 120s linear infinite;
+}
+
+.logo-bg-1 {
+  opacity: 0.3;
+  top: 170px;
+  left: 177px;
+  width: 100px;
+  height: 100px;
+}
+
+.logo-bg-2 {
+  opacity: 0.2;
+  top: -100px;
+  left: auto;
+  width: 200px;
+  height: 200px;
+  right: 189px;
+}
+
+.logo-bg-3 {
+  opacity: 0.4;
+  top: 14px;
+  left: -50px;
+  width: 250px;
+  height: 250px;
+}
+
+.logo-bg-4 {
+  opacity: 0.2;
+  top: -50px;
+  left: 260px;
+  width: 400px;
+  height: 400px;
+}
+
+.logo-bg-5 {
+  opacity: 0.3;
+  top: 40px;
+  right: 20px;
+  width: 250px;
+  height: 250px;
+  left: auto;
+}
+
+.logo-bg-3, .logo-bg-4, .logo-bg-5 {
+  -webkit-animation: logo-animation-back 120s linear infinite;
+  -moz-animation:    logo-animation-back 120s linear infinite;
+  -ms-animation:     logo-animation-back 120s linear infinite;
+  -o-animation:      logo-animation-back 120s linear infinite;
+  animation:         logo-animation-back 120s linear infinite;
+}
+
+header .logo .logo-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 156px;
+  background: url('logo-animation.png') no-repeat;
+
+  -webkit-animation: logo-animation 90s linear infinite;
+  -moz-animation:    logo-animation 90s linear infinite;
+  -ms-animation:     logo-animation 90s linear infinite;
+  -o-animation:      logo-animation 90s linear infinite;
+  animation:         logo-animation 90s linear infinite;
+}
+
 header .logo h1 {
-  font-size: 40px;
-  margin: 0 0 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 546px;
+  height: 156px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: -99999px;
+  background: url('logo.png') no-repeat;
 }
 
 header .logo h1 span {
@@ -143,6 +245,7 @@ header .logo p {
   text-align: center;
   padding-top: 7px;
   font-size: 27px;
+  line-height: 38px;
 }
 
 .options-item-dev .gt {
