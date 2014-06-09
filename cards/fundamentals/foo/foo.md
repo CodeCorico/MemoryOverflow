@@ -14,6 +14,10 @@ Fundamentals
 
 variable
 
+# author
+
+Xavier Boubert @xavierboubert
+
 # code:javascript
 
 var foo = 0;
