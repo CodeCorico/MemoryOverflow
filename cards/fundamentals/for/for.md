@@ -14,6 +14,10 @@ Fundamentals
 
 code
 
+# author
+
+Xavier Boubert @xavierboubert
+
 # code:javascript
 
 for(var i = 0; i < variable; i++) {
