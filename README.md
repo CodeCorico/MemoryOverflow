@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/XavierBoubert/MemoryOverflow/logo.gif" />
+</p>
+
 # MemoryOverflow
 
 MemoryOverflow is a card game designed by developers for developers.
