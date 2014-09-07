@@ -1,7 +1,7 @@
 Fundamentals Edition
 =========
 
-"Description of the edition"
+The basic programming
 
 
 Edition
@@ -12,7 +12,7 @@ Edition
 Stats
 ---------
 
-* Number of cards: 1
-* Number of Variables: 1
-* Number of Algos: 0
-* Number of Thinking: 0
+* Number of cards: 2
+* Number of _Variable_: 1
+* Number of _Code_: 1
+* Number of _Thinking_: 0

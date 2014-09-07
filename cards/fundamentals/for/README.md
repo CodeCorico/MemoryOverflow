@@ -1,6 +1,6 @@
 # Fundamentals - For
 
-Enter in a loop with variable is a variable card.
+Enter in a basic loop
 
 * Type: Code
 * Languages: JavaScript, PHP

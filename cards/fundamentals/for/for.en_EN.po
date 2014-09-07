@@ -6,8 +6,8 @@ msgstr ""
 msgid "for"
 msgstr "for"
 
-msgid "Enter in a loop with variable is a variable card."
-msgstr "Enter in a loop with variable is a variable card."
+msgid "_variable_ is a previously declared variable."
+msgstr "_variable_ is a previously declared variable."
 
-msgid "Enter in a loop with $variable is a variable card."
-msgstr "Enter in a loop with $variable is a variable card."
+msgid "_$variable_ is a previously declared variable."
+msgstr "_$variable_ is a previously declared variable."

@@ -23,11 +23,11 @@ Xavier Boubert @xavierboubert
 for(var i = 0; i < variable; i++) {
   ...
 
-  // &{Enter in a loop with variable is a variable card.}
+  // &{_variable_ is a previously declared variable.}
 
 # code:php
 
 for($i = 0; $i < $variable; $i++) {
   ...
 
-  // &{Enter in a loop with $variable is a variable card.}
+  // &{_$variable_ is a previously declared variable.}
