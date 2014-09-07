@@ -18,14 +18,14 @@ The GitHub project is designed to run like a Wiki. Each folder has a README.md f
 
 You can use the official Generator (http://memoryoverflow.xavierboubert.fr) to generate or validify your cards.
 
-* [Templates](https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/README.md)
-* [Generator](https://github.com/XavierBoubert/MemoryOverflow/blob/master/generator/README.md)
-* [Cards](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/README.md)
+* [Templates](https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/)
+* [Generator](https://github.com/XavierBoubert/MemoryOverflow/blob/master/generator/)
+* [Cards](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/)
 
 
 ## Game
 
-* [Rules](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/README.md)
+* [Rules](https://github.com/XavierBoubert/MemoryOverflow/blob/master/rules/)
 
 
 ## Contribute
