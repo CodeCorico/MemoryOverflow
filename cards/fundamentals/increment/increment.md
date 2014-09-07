@@ -1,6 +1,6 @@
 # title
 
-increment
+Increment
 
 # status
 
@@ -20,12 +20,24 @@ Xavier Boubert @xavierboubert
 
 # code:javascript
 
-variable++;
+{code}
+variable{operator}++{/operator};
+{/code}
 
-// &{_variable_ is a previously declared variable.}
+{comment}
+/**
+&{{comment-strong}variable{/comment-strong} is a previously declared variable.}
+*/
+{/comment}
 
 # code:php
 
-$variable = 0;
+{code}
+$variable{operator}++{/operator};
+{/code}
 
-// &{_$variable_ is a previously declared variable.}
+{comment}
+/**
+&{{comment-strong}$variable{/comment-strong} is a previously declared variable.}
+*/
+{/comment}

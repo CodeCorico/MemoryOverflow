@@ -3,11 +3,11 @@
 msgid ""
 msgstr ""
 
-msgid "increment"
-msgstr "increment"
+msgid "Increment"
+msgstr "Increment"
 
-msgid "_variable_ is a previously declared variable."
-msgstr "_variable_ is a previously declared variable."
+msgid "{comment-strong}variable{/comment-strong} is a previously declared variable."
+msgstr "{comment-strong}variable{/comment-strong} is a previously declared variable."
 
-msgid "_variable_ is a previously declared variable."
-msgstr "_$variable_ is a previously declared variable."
+msgid "{comment-strong}$variable{/comment-strong} is a previously declared variable."
+msgstr "{comment-strong}$variable{/comment-strong} is a previously declared variable."
