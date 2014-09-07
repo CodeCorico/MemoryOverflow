@@ -10,4 +10,4 @@ msgid "Back to your previous commit."
 msgstr "Retourne à ton précédent commit."
 
 msgid "The selected player turns in his hand the last _code_ card he played."
-msgstr "Le joueur sélectionné retourne dans sa main la dernière carte _code_ qu'il à joué."
+msgstr "Le joueur sélectionné retourne dans sa main la dernière carte _code_ qu'il a joué."
