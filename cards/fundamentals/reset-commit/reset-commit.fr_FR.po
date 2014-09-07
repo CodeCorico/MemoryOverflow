@@ -3,11 +3,17 @@
 msgid ""
 msgstr ""
 
-msgid "reset commit"
-msgstr "réinitialiser le commit"
+msgid "Reset commit"
+msgstr "Réinitialiser le commit"
 
-msgid "Back to your previous commit."
-msgstr "Retourne à ton précédent commit."
+msgid "The selected player turns in his hand the last {operator}code{/operator} card he played."
+msgstr "Le joueur sélectionné retourne dans sa main la dernière carte {operator}code{/operator} qu'il a joué."
 
-msgid "The selected player turns in his hand the last _code_ card he played."
-msgstr "Le joueur sélectionné retourne dans sa main la dernière carte _code_ qu'il a joué."
+msgid "Tips: To move up its commits, git offers the command {comment-strong}git reset{/comment-strong}."
+msgstr "Astuce : Pour remonter dans ses commits, git propose la commande {comment-strong}git reset{/comment-strong}."
+
+msgid "By using {comment-strong}git reset --hard{/comment-strong} followed by the commit id, git will remove everything that happened after in the current branch."
+msgstr "En utilisant git reset --hard suivi de l'id du commit, git va supprimer tout ce qu'il s'est passé après sur la branche courante."
+
+msgid "Be careful. This is a dangerous command, it's not possible to go back after."
+msgstr "Attention. C'est une commande dangereuse car il n'est ensutie plus possible de faire marche arrière."

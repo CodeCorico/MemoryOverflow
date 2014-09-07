@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 
-msgid "reset commit"
-msgstr "reset commit"
+msgid "Reset commit"
+msgstr "Reset commit"
 
 msgid "Back to your previous commit."
 msgstr "Back to your previous commit."
