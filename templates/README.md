@@ -57,7 +57,7 @@ Except for the [template name]-preview.jpg file, all of the pictures files are u
 
 This file structure areas and styles of cards:
 
-```
+```javascript
 {
   // Author can have a twitter user after @
   "author": "Me @me",
@@ -121,7 +121,7 @@ This file structure areas and styles of cards:
     // CSS for the default area text
     "default": {
       ...
-    }
+    },
 
     // CSS for the "code" tag
     "code": {
