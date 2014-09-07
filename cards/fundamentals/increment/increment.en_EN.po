@@ -1,0 +1,13 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "increment"
+msgstr "increment"
+
+msgid "_variable_ is a previously declared variable."
+msgstr "_variable_ is a previously declared variable."
+
+msgid "_variable_ is a previously declared variable."
+msgstr "_$variable_ is a previously declared variable."
