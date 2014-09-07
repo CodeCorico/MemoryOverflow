@@ -20,12 +20,24 @@ Xavier Boubert @xavierboubert
 
 # code:javascript
 
-var foo = 0;
+{code}
+{operator}var{/operator} foo {operator}={/operator} {number}0{/number};
+{/code}
 
-// &{All starts with foo.}
+{comment}
+/**
+&{True story: {comment-strong}foo{/comment-strong} was popularized by MIT and DEC. The first references are in the LISP and PDP-1 works and the MAC draft in 1964.}
+*/
+{/comment}
 
 # code:php
 
-$foo = 0;
+{code}
+$foo {operator}={/operator} {number}0{/number};
+{/code}
 
-// &{All starts with foo.}
+{comment}
+/**
+&{True story: {comment-strong}foo{/comment-strong} was popularized by MIT and DEC. The first references are in the LISP and PDP-1 works and the MAC draft in 1964.}
+*/
+{/comment}

@@ -6,5 +6,5 @@ msgstr ""
 msgid "foo"
 msgstr "foo"
 
-msgid "All starts with foo."
-msgstr "Tout commence avec foo."
+msgid "True story: {comment-strong}foo{/comment-strong} was popularized by MIT and DEC. The first references are in the LISP and PDP-1 works and the MAC draft in 1964."
+msgstr "Histoire vraie : {comment-strong}foo{/comment-strong} a été popularisée par le MIT et DEC. Ses premières références sont dans les travaux LISP et PDP-1 et dans le projet MAC de 1964."
