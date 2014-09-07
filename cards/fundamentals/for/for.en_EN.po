@@ -6,8 +6,11 @@ msgstr ""
 msgid "for"
 msgstr "for"
 
-msgid "_variable_ is a previously declared variable."
-msgstr "_variable_ is a previously declared variable."
+msgid "{comment-strong}variable{/comment-strong} is a previously declared variable."
+msgstr "{comment-strong}variable{/comment-strong} is a previously declared variable."
 
-msgid "_$variable_ is a previously declared variable."
-msgstr "_$variable_ is a previously declared variable."
+msgid "{comment-strong}$variable{/comment-strong} is a previously declared variable."
+msgstr "{comment-strong}$variable{/comment-strong} is a previously declared variable."
+
+msgid "True story: for() loops were invented more than 150 years ago by Ada Lovelace, a famous English mathematician. She is often described as the first programmer in the world."
+msgstr "True story: for() loops were invented more than 150 years ago by Ada Lovelace, a famous English mathematician. She is often described as the first programmer in the world."
