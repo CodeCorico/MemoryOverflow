@@ -2,7 +2,7 @@
 
 Back to your previous commit
 
-* Type: Thinking
+* Type: Event
 * Languages: JavaScript, PHP
 * Translations: English, French
 

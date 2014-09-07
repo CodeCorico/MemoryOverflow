@@ -12,7 +12,7 @@ Fundamentals
 
 # type
 
-thinking
+event
 
 # author
 
