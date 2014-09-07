@@ -12,7 +12,7 @@ Edition
 Stats
 ---------
 
-* Number of cards: 3
+* Number of cards: 4
 * Number of _Variable_: 1
 * Number of _Code_: 2
-* Number of _Thinking_: 0
+* Number of _Thinking_: 1

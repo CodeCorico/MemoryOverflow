@@ -1,0 +1,13 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "reset commit"
+msgstr "reset commit"
+
+msgid "Back to your previous commit."
+msgstr "Back to your previous commit."
+
+msgid "The selected player turns in his hand the last _code_ card he played."
+msgstr "The selected player turns in his hand the last _code_ card he played."
