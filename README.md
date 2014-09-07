@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/XavierBoubert/MemoryOverflow/logo.gif" />
+  <img src="https://raw.githubusercontent.com/XavierBoubert/MemoryOverflow/master/logo.gif" />
 </p>
 
 # MemoryOverflow
