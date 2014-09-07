@@ -1,0 +1,85 @@
+{
+  "author": "Michael Lepaysan @retovona",
+  "name": "Fototse",
+  "default-style": {
+    "font-family": "Open Sans",
+    "font-weight": 400,
+    "font-size": "30pt",
+    "color": "#ffffff"
+  },
+  "title-style": {
+    "font-weight": 300,
+    "font-size": "42pt",
+    "area": {
+      "y1": 293,
+      "x1": 293,
+      "y2": 467,
+      "x2": 2940
+    }
+  },
+  "brand-style": {
+    "font-size": "30pt",
+    "area": {
+      "y1": 4782,
+      "x1": 293,
+      "y2": 4961,
+      "x2": 1742
+    }
+  },
+  "details-style": {
+    "font-size": "24pt",
+    "text-align": "right",
+    "area": {
+      "y1": 4782,
+      "x1": 1742,
+      "y2": 4961,
+      "x2": 3133
+    }
+  },
+  "type-variable": {
+    "area": {
+      "y1": 763,
+      "x1": 293,
+      "y2": 4490,
+      "x2": 3182
+    }
+  },
+  "type-code": {
+    "area": {
+      "y1": 763,
+      "x1": 293,
+      "y2": 4490,
+      "x2": 3182
+    }
+  },
+  "type-event": {
+    "area": {
+      "y1": 763,
+      "x1": 293,
+      "y2": 4490,
+      "x2": 3182
+    }
+  },
+  "content": {
+    "default": {
+      "font-size": "30pt",
+      "color": "#ffffff"
+    }
+    "code": {
+      "font-size": "30pt",
+      "color": "#ffffff"
+    },
+    "operator": {
+      "color": "#c27730"
+    },
+    "number": {
+      "color": "#af72c4"
+    },
+    "comment": {
+      "color": "#666666"
+    },
+    "comment-strong": {
+      "color": "#814b1d"
+    }
+  }
+}
