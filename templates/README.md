@@ -10,7 +10,10 @@ Cards are grouped by editions which represent different themes.
 ## <a name="templates"></a> Templates
 
 Here are the list of all templates:
-* <img src="https://raw.githubusercontent.com/XavierBoubert/MemoryOverflow/master/templates/fototse/fototse-preview.png" alt="Fototse preview" style="height: 25px; margin-right: 10px"/> [Fototse by @retovona](https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/fototse)
+
+<p align="center"><a href="https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/fototse">
+<img src="https://raw.githubusercontent.com/XavierBoubert/MemoryOverflow/master/templates/fototse/fototse-preview.png" alt="Fototse preview" height="150"/><br />
+Fototse by @retovona</a></p>
 
 ## <a name="create"></a> Create a new template
 
