@@ -5,6 +5,7 @@
 # MemoryOverflow
 
 MemoryOverflow is a card game designed by developers for developers.
+See it in action in the [official website](http://xavierboubert.github.io/MemoryOverflow).
 
 The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works.
 
@@ -20,7 +21,7 @@ The GitHub project is designed to run like a Wiki. Each folder has a README.md f
 
 ## Build your cards
 
-You can use the official Generator (http://memoryoverflow.xavierboubert.fr) to generate or validify your cards.
+You can use the [generator](http://xavierboubert.github.io/MemoryOverflow) to generate or validify your cards.
 
 * [Templates](https://github.com/XavierBoubert/MemoryOverflow/blob/master/templates/)
 * [Generator](https://github.com/XavierBoubert/MemoryOverflow/blob/master/generator/)
