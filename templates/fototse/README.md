@@ -1,7 +1,7 @@
 # MemoryOverflow - Fototse template
 
 <p align="center">
-  <img src="https://raw.github.com/XavierBoubert/MemoryOverflow/blob/master/templates/fototse/fototse-preview.png" alt="Fototse preview"/>
+  <img src="https://raw.githubusercontent.com/XavierBoubert/MemoryOverflow/master/templates/fototse/fototse-preview.png" alt="Fototse preview"/>
 </p>
 
 * by Michael Lepaysan [@retovona](https://twitter.com/retovona)
