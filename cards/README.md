@@ -10,11 +10,11 @@ Cards are grouped by editions which represent different themes.
 ## <a name="editions"></a> Editions
 
 Here are the list of all editions:
-* [Fundamentals edition](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/)
+* [Fundamentals edition](https://github.com/CodeCorico/MemoryOverflow/blob/master/cards/fundamentals/)
 
 ## <a name="create"></a> Create a new card
 
-To be used by the [generator](https://github.com/XavierBoubert/MemoryOverflow/blob/master/generator/), each card has a generic configuration.
+To be used by the [generator](https://github.com/CodeCorico/MemoryOverflow/blob/master/generator/), each card has a generic configuration.
 It's possible to create cards in differents programming languages and translations.
 
 ### The folder structure
@@ -110,5 +110,5 @@ A translation file use the international ISO language code in a [Gettext format]
 
 If a card needs to be fixed, you can:
 * Contact the original author of the card so that he corrects himself.
-* Add an [issue](https://github.com/XavierBoubert/MemoryOverflow/issues).
-* Send a new PR linked to your issue (see the [Contribution guidelines](https://github.com/XavierBoubert/MemoryOverflow/blob/master/CONTRIBUTING.md))
+* Add an [issue](https://github.com/CodeCorico/MemoryOverflow/issues).
+* Send a new PR linked to your issue (see the [Contribution guidelines](https://github.com/CodeCorico/MemoryOverflow/blob/master/CONTRIBUTING.md))

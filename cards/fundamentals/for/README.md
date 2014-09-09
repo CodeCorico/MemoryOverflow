@@ -6,7 +6,7 @@ Enter in a basic loop
 * Languages: JavaScript, PHP
 * Translations: English, French
 
-[Card configuration](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/for/for.md)
+[Card configuration](https://github.com/CodeCorico/MemoryOverflow/blob/master/cards/fundamentals/for/for.md)
 
 <a name="1"></a>
 # v1 (2014-06-04)
