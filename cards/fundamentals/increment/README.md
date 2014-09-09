@@ -6,7 +6,7 @@ Increment a variable
 * Languages: JavaScript, PHP
 * Translations: English, French
 
-[Card configuration](https://github.com/XavierBoubert/MemoryOverflow/blob/master/cards/fundamentals/increment/increment.md)
+[Card configuration](https://github.com/CodeCorico/MemoryOverflow/blob/master/cards/fundamentals/increment/increment.md)
 
 <a name="1"></a>
 # v1 (2014-09-07)
