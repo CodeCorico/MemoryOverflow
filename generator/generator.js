@@ -63,3 +63,42 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
  *
 
  */
+ (function() {
+
+  var fs = require('fs'),
+      CardsGenerator = require('./features/card/cards-generator').CardsGenerator,
+      _arguments = {},
+      _usage = 'node generator.js --template=<template name>';
+
+  process.argv.forEach(function (val, index, array) {
+    if (val != 'node' && val.indexOf('generator.js') === -1) {
+      var type = val.split('=')[0],
+          value = val.split('=')[1];
+
+      if (type.substring(0, 2) == '--') {
+        _arguments[type.substring(2)] = value;
+      }
+    }
+  });
+
+  if (!_arguments.template) {
+    throw new Error('--template arg missing, usage: ' + _usage);
+  }
+
+  var template = '../templates/' + _arguments.template;
+
+  fs.exists(template, function(exists) {
+    if (!exists) {
+        throw new Error('template \'' + template + '\' does not exist');
+    }
+  });
+
+  var Generator = function() {
+
+    (new CardsGenerator(template, _arguments.template)).generate();
+
+  };
+
+  new Generator();
+
+ })();

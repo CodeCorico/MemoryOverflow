@@ -9,9 +9,9 @@
   },
   "title-style": {
     "font-weight": 300,
-    "font-size": "42pt",
+    "font-size": "200pt",
     "area": {
-      "y1": 293,
+      "y1": 230,
       "x1": 293,
       "y2": 467,
       "x2": 2940
@@ -26,6 +26,16 @@
       "x2": 1742
     }
   },
+  "comment-style": {
+    "font-size": "120pt",
+    "text-align": "justify",
+    "area": {
+      "y1": 2000,
+      "x1": 293,
+      "y2": 4961,
+      "x2": 3133
+    }
+  },
   "details-style": {
     "font-size": "24pt",
     "text-align": "right",
@@ -38,7 +48,7 @@
   },
   "type-variable": {
     "area": {
-      "y1": 763,
+      "y1": 840,
       "x1": 293,
       "y2": 4490,
       "x2": 3182
@@ -46,7 +56,7 @@
   },
   "type-code": {
     "area": {
-      "y1": 763,
+      "y1": 840,
       "x1": 293,
       "y2": 4490,
       "x2": 3182
@@ -54,7 +64,7 @@
   },
   "type-event": {
     "area": {
-      "y1": 763,
+      "y1": 840,
       "x1": 293,
       "y2": 4490,
       "x2": 3182
@@ -62,11 +72,10 @@
   },
   "content": {
     "default": {
-      "font-size": "30pt",
+      "font-size": "120pt",
       "color": "#ffffff"
     },
     "code": {
-      "font-size": "30pt",
       "color": "#ffffff"
     },
     "operator": {
