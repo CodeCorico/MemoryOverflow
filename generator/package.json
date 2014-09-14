@@ -1,0 +1,13 @@
+{
+  "name": "memoryoverflow-generator",
+  "description": "MemoryOverflow generator",
+  "main": "generator.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XavierBoubert/MemoryOverflow.git"
+  },
+  "dependencies": {
+    "gulp": "3.8.x",
+    "jsdom": "1.0.x"
+  }
+}
