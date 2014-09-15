@@ -52,7 +52,7 @@ What is a _User Story_? Please see this [Wikipedia page](http://en.wikipedia.org
 
 In MemoryOverflow, a feature needs to be in a _user story_ format that represent a user/player's real expectations. When you create a new issue, use this format to explain your request:
 
-"As a <role>, I want <goal/desire> so that <benefit>"
+"As a _role_, I want _goal/desire_ so that _benefit_"
 
 Describe with details your role, like _daily player_ or _windows developer_ and don't forget the benefit.
 
