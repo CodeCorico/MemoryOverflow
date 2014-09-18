@@ -2,9 +2,9 @@
   'use strict';
 
   var fs = require('fs'),
+      FileUtils = require('../file/file.js').File,
       spawn = require('child_process').spawn,
-      jsdom = require('jsdom'),
-      createWriteStream = require('fs').createWriteStream;
+      jsdom = require('jsdom');
 
   function _parseMD(data) {
     var nodes = data.split('\n'),
@@ -15,12 +15,12 @@
     nodes.forEach(function(node) {
 
       // Heading 2
-      if (node.indexOf('##') == 0) {
+      if (node.indexOf('##') === 0) {
         content = '';
         header = node.replace('## ','');
       }
       // Heading 1
-      else if (node.indexOf('#') == 0) {
+      else if (node.indexOf('#') === 0) {
         content = '';
         header = node.replace('# ','');
       }
@@ -58,7 +58,7 @@
     var _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length),
         _templateJSONFile = _templateFilePath + '.json';
 
-    function _generateCard(cardContent, templateData, card) {
+    function _generateCard(cardContent, templateData, card, onGenerationComplete) {
       var cardType = cardContent.type.content,
           imageFile = templatePath + '/' + _templateFilePath + '-' + cardType + '.jpg';
 
@@ -139,7 +139,7 @@
                     $content.find('.title').html(content);
                 }
 
-                if (key.indexOf('code') == 0) {
+                if (key.indexOf('code') === 0) {
                   var code = content.substring(content.indexOf('{code}') + 6, content.indexOf('{/code}')),
                       comment = content.substring(content.indexOf('{comment}') + 9, content.indexOf('{/comment}'));
 
@@ -157,20 +157,24 @@
               }
 
               var html = '<!DOCTYPE html>\n' + window.$('html').html(),
-                  output = './generated/' + card + (language ? '-' + language : ''),
-                  htmlFile = output + '.html';
+                  output = card + (language ? '-' + language : ''),
+                  htmlFile = FileUtils.directory(FileUtils.websiteDirectory() + 'cards/' + templateName + '/') + output + '.html';
 
               fs.writeFile(htmlFile, html, function(err) {
-                if (err) {
-                    console.log(err);
-                }
-                else {
+                var error = err;
+                if (!err) {
                   try {
-                    spawn('wkhtmltoimage', [htmlFile, output + '.jpg']);
+                    spawn('wkhtmltoimage', [htmlFile, FileUtils.directory(FileUtils.websiteDirectory() + 'print/' + templateName + '/') + output + '.jpg']);
                   }
-                  catch (err) {
-                    console.log(err);
+                  catch (err1) {
+                    error = err1;
                   }
+                }
+                if (onGenerationComplete) {
+                  onGenerationComplete({
+                    success: !error,
+                    error: error
+                  });
                 }
               });
             });
@@ -181,7 +185,7 @@
 
     }
 
-    this.generate = function() {
+    this.generate = function(onGenerationComplete) {
       var splitFile = file.split('/'),
           card = splitFile[splitFile.length -1].replace('.md', '');
 
@@ -200,7 +204,7 @@
           var cardContent = _parseMD(data);
 
           if (cardContent.type && cardContent.type.content) {
-            _generateCard(cardContent, templateData, card);
+            _generateCard(cardContent, templateData, card, onGenerationComplete);
           }
           else {
             throw new Error('no type in card: ' + card);

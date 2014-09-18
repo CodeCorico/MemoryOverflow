@@ -64,9 +64,11 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
 
  */
  (function() {
+  'use strict';
 
   var fs = require('fs'),
       CardsGenerator = require('./features/card/cards-generator').CardsGenerator,
+      FileUtils = require('./features/file/file.js').File,
       _arguments = {},
       _usage = 'node generator.js --template=<template name>';
 
@@ -94,6 +96,9 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
   });
 
   var Generator = function() {
+
+    FileUtils.directory(FileUtils.websiteDirectory() + 'cards/');
+    FileUtils.directory(FileUtils.websiteDirectory() + 'print/');
 
     (new CardsGenerator(template, _arguments.template)).generate();
 
