@@ -36,5 +36,5 @@ After that, you can create your own Pull Requests (PR) and submit them here.
 Lead contribution team
 ---------
 
-* [Xavier Boubert](http://xavierboubert.fr) [@xavierboubert](https://github.com/XavierBoubert)
-* [Guillaume Royer](https://www.linkedin.com/profile/view?id=42944066) [@mebibou](https://github.com/mebibou)
+* <a href="http://xavierboubert.fr"><img src="https://avatars0.githubusercontent.com/u/482251?v=2&s=18" alt="Xavier Boubert" /> Xavier Boubert</a> [@xavierboubert](https://github.com/XavierBoubert)
+* <a href="https://www.linkedin.com/profile/view?id=42944066"><img src="https://avatars3.githubusercontent.com/u/305342?v=2&s=18" alt="Guillaume Royer" /> Guillaume Royer</a> [@mebibou](https://github.com/mebibou)
