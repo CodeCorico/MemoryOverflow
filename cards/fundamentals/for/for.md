@@ -35,8 +35,10 @@ Xavier Boubert @xavierboubert
 
 # code:php
 
+{code}
 {operator}for{/operator}($i {operator}={/operator} 0; $i {operator}<{/operator} $variable; $i{operator}++{/operator}) {
   ...
+{/code}
 
 {comment}
 /**
