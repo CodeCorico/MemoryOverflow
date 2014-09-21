@@ -12,7 +12,10 @@
   var CardsGenerator = function(templateFile, templateName) {
     var bar = null;
 
-    function _tick() {
+    function _tick(args) {
+      if (args.error) {
+        throw new Error(args.error);
+      }
       if (bar) {
         bar.tick();
       }
