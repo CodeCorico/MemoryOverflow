@@ -2,6 +2,9 @@
 *node_modules
 *.log
 *.DS_Store
-website
+
+website/*
+!website/js
+!website/vendor
 
 .jshintrc
