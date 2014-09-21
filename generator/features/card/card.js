@@ -4,7 +4,7 @@
   var fs = require('fs'),
       FileUtils = require('../file/file.js').File,
       spawn = require('child_process').spawn,
-      jsdom = require('jsdom');
+      cheerio = require('cheerio');
 
   function _parseMD(data) {
     var nodes = data.split('\n'),
@@ -80,111 +80,107 @@
               console.error(err);
             }
 
-            // var jquery = fs.readFileSync('vendor/jquery/jquery-1.11.1.min.js', 'utf-8');
+            var $ = cheerio.load(data),
+                $container = $('.card-container'),
+                $image = $('.card-image'),
+                $content = $('.card-content'),
+                language = null,
+                width = 3485, // TODO get image width
+                height = 5195; // TODO get image height
 
-            jsdom.env(data, ['http://code.jquery.com/jquery.js'], function (errors, window) {
-              var $ = window.$,
-                  $container = $('.card-container'),
-                  $image = $('.card-image'),
-                  $content = $('.card-content'),
-                  language = null,
-                  width = 3485,
-                  height = 5195;
+            $container.css({
+              width: width,
+              height: height
+            });
 
-              $container .css({
-                width: width,
-                height: height
-              });
+            $image.append($('<image src="' + imageFile + '"></span>'));
 
-              $image.append($('<image src="' + imageFile + '"></span>'));
+            for (var key in templateData) {
+              var values = templateData[key];
 
-              for (var key in templateData) {
-                var values = templateData[key];
+              if (key == 'default-style') {
+                _applyStyles($container, values, width, height);
+              }
+              else {
+                var className = '';
 
-                if (key == 'default-style') {
-                  _applyStyles($container, values, width, height);
+                if (key.indexOf('-style') > 0) {
+                  className = key.split('-')[0];
                 }
-                else {
-                  var className = '';
-
-                  if (key.indexOf('-style') > 0) {
-                    className = key.split('-')[0];
-                  }
-                  else if (key.indexOf('type-') === 0) {
-                    className = 'content content-' + cardType;
-                    if (key.split('-')[1] != cardType) {
-                      continue;
-                    }
-                  }
-                  else if (key == 'content') {
-                    var style = '<style type="text/css">';
-
-                    for (var styleKey in values) {
-                      if (styleKey == 'default') {
-                        style += '.content{\n';
-                      }
-                      else {
-                        style += '.content-' + styleKey + '{\n';
-                      }
-
-                      for (var styleValue in values[styleKey]) {
-                        style += styleValue + ': ' + values[styleKey][styleValue] + ';\n';
-                      }
-
-                      style += '}';
-                    }
-                    $('head').append(style + '</style>');
+                else if (key.indexOf('type-') === 0) {
+                  className = 'content content-' + cardType;
+                  if (key.split('-')[1] != cardType) {
                     continue;
                   }
-
-                  var $element = $('<span class="' + className + '"></span>');
-                  _applyStyles($element, values, width, height);
-                  $content.append($element);
                 }
+                else if (key == 'content') {
+                  var style = '<style type="text/css">';
+
+                  for (var styleKey in values) {
+                    if (styleKey == 'default') {
+                      style += '.content{\n';
+                    }
+                    else {
+                      style += '.content-' + styleKey + '{\n';
+                    }
+
+                    for (var styleValue in values[styleKey]) {
+                      style += styleValue + ': ' + values[styleKey][styleValue] + ';\n';
+                    }
+
+                    style += '}';
+                  }
+                  $('head').append(style + '</style>');
+                  continue;
+                }
+
+                var $element = $('<span class="' + className + '"></span>');
+                _applyStyles($element, values, width, height);
+                $content.append($element);
+              }
+            }
+
+            for (var key in cardContent) {
+              var content = cardContent[key].content;
+
+              if (key == 'title') {
+                  $content.find('.title').html(_replaceStyleMD(content));
               }
 
-              for (var key in cardContent) {
-                var content = cardContent[key].content;
+              if (key.indexOf('code') === 0) {
 
-                if (key == 'title') {
-                    $content.find('.title').html(_replaceStyleMD(content));
+                var code = _getContentBetweenBraces(content, 'code'),
+                    comment = _getContentBetweenBraces(content, 'comment');
+
+                language = key.split(':')[1];
+
+                if (code) {
+                  $content.find('.content').html(_replaceStyleMD(code));
+                }
+                if (comment) {
+                  $content.find('.comment').html(_replaceStyleMD(comment));
                 }
 
-                if (key.indexOf('code') === 0) {
-
-                  var code = _getContentBetweenBraces(content, 'code'),
-                      comment = _getContentBetweenBraces(content, 'comment');
-
-                  language = key.split(':')[1];
-
-                  if (code) {
-                    $content.find('.content').html(_replaceStyleMD(code));
-                  }
-                  if (comment) {
-                    $content.find('.comment').html(_replaceStyleMD(comment));
-                  }
-
-                  _dumpCard('<!DOCTYPE html>\n' + window.$('html').html(), card, language, onGenerationComplete);
-
-                }
-
-                if (key == 'description') {
-                  var description = content.substring(0, content.indexOf('{comment}')),
-                      comment = _getContentBetweenBraces(content, 'comment');
-
-                  if (description) {
-                    $content.find('.content').html(_replaceStyleMD(description));
-                  }
-                  if (comment) {
-                    $content.find('.comment').html(_replaceStyleMD(comment));
-                  }
-
-                  _dumpCard('<!DOCTYPE html>\n' + window.$('html').html(), card, null, onGenerationComplete);
-
-                }
+                _dumpCard($.html(), card, language, onGenerationComplete);
 
               }
-            });
+
+              if (key == 'description') {
+                var description = content.substring(0, content.indexOf('{comment}')),
+                    comment = _getContentBetweenBraces(content, 'comment');
+
+                if (description) {
+                  $content.find('.content').html(_replaceStyleMD(description));
+                }
+                if (comment) {
+                  $content.find('.comment').html(_replaceStyleMD(comment));
+                }
+
+                _dumpCard($.html(), card, null, onGenerationComplete);
+
+              }
+
+            }
 
           });
         }

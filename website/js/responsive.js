@@ -77,13 +77,15 @@
   $(window).load(function() {
     _$el = {
       window: $(window),
-      screen: $('.card-container')
+      screen: $('.content-screen'),
+      container: $('.container')
     };
 
     _baseSize = {
-      width: 3485,
-      height: 5195
+      width: _$el.container.width(),
+      height: _$el.container.height()
     };
+
     _resize();
     $(window).resize(_resize);
   });
