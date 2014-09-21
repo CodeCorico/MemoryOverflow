@@ -27,6 +27,7 @@
       // Paragraph
       else if (node.length > 0) {
         content += node;
+
         contents[header] = {
           content: content
         };
@@ -34,6 +35,16 @@
     });
 
     return contents;
+  }
+
+  function _replaceStyleMD(content) {
+    return content.replace(new RegExp('{([^/][a-z-]*)}', 'ig'), '<span class=\'content-$1\'>').replace(new RegExp('{(/[a-z-]*)}', 'ig'), '</span>');
+  }
+
+  function _getContentBetweenBraces(content, braceCode) {
+    var begin = '{' + braceCode + '}',
+        end = '{/' + braceCode + '}';
+    return content.substring(content.indexOf(begin) + begin.length, content.indexOf(end));
   }
 
   function _applyStyles($element, json, width, height) {
@@ -73,7 +84,7 @@
 
             jsdom.env(data, ['http://code.jquery.com/jquery.js'], function (errors, window) {
               var $ = window.$,
-                $container = $('.card-container'),
+                  $container = $('.card-container'),
                   $image = $('.card-image'),
                   $content = $('.card-content'),
                   language = null,
@@ -136,53 +147,72 @@
                 var content = cardContent[key].content;
 
                 if (key == 'title') {
-                    $content.find('.title').html(content);
+                    $content.find('.title').html(_replaceStyleMD(content));
                 }
 
                 if (key.indexOf('code') === 0) {
-                  var code = content.substring(content.indexOf('{code}') + 6, content.indexOf('{/code}')),
-                      comment = content.substring(content.indexOf('{comment}') + 9, content.indexOf('{/comment}'));
+
+                  var code = _getContentBetweenBraces(content, 'code'),
+                      comment = _getContentBetweenBraces(content, 'comment');
 
                   language = key.split(':')[1];
 
                   if (code) {
-                    $content.find('.content').html(code);
+                    $content.find('.content').html(_replaceStyleMD(code));
                   }
                   if (comment) {
-                    $content.find('.comment').html(comment);
+                    $content.find('.comment').html(_replaceStyleMD(comment));
                   }
+
+                  _dumpCard('<!DOCTYPE html>\n' + window.$('html').html(), card, language, onGenerationComplete);
+
+                }
+
+                if (key == 'description') {
+                  var description = content.substring(0, content.indexOf('{comment}')),
+                      comment = _getContentBetweenBraces(content, 'comment');
+
+                  if (description) {
+                    $content.find('.content').html(_replaceStyleMD(description));
+                  }
+                  if (comment) {
+                    $content.find('.comment').html(_replaceStyleMD(comment));
+                  }
+
+                  _dumpCard('<!DOCTYPE html>\n' + window.$('html').html(), card, null, onGenerationComplete);
 
                 }
 
               }
-
-              var html = '<!DOCTYPE html>\n' + window.$('html').html(),
-                  output = card + (language ? '-' + language : ''),
-                  htmlFile = FileUtils.directory(FileUtils.websiteDirectory() + 'cards/' + templateName + '/') + output + '.html';
-
-              fs.writeFile(htmlFile, html, function(err) {
-                var error = err;
-                if (!err) {
-                  try {
-                    spawn('wkhtmltoimage', [htmlFile, FileUtils.directory(FileUtils.websiteDirectory() + 'print/' + templateName + '/') + output + '.jpg']);
-                  }
-                  catch (err1) {
-                    error = err1;
-                  }
-                }
-                if (onGenerationComplete) {
-                  onGenerationComplete({
-                    success: !error,
-                    error: error
-                  });
-                }
-              });
             });
 
           });
         }
       });
 
+    }
+
+    function _dumpCard(html, card, language, onGenerationComplete) {
+      var output = card + (language ? '-' + language : ''),
+          htmlFile = FileUtils.directory(FileUtils.websiteDirectory() + 'cards/' + templateName + '/') + output + '.html';
+
+      fs.writeFile(htmlFile, html, function(err) {
+        var error = err;
+        if (!err) {
+          try {
+            spawn('wkhtmltoimage', ['--disable-javascript', htmlFile, FileUtils.directory(FileUtils.websiteDirectory() + 'print/' + templateName + '/') + output + '.jpg']);
+          }
+          catch (err1) {
+            error = err1;
+          }
+        }
+        if (onGenerationComplete) {
+          onGenerationComplete({
+            success: !error,
+            error: error
+          });
+        }
+      });
     }
 
     this.generate = function(onGenerationComplete) {
