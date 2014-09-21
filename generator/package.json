@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "gulp": "3.8.x",
-    "jsdom": "1.0.x",
+    "cheerio": "^0.17.0",
     "progress": "1.1.x"
   }
 }
