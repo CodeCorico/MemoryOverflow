@@ -7,7 +7,10 @@
       cheerio = require('cheerio');
 
   function _parseMD(data) {
-    var nodes = data.split('\n'),
+    var nodes = data
+          .replace(/\r\n/g, '\n')
+          .replace(/\r/g, '\n')
+          .split('\n'),
         contents = {},
         header = null,
         content = '';
