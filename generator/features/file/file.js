@@ -7,11 +7,6 @@
 
     var _file = this;
 
-    this.websiteDirectory= function() {
-      var directory = '../website/';
-      return this.directory(directory);
-    };
-
     function _createDirectory(directory) {
       if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);
