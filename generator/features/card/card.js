@@ -50,7 +50,8 @@
               console.error(err);
             }
 
-            var $ = cheerio.load(data),
+            var cards = [],
+                $ = cheerio.load(data),
                 $container = $('.card-container'),
                 $image = $('.card-image'),
                 $content = $('.card-content'),
@@ -131,7 +132,11 @@
                   $content.find('.comment').html(_replaceStyleMD(comment));
                 }
 
-                _dumpCard($.html(), card, language, onGenerationComplete);
+                cards.push({
+                  html: $.html(),
+                  name: card,
+                  language: language
+                });
 
               }
 
@@ -146,10 +151,19 @@
                   $content.find('.comment').html(_replaceStyleMD(comment));
                 }
 
-                _dumpCard($.html(), card, null, onGenerationComplete);
+                cards.push({
+                  html: $.html(),
+                  name: card,
+                  language: null
+                });
 
               }
 
+            }
+
+            for (var i = 0, len = cards.length; i < len; i++) {
+              var card = cards[i];
+              _dumpCard(card.html, card.name, card.language, i === (len - 1) ? onGenerationComplete : false);
             }
 
           });
