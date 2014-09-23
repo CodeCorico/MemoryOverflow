@@ -166,18 +166,23 @@
         var error = err;
         if (!err) {
           try {
-            spawn('wkhtmltoimage', ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']);
+            spawn(
+              'wkhtmltoimage',
+              ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']
+            ).stdout.on('end', function() {
+              if (onGenerationComplete) {
+                onGenerationComplete({
+                  success: !error,
+                  error: error
+                });
+              }
+            });
           }
           catch (err1) {
             error = err1;
           }
         }
-        if (onGenerationComplete) {
-          onGenerationComplete({
-            success: !error,
-            error: error
-          });
-        }
+
       });
     }
 
