@@ -11,19 +11,22 @@
   }
 
   var CardsGenerator = function(templateFile, templateName) {
-    var bar = null;
+    var _bar = null,
+        _cardsToGenerate = 0,
+        _cards = [];
 
-    function _generate(card, done) {
+    function _generate(card) {
       card.generate(function(args) {
         if (args.error) {
           throw new Error(args.error);
         }
 
-        if (bar) {
-          bar.tick();
+        if (_bar) {
+          _bar.tick();
         }
 
-        if (done) {
+        _cardsToGenerate --;
+        if (_cardsToGenerate === 0) {
           console.log('Generating cards : Done');
         }
       });
@@ -33,28 +36,26 @@
 
       FileUtils.listFiles(path.join(__dirname, '../../../cards'), function(error, files) {
 
-        var cards = [];
-
         if (!error) {
           files.forEach(function(file) {
             if (_endsWith(file, 'md') && !_endsWith(file, 'README.md')) {
-              cards.push(new Card(file, templateFile, templateName));
+              _cards.push(new Card(file, templateFile, templateName));
             }
           });
         }
 
-        var len = cards.length;
+        _cardsToGenerate = _cards.length;
 
-        bar = new ProgressBar('Generating cards [:bar] :current / :total', {
+        _bar = new ProgressBar('Generating cards [:bar] :current / :total', {
           complete: '=',
           incomplete: ' ',
-          width: len * 4,
-          total: len
+          width: _cardsToGenerate * 4,
+          total: _cardsToGenerate
         });
 
-        for (var i = 0; i < len; i++) {
-          _generate(cards[i], i === len - 1);
-        }
+        _cards.forEach(function(card) {
+          _generate(card);
+        });
 
       });
 
