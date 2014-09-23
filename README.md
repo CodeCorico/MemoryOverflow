@@ -11,7 +11,7 @@ The GitHub project is designed to run like a Wiki. Each folder has a README.md f
 
 ## How to play?
 
-MemoryOverflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The machine destroy you instantly. We call it, the Memory Overflow.
+MemoryOverflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The Machine destroys you instantly. We call it, the *Memory Overflow*.
 
 * [Read the game story & rules](rules) (English and French)
 * [Print cards on the official website](http://memoryoverflow.codecorico.com/editions)
