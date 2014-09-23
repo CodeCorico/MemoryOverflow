@@ -7,6 +7,40 @@
 
     var _file = this;
 
+    this.parseMarkdown = function(data) {
+      var nodes = data
+            .replace(/\r\n/g, '\n')
+            .replace(/\r/g, '\n')
+            .split('\n'),
+          contents = {},
+          header = null,
+          content = '';
+
+      nodes.forEach(function(node) {
+
+        // Heading 2
+        if (node.indexOf('##') === 0) {
+          content = '';
+          header = node.replace('## ','');
+        }
+        // Heading 1
+        else if (node.indexOf('#') === 0) {
+          content = '';
+          header = node.replace('# ','');
+        }
+        // Paragraph
+        else if (node.length > 0) {
+          content += node;
+
+          contents[header] = {
+            content: content
+          };
+        }
+      });
+
+      return contents;
+    };
+
     function _createDirectory(directory) {
       if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);

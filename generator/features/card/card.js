@@ -7,40 +7,6 @@
       spawn = require('child_process').spawn,
       cheerio = require('cheerio');
 
-  function _parseMD(data) {
-    var nodes = data
-          .replace(/\r\n/g, '\n')
-          .replace(/\r/g, '\n')
-          .split('\n'),
-        contents = {},
-        header = null,
-        content = '';
-
-    nodes.forEach(function(node) {
-
-      // Heading 2
-      if (node.indexOf('##') === 0) {
-        content = '';
-        header = node.replace('## ','');
-      }
-      // Heading 1
-      else if (node.indexOf('#') === 0) {
-        content = '';
-        header = node.replace('# ','');
-      }
-      // Paragraph
-      else if (node.length > 0) {
-        content += node;
-
-        contents[header] = {
-          content: content
-        };
-      }
-    });
-
-    return contents;
-  }
-
   function _replaceStyleMD(content) {
     return content.replace(new RegExp('{([^/][a-z-]*)}', 'ig'), '<span class=\'content-$1\'>').replace(new RegExp('{(/[a-z-]*)}', 'ig'), '</span>');
   }
@@ -231,7 +197,7 @@
             throw err;
           }
 
-          var cardContent = _parseMD(data);
+          var cardContent = FileUtils.parseMarkdown(data);
 
           if (cardContent.type && cardContent.type.content) {
             _generateCard(cardContent, templateData, card, onGenerationComplete);
