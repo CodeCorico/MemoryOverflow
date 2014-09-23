@@ -1,7 +1,8 @@
 (function() {
   'use strict';
 
-  var Card = require('./card').Card,
+  var path = require('path'),
+      Card = require('./card').Card,
       FileUtils = require('../file/file.js').File,
       ProgressBar = require('progress');
 
@@ -12,18 +13,25 @@
   var CardsGenerator = function(templateFile, templateName) {
     var bar = null;
 
-    function _tick(args) {
-      if (args.error) {
-        throw new Error(args.error);
-      }
-      if (bar) {
-        bar.tick();
-      }
+    function _generate(card, done) {
+      card.generate(function(args) {
+        if (args.error) {
+          throw new Error(args.error);
+        }
+
+        if (bar) {
+          bar.tick();
+        }
+
+        if (done) {
+          console.log('Generating cards : Done');
+        }
+      });
     }
 
     this.generate = function() {
 
-      FileUtils.listFiles('../cards', function(error, files) {
+      FileUtils.listFiles(path.join(__dirname, '../../../cards'), function(error, files) {
 
         var cards = [];
 
@@ -45,7 +53,7 @@
         });
 
         for (var i = 0; i < len; i++) {
-          cards[i].generate(_tick);
+          _generate(cards[i], i === len - 1);
         }
 
       });

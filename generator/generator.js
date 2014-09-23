@@ -67,43 +67,70 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
   'use strict';
 
   var fs = require('fs'),
+      path = require('path'),
       CardsGenerator = require('./features/card/cards-generator').CardsGenerator,
-      FileUtils = require('./features/file/file.js').File,
-      _arguments = {},
-      _usage = 'node generator.js --template=<template name>';
+      FileUtils = require('./features/file/file.js').File;
 
-  process.argv.forEach(function (val, index, array) {
-    if (val != 'node' && val.indexOf('generator.js') === -1) {
-      var type = val.split('=')[0],
-          value = val.split('=')[1];
+  function _getTemplateFromCmdArgs() {
+    var args = {};
 
-      if (type.substring(0, 2) == '--') {
-        _arguments[type.substring(2)] = value;
+    process.argv.forEach(function (val) {
+      if (val != 'node' && val.indexOf('generator.js') === -1) {
+        var type = val.split('=')[0],
+            value = val.split('=')[1];
+
+        if (type.substring(0, 2) == '--') {
+          args[type.substring(2)] = value;
+        }
       }
-    }
-  });
+    });
 
-  if (!_arguments.template) {
-    throw new Error('--template arg missing, usage: ' + _usage);
+    return args.template;
   }
 
-  var template = '../templates/' + _arguments.template;
+  function _templateExists(template, callback) {
+    fs.exists(template, function(exists) {
+      if (!exists) {
+          throw new Error('template \'' + template + '\' does not exist');
+      }
+      if (callback) {
+        callback();
+      }
+    });
+  }
 
-  fs.exists(template, function(exists) {
-    if (!exists) {
-        throw new Error('template \'' + template + '\' does not exist');
+  function _generateTemplate(template) {
+    var templatePath = path.join(__dirname, '../templates/', template);
+
+    _templateExists(templatePath, function() {
+
+      FileUtils.directory(path.join(__dirname, '../website', 'cards'));
+      FileUtils.directory(path.join(__dirname, '../website', 'print'));
+
+      (new CardsGenerator(templatePath, template)).generate();
+
+    });
+  }
+
+  var Generator = function(options) {
+    var template = options.template || _getTemplateFromCmdArgs();
+
+    if (template) {
+      _generateTemplate(template);
     }
-  });
+    else {
+      var templatesPath = path.join(__dirname, '../templates'),
+          directories = fs.readdirSync(templatesPath).filter(function (file) {
+            return fs.statSync(path.join(templatesPath, file)).isDirectory();
+          });
 
-  var Generator = function() {
-
-    FileUtils.directory(FileUtils.websiteDirectory() + 'cards/');
-    FileUtils.directory(FileUtils.websiteDirectory() + 'print/');
-
-    (new CardsGenerator(template, _arguments.template)).generate();
+      directories.forEach(function(template) {
+        _generateTemplate(template);
+      });
+    }
 
   };
 
-  new Generator();
+  exports.Generator = Generator;
 
  })();

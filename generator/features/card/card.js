@@ -2,6 +2,7 @@
   'use strict';
 
   var fs = require('fs'),
+      path = require('path'),
       FileUtils = require('../file/file.js').File,
       spawn = require('child_process').spawn,
       cheerio = require('cheerio');
@@ -78,7 +79,7 @@
 
       fs.exists(imageFile, function(exists) {
         if (exists) {
-          fs.readFile('features/card/card.html', 'utf8', function (err, data) {
+          fs.readFile(path.join(__dirname, 'card.html'), 'utf8', function (err, data) {
             if (err) {
               console.error(err);
             }
@@ -193,13 +194,13 @@
 
     function _dumpCard(html, card, language, onGenerationComplete) {
       var output = card + (language ? '-' + language : ''),
-          htmlFile = FileUtils.directory(FileUtils.websiteDirectory() + 'cards/' + templateName + '/') + output + '.html';
+          htmlFile = FileUtils.directory(path.join(__dirname, '../../../website', 'cards', templateName)) + '/' + output + '.html';
 
       fs.writeFile(htmlFile, html, function(err) {
         var error = err;
         if (!err) {
           try {
-            spawn('wkhtmltoimage', ['--disable-javascript', htmlFile, FileUtils.directory(FileUtils.websiteDirectory() + 'print/' + templateName + '/') + output + '.jpg']);
+            spawn('wkhtmltoimage', ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']);
           }
           catch (err1) {
             error = err1;
