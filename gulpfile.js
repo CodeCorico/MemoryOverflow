@@ -8,6 +8,7 @@
 
   var paths = {
     scripts: ['generator/features/**/*.js'],
+    cards: ['cards/**/*'],
     templates: ['templates/**/*.json', 'templates/**/*.jpg', 'templates/**/*.png']
   };
 
@@ -32,6 +33,9 @@
         }
     });
     gulp.watch(paths.scripts, function() {
+      _generate();
+    });
+    gulp.watch(paths.cards, function() {
       _generate();
     });
   });
