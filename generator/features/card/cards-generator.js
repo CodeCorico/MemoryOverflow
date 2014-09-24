@@ -12,7 +12,7 @@
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
 
-  var CardsGenerator = function(templateFile, templateName) {
+  var CardsGenerator = function(templateFile, templateName, lang) {
     var _bar = null,
         _cardsToLoad = 0,
         _loadedCards = [],
@@ -20,6 +20,8 @@
         _cards = [];
 
     function _loadCards() {
+
+      var atLeastOneCard = false;
 
       _cardsToLoad = 0;
 
@@ -39,24 +41,34 @@
           files.forEach(function(file) {
             if (_endsWith(file, 'po')) {
               var name = path.basename(file, '.po'),
-                  splited = name.split('.');
+                  splited = name.split('.'),
+                  fileLang = splited[1];
 
-              _cards[splited[0]].languageFiles(splited[1], file);
+              if (!lang || lang == fileLang) {
+                atLeastOneCard = true;
+
+                _cards[splited[0]].languageFiles(fileLang, file);
+              }
             }
           });
         }
 
-        _bar = new ProgressBar('Loading cards [:bar] :current / :total', {
-          complete: '=',
-          incomplete: ' ',
-          width: _cardsToLoad * 4,
-          total: _cardsToLoad
-        });
+        if (atLeastOneCard) {
+          _bar = new ProgressBar('Loading cards [:bar] :current / :total', {
+            complete: '=',
+            incomplete: ' ',
+            width: _cardsToLoad * 4,
+            total: _cardsToLoad
+          });
 
-        _bar.render();
+          _bar.render();
 
-        for (var file in _cards) {
-          _loadCard(_cards[file]);
+          for (var file in _cards) {
+            _loadCard(_cards[file]);
+          }
+        }
+        else {
+          console.log('No cards to generate');
         }
 
       });
