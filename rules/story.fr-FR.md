@@ -25,5 +25,5 @@ Conformément à son testament, il a voulu partager avec le monde des développe
 > D.M."
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CodeCorico/MemoryOverflow/master/rules/images/the-machine.jpg" />
+  <img src="images/the-machine.jpg" />
 </p>
