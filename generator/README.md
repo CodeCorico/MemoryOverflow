@@ -1,5 +1,9 @@
 # MemoryOverflow - Generator
 
+## Prerequisite
+
+You will need [nodejs](http://nodejs.org/) installed on your computer in order to generate the cards.
+
 ## How To Generate
 
 1. Install wkhtmltoimage by downloading the latest version here : http://wkhtmltopdf.org/downloads.html
