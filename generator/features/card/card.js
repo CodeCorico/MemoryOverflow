@@ -36,7 +36,8 @@
   }
 
   var Card = function(file, templatePath, templateName) {
-    var _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length),
+    var _languageFiles = {},
+        _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length),
         _templateJSONFile = _templateFilePath + '.json';
 
     function _generateCard(cardContent, templateData, card, onGenerationComplete) {
@@ -219,7 +220,9 @@
           var cardContent = FileUtils.parseMarkdown(data);
 
           if (cardContent.type && cardContent.type.content) {
-            _generateCard(cardContent, templateData, card, onGenerationComplete);
+            _getLanguageContent(function() {
+              _generateCard(cardContent, templateData, card, onGenerationComplete);
+            });
           }
           else {
             throw new Error('no type in card: ' + card);
@@ -230,6 +233,48 @@
       });
 
     };
+
+    this.languageFiles = function(language, file) {
+      if (typeof language != 'undefined' && typeof file != 'undefined') {
+        _languageFiles[language] = file;
+      }
+
+      return _languageFiles;
+    };
+
+    var _numberLanguagesToParse = 0;
+
+    function _getLanguageContent(callback) {
+      if (_languageFiles) {
+        callback = callback || false;
+
+        _numberLanguagesToParse = Object.keys(_languageFiles).length;
+
+        for (var language in _languageFiles) {
+          _parseLanguage(language, _languageFiles[language], callback);
+        }
+      }
+    }
+
+    function _parseLanguage(language, file, callback) {
+
+      fs.readFile(file, 'utf8', function (err, data) {
+        if (err) {
+          throw err;
+        }
+
+        var content = FileUtils.parsePo(data);
+
+        _languageFiles[language] = content;
+
+        _numberLanguagesToParse --;
+        if (_numberLanguagesToParse === 0 && callback) {
+          callback();
+        }
+
+      });
+    }
+
   };
 
   exports.Card = Card;
