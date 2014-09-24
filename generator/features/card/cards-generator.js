@@ -96,12 +96,12 @@
       _bar.render();
 
       _loadedCards.forEach(function(card) {
-        _generateCard(card.html, card.name, card.language);
+        _generateCard(card.html, card.name, card.code, card.lang);
       });
     }
 
-    function _generateCard(html, card, language) {
-      var output = card + (language ? '-' + language : ''),
+    function _generateCard(html, card, code, lang) {
+      var output = card + (code ? '-' + code : '') + (lang ? '.' + lang : ''),
           htmlFile = FileUtils.directory(path.join(__dirname, '../../../website', 'cards', templateName)) + '/' + output + '.html';
 
       fs.writeFile(htmlFile, html, function(err) {
