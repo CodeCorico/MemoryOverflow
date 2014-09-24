@@ -19,9 +19,10 @@
 
   var options = minimist(process.argv.slice(2), knownOptions);
 
-  function _generate(template) {
+  function _generate(template, lang) {
     new Generator({
-      template: template
+      template: template,
+      lang: lang
     });
   }
 
@@ -41,7 +42,7 @@
   });
 
   gulp.task('generate', function() {
-    _generate(options.template);
+    _generate(options.template, options.lang);
   });
 
   // The default task (called when you run `gulp` from cli)

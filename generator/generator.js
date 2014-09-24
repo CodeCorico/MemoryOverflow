@@ -69,24 +69,19 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
   var fs = require('fs'),
       path = require('path'),
       CardsGenerator = require('./features/card/cards-generator').CardsGenerator,
-      FileUtils = require('./features/file/file.js').File;
+      FileUtils = require('./features/file/file.js').File,
+      cmdArgs = {};
 
-  function _getTemplateFromCmdArgs() {
-    var args = {};
+  process.argv.forEach(function (val) {
+    if (val != 'node' && val.indexOf('generator.js') === -1) {
+      var type = val.split('=')[0],
+          value = val.split('=')[1];
 
-    process.argv.forEach(function (val) {
-      if (val != 'node' && val.indexOf('generator.js') === -1) {
-        var type = val.split('=')[0],
-            value = val.split('=')[1];
-
-        if (type.substring(0, 2) == '--') {
-          args[type.substring(2)] = value;
-        }
+      if (type.substring(0, 2) == '--') {
+        cmdArgs[type.substring(2)] = value;
       }
-    });
-
-    return args.template;
-  }
+    }
+  });
 
   function _templateExists(template, callback) {
     fs.exists(template, function(exists) {
@@ -99,7 +94,7 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
     });
   }
 
-  function _generateTemplate(template) {
+  function _generateTemplate(template, lang) {
     var templatePath = path.join(__dirname, '../templates/', template);
 
     _templateExists(templatePath, function() {
@@ -107,16 +102,21 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
       FileUtils.directory(path.join(__dirname, '../website', 'cards'));
       FileUtils.directory(path.join(__dirname, '../website', 'print'));
 
-      (new CardsGenerator(templatePath, template)).generate();
+      (new CardsGenerator(templatePath, template, lang)).generate();
 
     });
   }
 
   var Generator = function(options) {
-    var template = options.template || _getTemplateFromCmdArgs();
+    var template = options.template || cmdArgs.template,
+        lang = options.lang || cmdArgs.lang;
+
+    if (lang && lang.length == 2) {
+      lang = lang + '_' + lang.toUpperCase();
+    }
 
     if (template) {
-      _generateTemplate(template);
+      _generateTemplate(template, lang);
     }
     else {
       var templatesPath = path.join(__dirname, '../templates'),
@@ -125,7 +125,7 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
           });
 
       directories.forEach(function(template) {
-        _generateTemplate(template);
+        _generateTemplate(template, lang);
       });
     }
 
