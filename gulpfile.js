@@ -8,7 +8,8 @@
 
   var paths = {
     scripts: ['generator/features/**/*.js'],
-    cards: ['cards/**/*'],
+    cardsContent: ['cards/**/*.md'],
+    cardsLang: ['cards/**/*.po'],
     templates: ['templates/**/*.json', 'templates/**/*.jpg', 'templates/**/*.png']
   };
 
@@ -36,8 +37,13 @@
     gulp.watch(paths.scripts, function() {
       _generate();
     });
-    gulp.watch(paths.cards, function() {
+    gulp.watch(paths.cardsContent, function() {
       _generate();
+    });
+    gulp.watch(paths.cardsLang, function(args) {
+      var lang = path.basename(args.path, '.po').split('.')[1];
+      console.log(path.basename(args.path, '.po'), lang);
+      _generate(null, lang);
     });
   });
 
