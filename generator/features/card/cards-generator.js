@@ -1,7 +1,9 @@
 (function() {
   'use strict';
 
-  var path = require('path'),
+  var fs = require('fs'),
+      path = require('path'),
+      spawn = require('child_process').spawn,
       Card = require('./card').Card,
       FileUtils = require('../file/file.js').File,
       ProgressBar = require('progress');
@@ -12,29 +14,14 @@
 
   var CardsGenerator = function(templateFile, templateName) {
     var _bar = null,
+        _cardsToLoad = 0,
+        _loadedCards = [],
         _cardsToGenerate = 0,
         _cards = [];
 
-    function _generate(card) {
-      card.generate(function(args) {
-        if (args.error) {
-          throw new Error(args.error);
-        }
+    function _loadCards() {
 
-        if (_bar) {
-          _bar.tick();
-        }
-
-        _cardsToGenerate --;
-        if (_cardsToGenerate === 0) {
-          console.log('Generating cards : Done');
-        }
-      });
-    }
-
-    this.generate = function() {
-
-      _cardsToGenerate = 0;
+      _cardsToLoad = 0;
 
       FileUtils.listFiles(path.join(__dirname, '../../../cards'), function(error, files) {
 
@@ -44,7 +31,7 @@
             if (_endsWith(file, 'md') && !_endsWith(file, 'README.md')) {
               var name = path.basename(file, '.md');
               _cards[name] = new Card(file, templateFile, templateName);
-              _cardsToGenerate ++;
+              _cardsToLoad ++;
             }
           });
 
@@ -59,19 +46,92 @@
           });
         }
 
-        _bar = new ProgressBar('Generating cards [:bar] :current / :total', {
+        _bar = new ProgressBar('Loading cards [:bar] :current / :total', {
           complete: '=',
           incomplete: ' ',
-          width: _cardsToGenerate * 4,
-          total: _cardsToGenerate
+          width: _cardsToLoad * 4,
+          total: _cardsToLoad
         });
 
+        _bar.render();
+
         for (var file in _cards) {
-          _generate(_cards[file]);
+          _loadCard(_cards[file]);
         }
 
       });
+    }
 
+    function _loadCard(card) {
+      card.load(function(error, loadedCards) {
+        if (error) {
+          throw new Error(error);
+        }
+
+        if (_bar) {
+          _bar.tick();
+        }
+
+        _loadedCards = _loadedCards.concat(loadedCards);
+
+        _cardsToLoad --;
+        if (_cardsToLoad === 0) {
+          console.log('Loading cards : Done');
+
+          _generateCards();
+        }
+      });
+    }
+
+    function _generateCards() {
+      _cardsToGenerate = Object.keys(_loadedCards).length;
+
+      _bar = new ProgressBar('Generating cards [:bar] :current / :total', {
+        complete: '=',
+        incomplete: ' ',
+        width: _cardsToGenerate * 4,
+        total: _cardsToGenerate
+      });
+
+      _bar.render();
+
+      _loadedCards.forEach(function(card) {
+        _generateCard(card.html, card.name, card.language);
+      });
+    }
+
+    function _generateCard(html, card, language) {
+      var output = card + (language ? '-' + language : ''),
+          htmlFile = FileUtils.directory(path.join(__dirname, '../../../website', 'cards', templateName)) + '/' + output + '.html';
+
+      fs.writeFile(htmlFile, html, function(err) {
+        if (err) {
+          throw new Error(err);
+        }
+
+        try {
+          spawn(
+            'wkhtmltoimage',
+            ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']
+          ).stdout.on('end', function() {
+            if (_bar) {
+              _bar.tick();
+            }
+
+            _cardsToGenerate --;
+            if (_cardsToGenerate === 0) {
+              console.log('Generating cards : Done');
+            }
+          });
+        }
+        catch (err1) {
+          throw new Error(err1);
+        }
+      });
+    }
+
+    this.generate = function() {
+      _loadCards();
     };
 
   };

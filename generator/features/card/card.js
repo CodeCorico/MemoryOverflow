@@ -4,7 +4,6 @@
   var fs = require('fs'),
       path = require('path'),
       FileUtils = require('../file/file.js').File,
-      spawn = require('child_process').spawn,
       cheerio = require('cheerio');
 
   function _replaceStyleMD(content) {
@@ -35,12 +34,11 @@
     }
   }
 
-  var Card = function(file, templatePath, templateName) {
+  var Card = function(file, templatePath) {
     var _languageFiles = {},
-        _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length),
-        _templateJSONFile = _templateFilePath + '.json';
+        _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
 
-    function _generateCard(cardContent, templateData, card, onGenerationComplete) {
+    function _loadCard(cardContent, templateData, card, onLoadComplete) {
       var cardType = cardContent.type.content,
           imageFile = templatePath + '/' + _templateFilePath + '-' + cardType + '.jpg';
 
@@ -48,7 +46,8 @@
         if (exists) {
           fs.readFile(path.join(__dirname, 'card.html'), 'utf8', function (err, data) {
             if (err) {
-              console.error(err);
+              onLoadComplete(err, null);
+              return;
             }
 
             var cards = [],
@@ -162,10 +161,7 @@
 
             }
 
-            for (var i = 0, len = cards.length; i < len; i++) {
-              var card = cards[i];
-              _dumpCard(card.html, card.name, card.language, i === (len - 1) ? onGenerationComplete : false);
-            }
+            onLoadComplete(null, cards);
 
           });
         }
@@ -173,55 +169,29 @@
 
     }
 
-    function _dumpCard(html, card, language, onGenerationComplete) {
-      var output = card + (language ? '-' + language : ''),
-          htmlFile = FileUtils.directory(path.join(__dirname, '../../../website', 'cards', templateName)) + '/' + output + '.html';
-
-      fs.writeFile(htmlFile, html, function(err) {
-        var error = err;
-        if (!err) {
-          try {
-            spawn(
-              'wkhtmltoimage',
-              ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']
-            ).stdout.on('end', function() {
-              if (onGenerationComplete) {
-                onGenerationComplete({
-                  success: !error,
-                  error: error
-                });
-              }
-            });
-          }
-          catch (err1) {
-            error = err1;
-          }
-        }
-
-      });
-    }
-
-    this.generate = function(onGenerationComplete) {
+    this.load = function(onLoadComplete) {
       var splitFile = file.split('/'),
           card = splitFile[splitFile.length -1].replace('.md', '');
 
       fs.readFile(templatePath + '/' + _templateFilePath + '.json', 'utf8', function (err, data) {
         if (err) {
-          throw err;
+          onLoadComplete(err, null);
+          return;
         }
 
         var templateData = JSON.parse(data);
 
         fs.readFile(file, 'utf8', function (err, data) {
           if (err) {
-            throw err;
+            onLoadComplete(err, null);
+            return;
           }
 
           var cardContent = FileUtils.parseMarkdown(data);
 
           if (cardContent.type && cardContent.type.content) {
             _getLanguageContent(function() {
-              _generateCard(cardContent, templateData, card, onGenerationComplete);
+              _loadCard(cardContent, templateData, card, onLoadComplete);
             });
           }
           else {
