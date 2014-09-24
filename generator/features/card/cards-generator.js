@@ -34,17 +34,30 @@
 
     this.generate = function() {
 
+      _cardsToGenerate = 0;
+
       FileUtils.listFiles(path.join(__dirname, '../../../cards'), function(error, files) {
 
         if (!error) {
+          // first, find the markdown files
           files.forEach(function(file) {
             if (_endsWith(file, 'md') && !_endsWith(file, 'README.md')) {
-              _cards.push(new Card(file, templateFile, templateName));
+              var name = path.basename(file, '.md');
+              _cards[name] = new Card(file, templateFile, templateName);
+              _cardsToGenerate ++;
+            }
+          });
+
+          // then the translation files
+          files.forEach(function(file) {
+            if (_endsWith(file, 'po')) {
+              var name = path.basename(file, '.po'),
+                  splited = name.split('.');
+
+              _cards[splited[0]].languageFiles(splited[1], file);
             }
           });
         }
-
-        _cardsToGenerate = _cards.length;
 
         _bar = new ProgressBar('Generating cards [:bar] :current / :total', {
           complete: '=',
@@ -53,9 +66,9 @@
           total: _cardsToGenerate
         });
 
-        _cards.forEach(function(card) {
-          _generate(card);
-        });
+        for (var file in _cards) {
+          _generate(_cards[file]);
+        }
 
       });
 
