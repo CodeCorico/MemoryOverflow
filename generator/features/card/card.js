@@ -6,8 +6,14 @@
       FileUtils = require('../file/file.js').File,
       cheerio = require('cheerio');
 
-  function _replaceStyleMD(content) {
+  function _replaceStyle(content) {
     return content.replace(new RegExp('{([^/][a-z-]*)}', 'ig'), '<span class=\'content-$1\'>').replace(new RegExp('{(/[a-z-]*)}', 'ig'), '</span>');
+  }
+
+  function _translateHTML(html, translation) {
+    return html.replace(new RegExp('&amp;{(.*?)}', 'g'), function(match, value) {
+      return translation[value];
+    });
   }
 
   function _getContentBetweenBraces(content, braceCode) {
@@ -55,7 +61,7 @@
                 $container = $('.card-container'),
                 $image = $('.card-image'),
                 $content = $('.card-content'),
-                language = null,
+                cardCode = null,
                 width = 3485, // TODO get image width
                 height = 5195; // TODO get image height
 
@@ -115,7 +121,7 @@
               var content = cardContent[key].content;
 
               if (key == 'title') {
-                  $content.find('.title').html(_replaceStyleMD(content));
+                  $content.find('.title').html(content);
               }
 
               if (key.indexOf('code') === 0) {
@@ -123,19 +129,19 @@
                 var code = _getContentBetweenBraces(content, 'code'),
                     comment = _getContentBetweenBraces(content, 'comment');
 
-                language = key.split(':')[1];
+                cardCode = key.split(':')[1];
 
                 if (code) {
-                  $content.find('.content').html(_replaceStyleMD(code));
+                  $content.find('.content').html(code);
                 }
                 if (comment) {
-                  $content.find('.comment').html(_replaceStyleMD(comment));
+                  $content.find('.comment').html(comment);
                 }
 
                 cards.push({
                   html: $.html(),
                   name: card,
-                  language: language
+                  code: cardCode
                 });
 
               }
@@ -145,23 +151,43 @@
                     comment = _getContentBetweenBraces(content, 'comment');
 
                 if (description) {
-                  $content.find('.content').html(_replaceStyleMD(description));
+                  $content.find('.content').html(description);
                 }
                 if (comment) {
-                  $content.find('.comment').html(_replaceStyleMD(comment));
+                  $content.find('.comment').html(comment);
                 }
 
                 cards.push({
                   html: $.html(),
                   name: card,
-                  language: null
+                  code: null
                 });
 
               }
 
             }
 
-            onLoadComplete(null, cards);
+            var _cards = [];
+
+            // translate content
+            cards.forEach(function(card) {
+              var html = card.html;
+
+              Object.keys(_languageFiles).forEach(function(lang) {
+
+                var _card = {
+                  html : _translateHTML(_replaceStyle(html), _languageFiles[lang]),
+                  name: card.name,
+                  code: card.code,
+                  lang: lang
+                };
+                _cards.push(_card);
+
+              });
+
+            });
+
+            onLoadComplete(null, _cards);
 
           });
         }
@@ -234,6 +260,11 @@
         }
 
         var content = FileUtils.parsePo(data);
+
+        // need to pre-parse the content
+        for (var key in content) {
+          content[_replaceStyle(key)] = _replaceStyle(content[key]);
+        }
 
         _languageFiles[language] = content;
 
