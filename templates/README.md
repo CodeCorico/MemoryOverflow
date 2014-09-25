@@ -67,14 +67,14 @@ This file structure areas and styles of cards:
 
   // Default style applied for all areas.
   // Styles are CSS convention
-  "default-style": {
+  "default": {
     "color": "#ffffff",
     ...
   },
 
   // Area of the card title
   // In addition to the styles, you need to add "area" with title position
-  "title-style": {
+  "title": {
     ...,
 
     // "area" need 2 points location to draw a rectangle
@@ -86,20 +86,20 @@ This file structure areas and styles of cards:
     }
   },
 
-  // Same as "title-style" but for the "MemoryOverflow" brand
-  "brand-style": {
+  // Same as "title" but for the "MemoryOverflow" brand
+  "brand": {
     ...
   },
 
-  // Same as "title-style" but for the card details like Edition and Version
+  // Same as "title" but for the card details like Edition and Version
   // Ex: "Fundamentals - F011"
-  "details-style": {
+  "edition": {
     ...
   },
 
   // When the generator create a "variable" card, it use the [template name]-variable.jpg
   // and the "type-variable" configuration area to display card informations
-  // Same as "title-style", you can use an area and styles
+  // Same as "title", you can use an area and styles
   "type-variable": {
     ...
   },
@@ -115,8 +115,8 @@ This file structure areas and styles of cards:
   },
 
   // Inside informations area, cards can have many text formats
-  // Each format is delcared inside "content"
-  "content": {
+  // Each format is delcared inside "text-style"
+  "text-style": {
 
     // CSS for the default area text
     "default": {

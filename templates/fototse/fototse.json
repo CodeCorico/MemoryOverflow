@@ -1,13 +1,13 @@
 {
   "author": "Michael Lepaysan @retovona",
   "name": "Fototse",
-  "default-style": {
+  "default": {
     "font-family": "Open Sans",
     "font-weight": 400,
     "font-size": "30pt",
     "color": "#ffffff"
   },
-  "title-style": {
+  "title": {
     "font-weight": 300,
     "font-size": "200pt",
     "area": {
@@ -17,7 +17,7 @@
       "x2": 2940
     }
   },
-  "brand-style": {
+  "brand": {
     "font-size": "30pt",
     "area": {
       "y1": 4782,
@@ -26,17 +26,7 @@
       "x2": 1742
     }
   },
-  "comment-style": {
-    "font-size": "120pt",
-    "text-align": "justify",
-    "area": {
-      "y1": 3000,
-      "x1": 293,
-      "y2": 4961,
-      "x2": 3133
-    }
-  },
-  "details-style": {
+  "edition": {
     "font-size": "24pt",
     "text-align": "right",
     "area": {
@@ -70,7 +60,7 @@
       "x2": 3182
     }
   },
-  "content": {
+  "text-style": {
     "default": {
       "font-size": "120pt",
       "color": "#ffffff"
