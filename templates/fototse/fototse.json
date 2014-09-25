@@ -60,6 +60,18 @@
       "x2": 3182
     }
   },
+  "type-the-machine": {
+    "font-family": "Orbitron",
+    "font-size": "700px",
+    "color": "#d22225",
+    "text-align": "center",
+    "area": {
+      "y1": 760,
+      "x1": 1637,
+      "y2": 2694,
+      "x2": 3570
+    }
+  },
   "text-style": {
     "default": {
       "font-size": "120pt",

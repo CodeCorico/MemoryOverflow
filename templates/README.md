@@ -67,6 +67,7 @@ This file structure areas and styles of cards:
 
   // Default style applied for all areas.
   // Styles are CSS convention
+  // You can add all of the Google fonts you want in "font-family"
   "default": {
     "color": "#ffffff",
     ...
@@ -97,20 +98,28 @@ This file structure areas and styles of cards:
     ...
   },
 
-  // When the generator create a "variable" card, it use the [template name]-variable.jpg
+  // When the generator create a "Variable" card, it use the [template name]-variable.jpg picture
   // and the "type-variable" configuration area to display card informations
   // Same as "title", you can use an area and styles
   "type-variable": {
     ...
   },
 
-  // Same as "type-variable" but for the "code" cards
+  // Same as "type-variable" but for the "Code" cards
+  // It use the [template name]-code.jpg picture
   "type-code": {
     ...
   },
 
-  // Same as "type-variable" but for the "event" cards
+  // Same as "type-variable" but for the "Event" cards
+  // It use the [template name]-event.jpg picture
   "type-event": {
+    ...
+  },
+
+  // Same as "type-variable" but for "The Machine" cards
+  // It use the [template name]-the-machine.jpg picture
+  "type-the-machine": {
     ...
   },
 
