@@ -16,13 +16,7 @@
     });
   }
 
-  function _getContentBetweenBraces(content, braceCode) {
-    var begin = '{' + braceCode + '}',
-        end = '{/' + braceCode + '}';
-    return content.substring(content.indexOf(begin) + begin.length, content.indexOf(end));
-  }
-
-  function _applyStyles($element, json, width, height) {
+  function _applyStyles($element, json) {
     for (var key in json) {
       var value = json[key];
 
@@ -30,8 +24,8 @@
         $element.css({
           top: value.y1,
           left: value.x1,
-          bottom: height - value.y2,
-          right: width - value.x2
+          height: value.y2 - value.y1,
+          width: value.x2 - value.x1
         });
       }
       else {
@@ -75,22 +69,19 @@
             for (var key in templateData) {
               var values = templateData[key];
 
-              if (key == 'default-style') {
-                _applyStyles($container, values, width, height);
+              if (key == 'default') {
+                _applyStyles($container, values);
               }
               else {
                 var className = '';
 
-                if (key.indexOf('-style') > 0) {
-                  className = key.split('-')[0];
-                }
-                else if (key.indexOf('type-') === 0) {
+                if (key.indexOf('type-') === 0) {
                   className = 'content content-' + cardType;
                   if (key.split('-')[1] != cardType) {
                     continue;
                   }
                 }
-                else if (key == 'content') {
+                else if (key == 'text-style') {
                   var style = '<style type="text/css">';
 
                   for (var styleKey in values) {
@@ -110,12 +101,16 @@
                   $('head').append(style + '</style>');
                   continue;
                 }
+                else {
+                  className = key;
+                }
 
                 var $element = $('<span class="' + className + '"></span>');
-                _applyStyles($element, values, width, height);
+                _applyStyles($element, values);
                 $content.append($element);
               }
             }
+
 
             for (var key in cardContent) {
               var content = cardContent[key].content;
@@ -126,17 +121,9 @@
 
               if (key.indexOf('code') === 0) {
 
-                var code = _getContentBetweenBraces(content, 'code'),
-                    comment = _getContentBetweenBraces(content, 'comment');
-
                 cardCode = key.split(':')[1];
 
-                if (code) {
-                  $content.find('.content').html(code);
-                }
-                if (comment) {
-                  $content.find('.comment').html(comment);
-                }
+                $content.find('.content').html(content);
 
                 cards.push({
                   html: $.html(),
@@ -147,15 +134,7 @@
               }
 
               if (key == 'description') {
-                var description = content.substring(0, content.indexOf('{comment}')),
-                    comment = _getContentBetweenBraces(content, 'comment');
-
-                if (description) {
-                  $content.find('.content').html(description);
-                }
-                if (comment) {
-                  $content.find('.comment').html(comment);
-                }
+                $content.find('.content').html(content);
 
                 cards.push({
                   html: $.html(),
