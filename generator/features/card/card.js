@@ -7,7 +7,11 @@
       cheerio = require('cheerio');
 
   function _replaceStyle(content) {
-    return content.replace(new RegExp('{([^/][a-z-]*)}', 'ig'), '<span class=\'content-$1\'>').replace(new RegExp('{(/[a-z-]*)}', 'ig'), '</span>');
+    return content
+      .replace(new RegExp('\n{/([a-z-]*)}', 'ig'), '</p>')
+      .replace(new RegExp('[^&]{!/|{([a-z-]*)}\n', 'ig'), '<p class="content-$1">')
+      .replace(new RegExp('{/([a-z-]*)}', 'ig'), '</span>')
+      .replace(new RegExp('[^&]{!/|{([a-z-]*)}', 'ig'), '<span class="content-$1">');
   }
 
   function _translateHTML(html, translation) {
@@ -114,7 +118,7 @@
             $content.find('.brand').html('MemoryOverflow');
 
             for (var key in cardContent) {
-              var content = cardContent[key];
+              var content = _replaceStyle(cardContent[key]);
 
               if (key == 'title') {
                 $content.find('.title').html(content);
@@ -157,7 +161,7 @@
               Object.keys(_languageFiles).forEach(function(lang) {
 
                 var _card = {
-                  html : _translateHTML(_replaceStyle(html), _languageFiles[lang]),
+                  html : _translateHTML(html, _languageFiles[lang]),
                   name: card.name,
                   code: card.code,
                   lang: lang
@@ -240,14 +244,15 @@
           throw err;
         }
 
-        var content = FileUtils.parsePo(data);
+        var content = FileUtils.parsePo(data),
+            parsedContent = {};
 
         // need to pre-parse the content
         for (var key in content) {
-          content[_replaceStyle(key)] = _replaceStyle(content[key]);
+          parsedContent[_replaceStyle(key)] = _replaceStyle(content[key]);
         }
 
-        _languageFiles[language] = content;
+        _languageFiles[language] = parsedContent;
 
         _numberLanguagesToParse --;
         if (_numberLanguagesToParse === 0 && callback) {
