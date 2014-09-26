@@ -111,6 +111,7 @@
               }
             }
 
+            $content.find('.brand').html('MemoryOverflow');
 
             for (var key in cardContent) {
               var content = cardContent[key].content;
