@@ -117,10 +117,12 @@
               var content = cardContent[key].content;
 
               if (key == 'title') {
-                  $content.find('.title').html(content);
+                $content.find('.title').html(content);
               }
-
-              if (key.indexOf('code') === 0) {
+              else if (key == 'edition') {
+                $content.find('.edition').append('<span>' + content + ' - ' + content.substring(0, 1).toUpperCase() + '</span>');
+              }
+              else if (key.indexOf('code') === 0) {
 
                 cardCode = key.split(':')[1];
 
@@ -133,8 +135,7 @@
                 });
 
               }
-
-              if (key == 'description') {
+              else if (key == 'description') {
                 $content.find('.content').html(content);
 
                 cards.push({
