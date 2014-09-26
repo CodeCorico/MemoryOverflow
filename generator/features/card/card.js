@@ -39,7 +39,7 @@
         _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
 
     function _loadCard(cardContent, templateData, card, onLoadComplete) {
-      var cardType = cardContent.type.content,
+      var cardType = cardContent.type,
           imageFile = templatePath + '/' + _templateFilePath + '-' + cardType + '.jpg';
 
       fs.exists(imageFile, function(exists) {
@@ -114,7 +114,7 @@
             $content.find('.brand').html('MemoryOverflow');
 
             for (var key in cardContent) {
-              var content = cardContent[key].content;
+              var content = cardContent[key];
 
               if (key == 'title') {
                 $content.find('.title').html(content);
@@ -196,7 +196,7 @@
 
           var cardContent = FileUtils.parseMarkdown(data);
 
-          if (cardContent.type && cardContent.type.content) {
+          if (cardContent.type) {
             _getLanguageContent(function() {
               _loadCard(cardContent, templateData, card, onLoadComplete);
             });

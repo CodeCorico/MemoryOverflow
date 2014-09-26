@@ -40,37 +40,20 @@
     };
 
     this.parseMarkdown = function(data) {
-      var nodes = data
-            .replace(/\r\n/g, '\n')
-            .replace(/\r/g, '\n')
-            .split('\n'),
-          contents = {},
-          header = null,
-          content = '';
+      var delimiter = new RegExp(/#\s.*?\n/g),
+          headers = data.match(delimiter),
+          contents = data.split(delimiter),
+          results = {};
 
-      nodes.forEach(function(node) {
+      for (var i = 0, len = headers.length; i < len; i ++) {
+        var header = headers[i].replace('#', '').trim(),
+            content = contents[i + 1].trim();
 
-        // Heading 2
-        if (node.indexOf('##') === 0) {
-          content = '';
-          header = node.replace('## ','');
-        }
-        // Heading 1
-        else if (node.indexOf('#') === 0) {
-          content = '';
-          header = node.replace('# ','');
-        }
-        // Paragraph
-        else if (node.length > 0) {
-          content += node;
+        results[header] = content;
 
-          contents[header] = {
-            content: content
-          };
-        }
-      });
+      }
 
-      return contents;
+      return results;
     };
 
     function _createDirectory(directory) {
