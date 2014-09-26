@@ -18,20 +18,20 @@
     }
   },
   "brand": {
-    "font-size": "30pt",
+    "font-size": "100pt",
     "area": {
-      "y1": 4782,
-      "x1": 293,
-      "y2": 4961,
-      "x2": 1742
+      "y1": 4765,
+      "x1": 350,
+      "y2": 4960,
+      "x2": 1540
     }
   },
   "edition": {
-    "font-size": "24pt",
+    "font-size": "80pt",
     "text-align": "right",
     "area": {
-      "y1": 4782,
-      "x1": 1742,
+      "y1": 4780,
+      "x1": 1780,
       "y2": 4961,
       "x2": 3133
     }
@@ -48,7 +48,7 @@
     "area": {
       "y1": 840,
       "x1": 293,
-      "y2": 3000,
+      "y2": 4490,
       "x2": 3182
     }
   },
@@ -74,7 +74,7 @@
   },
   "text-style": {
     "default": {
-      "font-size": "120pt",
+      "font-size": "100pt",
       "color": "#ffffff"
     },
     "code": {
