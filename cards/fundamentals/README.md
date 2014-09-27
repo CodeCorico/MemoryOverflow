@@ -12,8 +12,8 @@ Edition
 Stats
 ---------
 
-* Number of cards: 7
+* Number of cards: 8
 * Number of _Variable_: 1
 * Number of _Code_: 2
 * Number of _Event_: 1
-* Number of _The Machine_: 3
+* Number of _The Machine_: 4
