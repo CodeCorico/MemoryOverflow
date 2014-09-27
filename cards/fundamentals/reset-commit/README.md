@@ -3,10 +3,9 @@
 Back to your previous commit
 
 * Type: Event
-* Languages: JavaScript, PHP
 * Translations: English, French
 
-[Card configuration](https://github.com/CodeCorico/MemoryOverflow/blob/master/cards/fundamentals/reset-commit/reset-commit.md)
+[Card configuration](reset-commit.md)
 
 <a name="1"></a>
 # v1 (2014-09-07)
