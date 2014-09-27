@@ -63,7 +63,7 @@ The name of the card edition
 
 # type
 
-Type can only be: "variable", "code", or "event"
+Type can only be: "variable", "code", "event" or "the machine"
 
 # author
 
@@ -84,7 +84,7 @@ You can add all of the codes syntax you want. PHP, Java, C++, etc
 
 # description
 
-This block is used only for a card with "event" type.
+This block is used for cards with "event" or "the machine" type.
 
 Write the card action description here.
 
