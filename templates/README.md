@@ -11,8 +11,8 @@ Cards are grouped by editions which represent different themes.
 
 Here are the list of all templates:
 
-<p align="center"><a href="https://github.com/CodeCorico/MemoryOverflow/blob/master/templates/fototse">
-<img src="https://raw.githubusercontent.com/CodeCorico/MemoryOverflow/master/templates/fototse/fototse-preview.png" alt="Fototse preview" height="150"/><br />
+<p align="center"><a href="fototse/">
+<img src="fototse/fototse-preview.png" alt="Fototse preview" height="150"/><br />
 Fototse by @retovona</a></p>
 
 ## <a name="create"></a> Create a new template
@@ -165,4 +165,4 @@ This file structure areas and styles of cards:
 If a template needs to be fixed, you can :
 * Contact the author of the template so that he corrects himself.
 * Add an [issue](https://github.com/CodeCorico/MemoryOverflow/issues)
-* Send a new PR linked to your issue (see the [Contribution guidelines](https://github.com/CodeCorico/MemoryOverflow/blob/master/CONTRIBUTING.md))
+* Send a new PR linked to your issue (see the [Contribution guidelines](../CONTRIBUTING.md))
