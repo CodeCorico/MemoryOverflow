@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/CodeCorico/MemoryOverflow/master/logo.gif" />
+  <img src="logo.gif" />
 </p>
 
 # MemoryOverflow
@@ -18,21 +18,21 @@ MemoryOverflow is a card game where two players battle to control The Machine. T
 
 ## Follow the project
 
-* [Licence](https://github.com/CodeCorico/MemoryOverflow/blob/master/LICENSE)
-* [Changelog](https://github.com/CodeCorico/MemoryOverflow/blob/master/CHANGELOG.md)
+* [Licence](LICENSE)
+* [Changelog](CHANGELOG.md)
 * [Milestones](https://github.com/CodeCorico/MemoryOverflow/milestones?state=open)
 * [Discussion group](https://groups.google.com/d/forum/memoryoverflow)
 * [Ideas to suggest?](http://www.google.com/moderator/#15/e=2138af&t=2138af.41)
 
 ## Contribute! create/modify cards, templates, wiki, website, ...
 
-To contribute to the project, read the [Contribution guidelines](https://github.com/CodeCorico/MemoryOverflow/blob/master/CONTRIBUTING.md).
+To contribute to the project, read the [Contribution guidelines](CONTRIBUTING.md).
 After that, you can create your own Pull Requests (PR) and submit them here.
 
-* [Cards](https://github.com/CodeCorico/MemoryOverflow/blob/master/cards/)
-* [Templates](https://github.com/CodeCorico/MemoryOverflow/blob/master/templates/)
-* [Generator](https://github.com/CodeCorico/MemoryOverflow/blob/master/generator/)
-* [Rules](https://github.com/CodeCorico/MemoryOverflow/blob/master/rules/) (English and French)
+* [Cards](cards/)
+* [Templates](templates/)
+* [Generator](generator/)
+* [Rules](rules/) (English and French)
 
 
 Lead contribution team
