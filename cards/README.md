@@ -55,7 +55,7 @@ The full title of the card
 
 # status
 
-Status can only be: "working", "deprecated" or "played"
+Status can only be: "working", "playing" or "deprecated"
 
 # edition
 
