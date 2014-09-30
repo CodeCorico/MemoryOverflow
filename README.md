@@ -21,8 +21,7 @@ MemoryOverflow is a card game where two players battle to control The Machine. T
 * [Licence](LICENSE)
 * [Changelog](CHANGELOG.md)
 * [Milestones](https://github.com/CodeCorico/MemoryOverflow/milestones?state=open)
-* [Discussion group](https://groups.google.com/d/forum/memoryoverflow)
-* [Ideas to suggest?](http://www.google.com/moderator/#15/e=2138af&t=2138af.41)
+* Join us to the discussion room [![Discussion chat](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Contribute! create/modify cards, templates, wiki, website, ...
 
