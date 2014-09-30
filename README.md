@@ -3,6 +3,7 @@
 </p>
 
 # MemoryOverflow
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 MemoryOverflow is a TOTALLY FREE card game designed by developers for developers.
 See it in action in the [official website](http://memoryoverflow.codecorico.com).
