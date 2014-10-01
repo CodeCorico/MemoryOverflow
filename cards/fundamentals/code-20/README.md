@@ -1,5 +1,7 @@
 # Fundamentals - Code 20
 
+The Machine love the brave and proud developers.
+
 * Type: The Machine
 * Translations: English, French
 
