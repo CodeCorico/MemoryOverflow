@@ -6,6 +6,9 @@ msgstr ""
 msgid "for"
 msgstr "for"
 
+msgid "Enter in a basic loop."
+msgstr "Entre dans une boucle simple."
+
 msgid "{comment-strong}variable{/comment-strong} is a previously declared variable."
 msgstr "{comment-strong}variable{/comment-strong} est une variable précédemment déclarée."
 
