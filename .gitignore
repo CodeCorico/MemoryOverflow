@@ -3,8 +3,6 @@
 *.log
 *.DS_Store
 
-website/*
-!website/js
-!website/vendor
+website/data
 
 .jshintrc
