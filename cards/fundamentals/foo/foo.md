@@ -2,6 +2,10 @@
 
 foo
 
+# description
+
+&{All starts with a {code}foo{/code} variable.}
+
 # status
 
 working
