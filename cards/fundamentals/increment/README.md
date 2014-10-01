@@ -1,6 +1,6 @@
 # Fundamentals - Increment
 
-Increment a variable
+Increment a variable.
 
 * Type: Code
 * Languages: JavaScript, PHP

@@ -6,6 +6,9 @@ msgstr ""
 msgid "Increment"
 msgstr "Incrémentation"
 
+msgid "Increment a variable."
+msgstr "Incremente une variable."
+
 msgid "{comment-strong}variable{/comment-strong} is a previously declared variable."
 msgstr "{comment-strong}variable{/comment-strong} est une variable précédemment déclarée."
 
