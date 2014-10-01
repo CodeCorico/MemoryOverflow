@@ -17,6 +17,7 @@
         _cardsToLoad = 0,
         _loadedCards = [],
         _cardsToGenerate = 0,
+        _onGenerationComplete = false,
         _cards = [];
 
     function _loadCards() {
@@ -133,6 +134,10 @@
             _cardsToGenerate --;
             if (_cardsToGenerate === 0) {
               console.log('Generating cards : Done');
+
+              if (_onGenerationComplete) {
+                _onGenerationComplete();
+              }
             }
           });
         }
@@ -142,7 +147,9 @@
       });
     }
 
-    this.generate = function() {
+    this.generate = function(onGenerationComplete) {
+      _onGenerationComplete = onGenerationComplete || false;
+
       _loadCards();
     };
 

@@ -83,51 +83,75 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
     }
   });
 
-  function _templateExists(template, callback) {
-    fs.exists(template, function(exists) {
-      if (!exists) {
-          throw new Error('template \'' + template + '\' does not exist');
-      }
-      if (callback) {
-        callback();
-      }
-    });
-  }
-
-  function _generateTemplate(template, lang) {
-    var templatePath = path.join(__dirname, '../templates/', template);
-
-    _templateExists(templatePath, function() {
-
-      FileUtils.directory(path.join(__dirname, '../website', 'cards'));
-      FileUtils.directory(path.join(__dirname, '../website', 'print'));
-
-      (new CardsGenerator(templatePath, template, lang)).generate();
-
-    });
-  }
-
   var Generator = function(options) {
-    var template = options.template || cmdArgs.template,
-        lang = options.lang || cmdArgs.lang;
+    options = options || {};
 
-    if (lang && lang.length == 2) {
-      lang = lang + '_' + lang.toUpperCase();
-    }
+    var _template = options.template || cmdArgs.template,
+        _templatesToGenerate = 0,
+        _onGenerationComplete = false,
+        _lang = options.lang || cmdArgs.lang;
 
-    if (template) {
-      _generateTemplate(template, lang);
-    }
-    else {
-      var templatesPath = path.join(__dirname, '../templates'),
-          directories = fs.readdirSync(templatesPath).filter(function (file) {
-            return fs.statSync(path.join(templatesPath, file)).isDirectory();
-          });
-
-      directories.forEach(function(template) {
-        _generateTemplate(template, lang);
+    function _templateExists(template, callback) {
+      fs.exists(template, function(exists) {
+        if (!exists) {
+            throw new Error('template \'' + template + '\' does not exist');
+        }
+        if (callback) {
+          callback();
+        }
       });
     }
+
+    function _generateTemplate(template) {
+      var templatePath = path.join(__dirname, '../templates/', template);
+
+      _templateExists(templatePath, function() {
+
+        FileUtils.directory(path.join(__dirname, '../website', 'cards'));
+        FileUtils.directory(path.join(__dirname, '../website', 'print'));
+
+        (new CardsGenerator(templatePath, template, _lang)).generate(function() {
+
+          _templatesToGenerate --;
+
+          if (_templatesToGenerate === 0 && _onGenerationComplete) {
+            _onGenerationComplete();
+          }
+
+        });
+
+      });
+    }
+
+    this.generate = function(onGenerationComplete) {
+      _onGenerationComplete = onGenerationComplete || false;
+
+      if (_lang && _lang.length == 2) {
+        _lang = _lang + '_' + _lang.toUpperCase();
+      }
+
+      var templates = [];
+
+      if (_template) {
+        templates.push(_template);
+      }
+      else {
+        var templatesPath = path.join(__dirname, '../templates'),
+            directories = fs.readdirSync(templatesPath).filter(function (file) {
+              return fs.statSync(path.join(templatesPath, file)).isDirectory();
+            });
+
+        directories.forEach(function(template) {
+          templates.push(template);
+        });
+      }
+
+      _templatesToGenerate = templates.length;
+
+      templates.forEach(function(template) {
+        _generateTemplate(template, onGenerationComplete);
+      });
+    };
 
   };
 
