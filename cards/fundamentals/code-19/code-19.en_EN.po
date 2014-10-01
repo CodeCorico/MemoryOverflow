@@ -1,0 +1,10 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "Code 19"
+msgstr "Code 19"
+
+msgid "The machine does't like cheaters."
+msgstr "The machine does not like cheaters."

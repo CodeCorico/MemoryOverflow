@@ -1,6 +1,10 @@
 # title
 
-Code 19
+&{Code 19}
+
+# description
+
+&{The machine does't like cheaters.}
 
 # status
 
@@ -18,6 +22,6 @@ the machine
 
 Xavier Boubert @xavierboubert
 
-# description
+# content
 
 19
