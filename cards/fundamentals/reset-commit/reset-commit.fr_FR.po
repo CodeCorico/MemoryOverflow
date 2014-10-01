@@ -6,6 +6,9 @@ msgstr ""
 msgid "Reset commit"
 msgstr "Réinitialiser le commit"
 
+msgid "Back to your previous commit."
+msgstr "Retourne au commit précédent."
+
 msgid "The selected player turns in his hand the last {operator}code{/operator} card he played."
 msgstr "Le joueur sélectionné retourne dans sa main la dernière carte {operator}code{/operator} qu'il a joué."
 
