@@ -24,7 +24,7 @@
     new Generator({
       template: template,
       lang: lang
-    });
+    }).generate();
   }
 
   gulp.task('watch', function() {
@@ -42,7 +42,6 @@
     });
     gulp.watch(paths.cardsLang, function(args) {
       var lang = path.basename(args.path, '.po').split('.')[1];
-      console.log(path.basename(args.path, '.po'), lang);
       _generate(null, lang);
     });
   });
