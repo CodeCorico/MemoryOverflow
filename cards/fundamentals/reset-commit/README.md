@@ -1,6 +1,6 @@
 # Fundamentals - Reset commit
 
-Back to your previous commit
+Back to your previous commit.
 
 * Type: Event
 * Translations: English, French

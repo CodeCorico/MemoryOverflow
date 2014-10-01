@@ -2,6 +2,10 @@
 
 Reset commit
 
+# description
+
+&{Back to your previous commit.}
+
 # status
 
 working
@@ -18,7 +22,7 @@ event
 
 Xavier Boubert @xavierboubert
 
-# description
+# content
 
 &{The selected player turns in his hand the last {operator}code{/operator} card he played.}
 
