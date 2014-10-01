@@ -1,0 +1,10 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "Code 18"
+msgstr "Code 18"
+
+msgid "The Machine is choleric."
+msgstr "The Machine is choleric."

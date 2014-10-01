@@ -1,6 +1,10 @@
 # title
 
-Code 18
+&{Code 18}
+
+# description
+
+&{The Machine is choleric.}
 
 # status
 
@@ -18,6 +22,6 @@ the machine
 
 Xavier Boubert @xavierboubert
 
-# description
+# content
 
 18

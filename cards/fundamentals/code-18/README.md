@@ -1,5 +1,7 @@
 # Fundamentals - Code 18
 
+The Machine is choleric.
+
 * Type: The Machine
 * Translations: English, French
 
