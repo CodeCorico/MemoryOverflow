@@ -37,6 +37,7 @@ A card *must have* these files. It's possible to add all of the translation you 
 This file describe the card and its spirit.
 Its include:
 * Its name
+* Its description
 * Its type
 * Its languages supported
 * Its translations supported
@@ -52,6 +53,10 @@ Here is the format:
 # title
 
 The full title of the card
+
+# description
+
+The description of the card
 
 # status
 
@@ -82,7 +87,7 @@ Use &{} to encapsulate your translated texts
 
 You can add all of the codes syntax you want. PHP, Java, C++, etc
 
-# description
+# content
 
 This block is used for cards with "event" or "the machine" type.
 
