@@ -1,6 +1,10 @@
 # title
 
-Code 22
+&{Code 22}
+
+# description
+
+&{The Machine sees everything.}
 
 # status
 
@@ -18,6 +22,6 @@ the machine
 
 Xavier Boubert @xavierboubert
 
-# description
+# content
 
 22

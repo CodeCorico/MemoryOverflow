@@ -1,0 +1,10 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "Code 22"
+msgstr "Code 22"
+
+msgid "The Machine sees everything."
+msgstr "La Machine voit tout."
