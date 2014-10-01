@@ -1,5 +1,7 @@
 # Fundamentals - Code 19
 
+The machine does't like cheaters.
+
 * Type: The Machine
 * Translations: English, French
 
