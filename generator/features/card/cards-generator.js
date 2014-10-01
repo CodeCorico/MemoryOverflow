@@ -115,7 +115,7 @@
 
     function _generateCard(html, card, code, lang) {
       var output = card + (code ? '-' + code : '') + (lang ? '.' + lang : ''),
-          htmlFile = FileUtils.directory(path.join(__dirname, '../../../website', 'cards', templateName)) + '/' + output + '.html';
+          htmlFile = FileUtils.directory(path.join(__dirname, '../../../website/data', 'cards', templateName)) + '/' + output + '.html';
 
       fs.writeFile(htmlFile, html, function(err) {
         if (err) {
@@ -125,7 +125,7 @@
         try {
           spawn(
             'wkhtmltoimage',
-            ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website', 'print', templateName)) + '/' + output + '.jpg']
+            ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website/data', 'print', templateName)) + '/' + output + '.jpg']
           ).stdout.on('end', function() {
             if (_bar) {
               _bar.tick();
