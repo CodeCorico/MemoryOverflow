@@ -1,0 +1,10 @@
+# This file is distributed under the same license as the MemoryOverflow package.
+#
+msgid ""
+msgstr ""
+
+msgid "Code 20"
+msgstr "Code 20"
+
+msgid "The Machine love the brave and proud developers."
+msgstr "La Machine aime les braves et courageux développeurs."
