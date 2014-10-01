@@ -139,7 +139,7 @@
                 });
 
               }
-              else if (key == 'description') {
+              else if (key == 'content') {
                 $content.find('.content').html(content);
 
                 cards.push({
