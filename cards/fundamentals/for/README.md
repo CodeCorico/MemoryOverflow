@@ -1,6 +1,6 @@
 # Fundamentals - For
 
-Enter in a basic loop
+Enter in a basic loop.
 
 * Type: Code
 * Languages: JavaScript, PHP
