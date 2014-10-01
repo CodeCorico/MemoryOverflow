@@ -1,5 +1,7 @@
 # Fundamentals - Code 22
 
+The Machine sees everything.
+
 * Type: The Machine
 * Translations: English, French
 
