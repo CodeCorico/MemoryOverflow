@@ -3,7 +3,7 @@
   "description": "MemoryOverflow generator",
   "main": "generator.js",
   "scripts": {
-    "test": "mocha --timeout 60000"
+    "test": "mocha './**/*-test.js' --timeout 60000"
   },
   "repository": {
     "type": "git",
