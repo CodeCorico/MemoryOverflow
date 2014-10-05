@@ -510,6 +510,10 @@ a:hover {
   text-shadow: #5b5d61 1px 1px 5px;
 }
 
+.panel .column:last-child {
+  width: 34%;
+}
+
 @-webkit-keyframes cursor-animation { 0% { -webkit-transform: translateY(0px); } 50% { -webkit-transform: translateY(10px); } 100% { -webkit-transform: translateY(0px); } }
 @-moz-keyframes    cursor-animation { 0% { -moz-transform: translateY(0px); }    50% { -moz-transform: translateY(10px); }    100% { -moz-transform: translateY(0px); } }
 @-ms-keyframes     cursor-animation { 0% { -ms-transform: translateY(0px); }     50% { -ms-transform: translateY(10px); }     100% { -ms-transform: translateY(0px); } }
@@ -543,7 +547,7 @@ a:hover {
   bottom: 10%;
   left: 5%;
   width: 90%;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 36px;
   text-align: center;
 }
