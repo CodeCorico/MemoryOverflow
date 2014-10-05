@@ -8,9 +8,10 @@ You will need [nodejs](http://nodejs.org/) installed on your computer in order t
 
 1. Install wkhtmltoimage by downloading the latest version here : http://wkhtmltopdf.org/downloads.html
 2. Add wkhtmltoimage to your PATH
+3. Go to the `generator` folder
 3. Run ```npm install```
 4. When done, you can start generating your first cards with: ```gulp generate```
-5. Look at the `website` folder for your newly generated cards
+5. Look in the `data` folder under `website` (root of the project) for your newly generated cards
 
 ### Generation options
 
