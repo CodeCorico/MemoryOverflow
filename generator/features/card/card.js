@@ -39,6 +39,10 @@
   }
 
   var Card = function(file, templatePath) {
+    if (!file || !templatePath) {
+      throw new Error('A file and a template are required.');
+    }
+
     var _languageFiles = {},
         _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
 
@@ -233,6 +237,10 @@
         callback = callback || false;
 
         _numberLanguagesToParse = Object.keys(_languageFiles).length;
+
+        if (_numberLanguagesToParse === 0) {
+          throw new Error('No language files for card: ' + file);
+        }
 
         for (var language in _languageFiles) {
           _parseLanguage(language, _languageFiles[language], callback);
