@@ -4,13 +4,13 @@
   var path = require('path'),
       gulp = require('gulp'),
       minimist = require('minimist'),
-      Generator = require('./generator/generator').Generator;
+      Generator = require('./generator').Generator;
 
   var paths = {
-    scripts: ['generator/features/**/*.js'],
-    cardsContent: ['cards/**/*.md'],
-    cardsLang: ['cards/**/*.po'],
-    templates: ['templates/**/*.json', 'templates/**/*.jpg', 'templates/**/*.png']
+    scripts: ['features/**/*.js'],
+    cardsContent: ['../cards/**/*.md'],
+    cardsLang: ['../cards/**/*.po'],
+    templates: ['../templates/**/*.json', '../templates/**/*.jpg', '../templates/**/*.png']
   };
 
   var knownOptions = {
@@ -29,7 +29,7 @@
 
   gulp.task('watch', function() {
     gulp.watch(paths.templates, function(args) {
-      var template = path.dirname(args.path).replace(path.join(__dirname, 'templates') + '/', '');
+      var template = path.dirname(args.path).replace(path.join(__dirname, '../templates') + '/', '');
        if (template) {
           _generate(template);
         }

@@ -44,7 +44,7 @@
 
     function _loadCard(cardContent, templateData, card, onLoadComplete) {
       var cardType = cardContent.type,
-          imageFile = templatePath + '/' + _templateFilePath + '-' + cardType + '.jpg';
+          imageFile = templatePath + '/' + _templateFilePath + '-' + cardType.replace(/\s+/g, '-').toLowerCase() + '.jpg';
 
       fs.exists(imageFile, function(exists) {
         if (exists) {
@@ -175,6 +175,9 @@
             onLoadComplete(null, _cards);
 
           });
+        }
+        else {
+          throw new Error(imageFile + ' does not exist');
         }
       });
 

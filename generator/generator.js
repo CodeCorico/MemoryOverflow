@@ -107,8 +107,9 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
 
       _templateExists(templatePath, function() {
 
-        FileUtils.directory(path.join(__dirname, '../website', 'cards'));
-        FileUtils.directory(path.join(__dirname, '../website', 'print'));
+        FileUtils.directory(path.join(__dirname, '../website', 'data'));
+        FileUtils.directory(path.join(__dirname, '../website', 'data', 'cards'));
+        FileUtils.directory(path.join(__dirname, '../website', 'data', 'print'));
 
         (new CardsGenerator(templatePath, template, _lang)).generate(function() {
 
