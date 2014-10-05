@@ -1,7 +1,7 @@
 {
   "name": "memoryoverflow-generator",
   "description": "MemoryOverflow generator",
-  "main": "generator.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha './**/*-test.js' --timeout 60000"
   },

@@ -4,7 +4,7 @@
   var path = require('path'),
       gulp = require('gulp'),
       minimist = require('minimist'),
-      Generator = require('./generator').Generator;
+      Generator = require('./index').Generator;
 
   var paths = {
     scripts: ['features/**/*.js'],
