@@ -3,7 +3,7 @@
 
   var assert = require('chai').assert,
       fs = require('fs'),
-      Generator = require('./index').Generator;
+      Generator = require('../../index.js').Generator;
 
   describe('#valid', function() {
 
