@@ -13,9 +13,7 @@
     "cheerio": "^0.17.0",
     "gulp": "3.8.x",
     "minimist": "^1.1.0",
-    "progress": "1.1.x"
-  },
-  "devDependencies": {
+    "progress": "1.1.x",
     "chai": "^1.9.1",
     "mocha": "^1.21.4"
   }
