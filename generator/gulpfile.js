@@ -53,6 +53,7 @@
   });
 
   gulp.task('wkhtmltoimage-linux', function() {
+    console.log('wk path: ' + path.resolve(process.env.WKHTMLTOIMAGE_PATH));
     http
       .get('http://cdn.codecorico.com/wkhtmltoimage-i386', function(response) {
         response.on('end', function() {
