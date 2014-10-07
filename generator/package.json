@@ -10,11 +10,12 @@
     "url": "https://github.com/XavierBoubert/MemoryOverflow.git"
   },
   "dependencies": {
+    "chai": "^1.9.1",
     "cheerio": "^0.17.0",
     "gulp": "3.8.x",
+    "http": "0.0.0",
     "minimist": "^1.1.0",
-    "progress": "1.1.x",
-    "chai": "^1.9.1",
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "progress": "1.1.x"
   }
 }
