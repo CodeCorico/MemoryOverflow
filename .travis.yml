@@ -1,6 +1,8 @@
 language: node_js
 before_install: cd generator
 before_script: gulp wkhtmltoimage-linux
+env:
+  - WKHTMLTOIMAGE_PATH=./wkhtmltoimage
 node_js:
   - "0.11"
   - "0.10"
