@@ -8,7 +8,7 @@
       CardReadme = require('./card-readme').CardReadme,
       FileUtils = require('../file/file.js').File,
       ProgressBar = require('progress'),
-      wkhtmltoimagePath = process.env.WKHTMLTOIMAGE_PATH || 'wkhtmltoimage';
+      wkhtmltoimagePath = process.env.WKHTMLTOIMAGE_PATH || 'wkhtmltoimage/wkhtmltoimage';
 
   function _endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;

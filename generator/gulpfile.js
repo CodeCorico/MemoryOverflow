@@ -3,7 +3,6 @@
 
   var path = require('path'),
       gulp = require('gulp'),
-      http = require('http'),
       fs = require('fs'),
       minimist = require('minimist'),
       Generator = require('./index').Generator;
@@ -50,17 +49,6 @@
 
   gulp.task('generate', function() {
     _generate(options.template, options.lang);
-  });
-
-  gulp.task('wkhtmltoimage-linux', function() {
-    console.log('wk path: ' + path.resolve(process.env.WKHTMLTOIMAGE_PATH));
-    http
-      .get('http://cdn.codecorico.com/wkhtmltoimage-i386', function(response) {
-        response.on('end', function() {
-          fs.chmod('wkhtmltoimage', '755');
-        });
-        response.pipe(fs.createWriteStream('wkhtmltoimage'));
-      });
   });
 
   // The default task (called when you run `gulp` from cli)

@@ -3,7 +3,8 @@
   "description": "MemoryOverflow generator",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./features/**/*-test.js --timeout 60000"
+    "test": "mocha ./features/**/*-test.js --timeout 60000",
+    "postinstall": "node postinstall.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,6 @@
     "chai": "^1.9.1",
     "cheerio": "^0.17.0",
     "gulp": "3.8.x",
-    "http": "0.0.0",
     "minimist": "^1.1.0",
     "mocha": "^1.21.4",
     "progress": "1.1.x"
