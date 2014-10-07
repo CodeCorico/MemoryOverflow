@@ -53,10 +53,13 @@
   });
 
   gulp.task('wkhtmltoimage-linux', function() {
-    http.get('http://cdn.codecorico.com/wkhtmltoimage-i386', function(response) {
-      response.pipe(fs.createWriteStream('wkhtmltoimage'));
-      fs.chmod('wkhtmltoimage', '755');
-    });
+    http
+      .get('http://cdn.codecorico.com/wkhtmltoimage-i386', function(response) {
+        response.on('end', function() {
+          fs.chmod('wkhtmltoimage', '755');
+        });
+        response.pipe(fs.createWriteStream('wkhtmltoimage'));
+      });
   });
 
   // The default task (called when you run `gulp` from cli)
