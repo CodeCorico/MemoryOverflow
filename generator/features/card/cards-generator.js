@@ -6,7 +6,8 @@
       spawn = require('child_process').spawn,
       Card = require('./card').Card,
       FileUtils = require('../file/file.js').File,
-      ProgressBar = require('progress');
+      ProgressBar = require('progress'),
+      wkhtmltoimagePath = process.env.WKHTMLTOIMAGE_PATH || 'wkhtmltoimage';
 
   function _endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
@@ -124,7 +125,7 @@
 
         try {
           spawn(
-            'wkhtmltoimage',
+            wkhtmltoimagePath,
             ['--disable-javascript', htmlFile, FileUtils.directory(path.join(__dirname, '../../../website/data', 'print', templateName)) + '/' + output + '.jpg']
           ).stdout.on('end', function() {
             if (_bar) {
