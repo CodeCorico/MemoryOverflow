@@ -5,6 +5,7 @@
       path = require('path'),
       spawn = require('child_process').spawn,
       Card = require('./card').Card,
+      CardReadme = require('./card-readme').CardReadme,
       FileUtils = require('../file/file.js').File,
       ProgressBar = require('progress'),
       wkhtmltoimagePath = process.env.WKHTMLTOIMAGE_PATH || 'wkhtmltoimage';
@@ -52,6 +53,13 @@
                 _cards[splited[0]].languageFiles(fileLang, file);
               }
             }
+            else if (_endsWith(file, 'README.md')) {
+              var name = FileUtils.dirname(file);
+
+              if (_cards[name]) {
+                _cards[name].readmeFile(file);
+              }
+            }
           });
         }
 
@@ -85,6 +93,8 @@
         if (_bar) {
           _bar.tick();
         }
+
+        new CardReadme(card).generate();
 
         _loadedCards = _loadedCards.concat(loadedCards);
 
