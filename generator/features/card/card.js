@@ -45,6 +45,7 @@
 
     var _name = name,
         _languageFiles = {},
+        _languages = {},
         _readmeFile = null,
         _cardConfig = null,
         _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
@@ -139,6 +140,7 @@
 
                 _cardConfig.codes = _cardConfig.codes || [];
                 _cardConfig.codes.push(cardCode);
+
                 $content.find('.content').html(content);
 
                 cards.push({
@@ -230,26 +232,26 @@
 
     this.languageFiles = function(language, file) {
       if (typeof language != 'undefined' && typeof file != 'undefined') {
-        _languageFiles[language] = file;
+        _languages[language] = file;
       }
 
-      return _languageFiles;
+      return _languages;
     };
 
     var _numberLanguagesToParse = 0;
 
     function _getLanguageContent(callback) {
-      if (_languageFiles) {
+      if (_languages) {
         callback = callback || false;
 
-        _numberLanguagesToParse = Object.keys(_languageFiles).length;
+        _numberLanguagesToParse = Object.keys(_languages).length;
 
         if (_numberLanguagesToParse === 0) {
           throw new Error('No language files for card: ' + file);
         }
 
-        for (var language in _languageFiles) {
-          _parseLanguage(language, _languageFiles[language], callback);
+        for (var language in _languages) {
+          _parseLanguage(language, _languages[language], callback);
         }
       }
     }
@@ -261,12 +263,12 @@
           throw err;
         }
 
-        var content = FileUtils.parsePo(data),
-            parsedContent = {};
+        var parsedContent = {};
+        _languages[language] = FileUtils.parsePo(data);
 
         // need to pre-parse the content
-        for (var key in content) {
-          parsedContent[_replaceStyle(key)] = _replaceStyle(content[key]);
+        for (var key in _languages[language]) {
+          parsedContent[_replaceStyle(key)] = _replaceStyle(_languages[language][key]);
         }
 
         _languageFiles[language] = parsedContent;
