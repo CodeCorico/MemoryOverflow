@@ -6,12 +6,12 @@
       Card = require('./card').Card,
       rootDirectory = path.join(__dirname, '../../../');
 
-  describe('#invalid', function() {
+  describe('#valid', function() {
 
     it('should load the card \'foo\'', function(done) {
 
       var fooCardDirectory = rootDirectory + 'cards/fundamentals/foo/',
-          fooCard = new Card(fooCardDirectory + 'foo.md', rootDirectory + 'templates/fototse');
+          fooCard = new Card(fooCardDirectory + 'foo.md', rootDirectory + 'templates/fototse', 'foo');
 
       fooCard.languageFiles('fr_FR', fooCardDirectory + 'foo.fr_FR.po');
 
