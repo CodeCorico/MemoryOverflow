@@ -1,7 +1,8 @@
 (function() {
   'use strict';
 
-  var fs = require('fs');
+  var fs = require('fs'),
+      path = require('path');
 
   var File = function() {
 
@@ -65,6 +66,12 @@
     this.directory = function(path) {
       _createDirectory(path);
       return path;
+    };
+
+    this.dirname = function(file) {
+      var segments = path.dirname(file).split('/');
+
+      return segments[segments.length - 1];
     };
 
     this.listFiles = function(dir, done) {

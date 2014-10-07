@@ -45,6 +45,7 @@
 
     var _name = name,
         _languageFiles = {},
+        _readmeFile = null,
         _cardConfig = null,
         _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
 
@@ -280,6 +281,13 @@
 
     this.config = function() {
       return _cardConfig;
+    };
+
+    this.readmeFile = function(readmeFile) {
+      if (typeof readmeFile != 'undefined') {
+        _readmeFile = readmeFile;
+      }
+      return _readmeFile;
     };
 
   };
