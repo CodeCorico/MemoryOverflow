@@ -34,12 +34,12 @@
           files.forEach(function(file) {
             if (_endsWith(file, 'md') && !_endsWith(file, 'README.md')) {
               var name = path.basename(file, '.md');
-              _cards[name] = new Card(file, templateFile, templateName);
+              _cards[name] = new Card(file, templateFile, name);
               _cardsToLoad ++;
             }
           });
 
-          // then the translation files
+          // then the configuration files
           files.forEach(function(file) {
             if (_endsWith(file, 'po')) {
               var name = path.basename(file, '.po'),

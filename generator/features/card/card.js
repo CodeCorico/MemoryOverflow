@@ -38,16 +38,18 @@
     }
   }
 
-  var Card = function(file, templatePath) {
+  var Card = function(file, templatePath, name) {
     if (!file || !templatePath) {
       throw new Error('A file and a template are required.');
     }
 
-    var _languageFiles = {},
+    var _name = name,
+        _languageFiles = {},
+        _cardConfig = null,
         _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
 
-    function _loadCard(cardContent, templateData, card, onLoadComplete) {
-      var cardType = cardContent.type,
+    function _loadCard(templateData, card, onLoadComplete) {
+      var cardType = _cardConfig.type,
           imageFile = templatePath + '/' + _templateFilePath + '-' + cardType.replace(/\s+/g, '-').toLowerCase() + '.jpg';
 
       fs.exists(imageFile, function(exists) {
@@ -121,8 +123,8 @@
 
             $content.find('.brand').html('MemoryOverflow');
 
-            for (var key in cardContent) {
-              var content = _replaceStyle(cardContent[key]);
+            for (var key in _cardConfig) {
+              var content = _replaceStyle(_cardConfig[key]);
 
               if (key == 'title') {
                 $content.find('.title').html(content);
@@ -134,6 +136,8 @@
 
                 cardCode = key.split(':')[1];
 
+                _cardConfig.codes = _cardConfig.codes || [];
+                _cardConfig.codes.push(cardCode);
                 $content.find('.content').html(content);
 
                 cards.push({
@@ -205,11 +209,12 @@
             return;
           }
 
-          var cardContent = FileUtils.parseMarkdown(data);
+          _cardConfig = FileUtils.parseMarkdown(data);
+          _cardConfig.name = _name;
 
-          if (cardContent.type) {
+          if (_cardConfig.type) {
             _getLanguageContent(function() {
-              _loadCard(cardContent, templateData, card, onLoadComplete);
+              _loadCard(templateData, card, onLoadComplete);
             });
           }
           else {
@@ -272,6 +277,10 @@
 
       });
     }
+
+    this.config = function() {
+      return _cardConfig;
+    };
 
   };
 
