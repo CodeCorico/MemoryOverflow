@@ -130,7 +130,7 @@
           _bar.tick();
         }
 
-        new CardReadme(card).generate();
+        //new CardReadme(card).generate();
 
         _loadedCards = _loadedCards.concat(loadedCards);
 
@@ -189,7 +189,7 @@
             _cardsToGenerate--;
             if (_cardsToGenerate === 0) {
               if (onGenerationComplete) {
-                onGenerationComplete();
+                onGenerationComplete(true);
               }
             }
           });
