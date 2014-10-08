@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./features/**/*-test.js --timeout 60000",
-    "postinstall": "node postinstall.js"
+    "postinstall": "node postinstall.js",
+    "start": "gulp --gulpfile start.js --silent"
   },
   "repository": {
     "type": "git",
