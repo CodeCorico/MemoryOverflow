@@ -27,7 +27,7 @@
         clc.red(          '           ░░                          ░░           ') + '\n',
         clc.red(          '             ░░                      ░░             ') + '\n',
         clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n\n',
-        clc.redBright('           « The Machine sees everything »') + '\n\n\n'
+        clc.red(          '           « The Machine sees everything »') + '\n\n\n'
       ];
 
       for(var i = 0, len = banner.length; i < len; i++) {
@@ -43,7 +43,7 @@
       var files = glob.sync('./features/**/agent-*.js');
       files.forEach(function(file) {
         var agent = require(file.replace('./features', '../'));
-        _agents.push(new agent());
+        _agents.push(new agent(_this));
       });
 
       gulp.task('watch', function() {
@@ -58,8 +58,28 @@
     }
 
     this.says = function(sentence) {
-      console.log(clc.redBright('The Machine says: ' + sentence));
+      console.log(clc.red('The Machine: ') + clc.redBright(sentence));
     };
+
+    this.asks = function(options) {
+      options = options || {};
+
+      var sentences = [];
+
+      if(options.needGratitude) {
+        sentences = [
+          'Good work soon.',
+          'Proud of you.',
+          'Got it.',
+          'Cool cool cool.',
+          'Fantastique.'
+        ];
+      }
+
+      if(sentences.length > 0) {
+        _this.says(sentences[Math.floor(Math.random() * sentences.length)]);
+      }
+    }
 
     _init();
 

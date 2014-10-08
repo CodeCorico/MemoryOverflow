@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
-  var clc = require('cli-color');
+  var clc = require('cli-color'),
+      extend = require('extend');
 
-  var TheMachineAgent = function() {
+  var TheMachineAgent = function(theMachine) {
 
     var _this = this,
         _name = null,
@@ -17,8 +18,23 @@
       return _name;
     };
 
-    this.says = function(sentence) {
-      console.log(clc.blueBright('Agent ' + _this.name() + ' says: ' + sentence));
+    this.newDiscussion = function() {
+      console.log('');
+      return _this;
+    };
+
+    this.says = function(sentence, askTheMachine) {
+      console.log(clc.blue('Agent ' + _this.name() + ': ') + clc.blueBright(sentence));
+
+      if(askTheMachine) {
+        extend(true, {
+          needGratitude: false
+        }, askTheMachine);
+
+        theMachine.asks(askTheMachine);
+      }
+
+      return _this;
     };
 
     this.watch = function(files, func) {
