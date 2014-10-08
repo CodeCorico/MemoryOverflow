@@ -22,6 +22,6 @@ Versions details history. For each version you can find:
 - **Foo**
   - explain
 
-### Generators
+### The Machine
 
 - nothing

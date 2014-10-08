@@ -1,5 +1,5 @@
 language: node_js
-before_install: cd generator
+before_install: cd the-machine
 env:
   - WKHTMLTOIMAGE_PATH=./wkhtmltoimage/wkhtmltoimage
 node_js:

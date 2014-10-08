@@ -14,7 +14,7 @@ Here are the list of all editions:
 
 ## <a name="create"></a> Create a new card
 
-To be used by the [generator](../generator/), each card has a generic configuration.
+To be used by [The Machine](../the-machine/), each card has a generic configuration.
 It's possible to create cards in differents programming languages and translations.
 
 ### The folder structure

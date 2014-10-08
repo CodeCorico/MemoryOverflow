@@ -5,7 +5,7 @@
       gulp = require('gulp'),
       fs = require('fs'),
       minimist = require('minimist'),
-      Generator = require('./index').Generator;
+      TheMachine = require('./index').TheMachine;
 
   var paths = {
     scripts: ['features/**/*.js'],
@@ -22,7 +22,7 @@
   var options = minimist(process.argv.slice(2), knownOptions);
 
   function _generate(template, lang) {
-    new Generator({
+    new TheMachine({
       template: template,
       lang: lang
     }).generate();

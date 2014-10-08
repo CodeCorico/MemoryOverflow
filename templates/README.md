@@ -17,7 +17,7 @@ Fototse by @retovona</a></p>
 
 ## <a name="create"></a> Create a new template
 
-To be used by the [generator](https://github.com/CodeCorico/MemoryOverflow/blob/master/generator/), each template has a generic JSON configuration file.
+To be used by [The Machine](../the-machine/), each template has a generic JSON configuration file.
 
 ### The folder structure
 
@@ -98,7 +98,7 @@ This file structure areas and styles of cards:
     ...
   },
 
-  // When the generator create a "Variable" card, it use the [template name]-variable.jpg picture
+  // When The Machine create a "Variable" card, it use the [template name]-variable.jpg picture
   // and the "type-variable" configuration area to display card informations
   // Same as "title", you can use an area and styles
   "type-variable": {
