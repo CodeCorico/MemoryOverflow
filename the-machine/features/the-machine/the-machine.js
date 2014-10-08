@@ -3,7 +3,8 @@
 
   var gulp = require('gulp'),
       clc = require('cli-color'),
-      glob = require('glob');
+      glob = require('glob'),
+      extend = require('extend');
 
   var TheMachine = function() {
 
@@ -41,18 +42,21 @@
       _this.says('Special agents, go watching your targets.');
 
       var files = glob.sync('./features/**/agent-*.js');
-      files.forEach(function(file) {
-        var agent = require(file.replace('./features', '../'));
-        _agents.push(new agent(_this));
-      });
 
-      gulp.task('watch', function() {
-        _agents.forEach(function(agent) {
-          agent.watchers().forEach(function(watcher) {
-            gulp.watch(watcher.files, watcher.func);
+      if(files || files.length) {
+        files.forEach(function(file) {
+          var agent = require(file.replace('./features', '../'));
+          _agents.push(new agent(_this));
+        });
+
+        gulp.task('watch', function() {
+          _agents.forEach(function(agent) {
+            agent.watchers().forEach(function(watcher) {
+              gulp.watch(watcher.files, watcher.func);
+            });
           });
         });
-      });
+      }
 
       gulp.task('default', ['watch']);
     }
@@ -62,7 +66,10 @@
     };
 
     this.asks = function(options) {
-      options = options || {};
+      options = extend(true, {
+        needGratitude: false,
+        needSlaps: false
+      }, options || {});
 
       var sentences = [];
 
@@ -73,6 +80,14 @@
           'Got it.',
           'Cool cool cool.',
           'Fantastique.'
+        ];
+      }
+      else if(options.needSlaps) {
+        sentences = [
+          'Looks like it\'s a problem',
+          'Ho god!',
+          'Damn it!',
+          '$%#!'
         ];
       }
 

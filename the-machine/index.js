@@ -1,10 +1,9 @@
 (function() {
   'use strict';
 
-  var fs = require('fs'),
+  var fs = require('fs-extra'),
       path = require('path'),
       CardsGenerator = require('./features/card/cards-generator').CardsGenerator,
-      FileUtils = require('./features/file/file.js').File,
       cmdArgs = {};
 
   process.argv.forEach(function (val) {
@@ -38,22 +37,19 @@
     }
 
     function _generateTemplate(template) {
-      var templatePath = path.join(__dirname, '../templates/', template);
+      var templatePath = path.join(__dirname, '..', 'templates', template);
 
       _templateExists(templatePath, function() {
+        fs.ensureDirSync(path.join(__dirname, '..', 'website', 'data'));
+        fs.ensureDirSync(path.join(__dirname, '..', 'website', 'data', 'cards'));
+        fs.ensureDirSync(path.join(__dirname, '..', 'website', 'data', 'print'));
 
-        FileUtils.directory(path.join(__dirname, '../website', 'data'));
-        FileUtils.directory(path.join(__dirname, '../website', 'data', 'cards'));
-        FileUtils.directory(path.join(__dirname, '../website', 'data', 'print'));
-
-        (new CardsGenerator(templatePath, template, _lang)).generate(function() {
-
-          _templatesToGenerate --;
+        new CardsGenerator(templatePath, template, _lang).generate(function() {
+          _templatesToGenerate--;
 
           if (_templatesToGenerate === 0 && _onGenerationComplete) {
             _onGenerationComplete();
           }
-
         });
 
       });
@@ -72,7 +68,7 @@
         templates.push(_template);
       }
       else {
-        var templatesPath = path.join(__dirname, '../templates'),
+        var templatesPath = path.join(__dirname, '..', 'templates'),
             directories = fs.readdirSync(templatesPath).filter(function (file) {
               return fs.statSync(path.join(templatesPath, file)).isDirectory();
             });
