@@ -1,8 +1,7 @@
 (function() {
   'use strict';
 
-  var clc = require('cli-color'),
-      extend = require('extend');
+  var clc = require('cli-color');
 
   var TheMachineAgent = function(theMachine) {
 
@@ -23,17 +22,22 @@
       return _this;
     };
 
+    this.saysFormat = function() {
+      return clc.blue('Agent ' + _this.name() + ': ') + clc.blueBright('{sentence}');
+    };
+
     this.says = function(sentence, askTheMachine) {
-      console.log(clc.blue('Agent ' + _this.name() + ': ') + clc.blueBright(sentence));
+      console.log(_this.saysFormat().replace('{sentence}', sentence));
 
       if(askTheMachine) {
-        extend(true, {
-          needGratitude: false
-        }, askTheMachine);
-
         theMachine.asks(askTheMachine);
       }
 
+      return _this;
+    };
+
+    this.saysError = function(sentence, askTheMachine) {
+      _this.says(clc.yellow(sentence), askTheMachine);
       return _this;
     };
 

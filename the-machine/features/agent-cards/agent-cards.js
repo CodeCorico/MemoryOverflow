@@ -2,14 +2,15 @@
   'use strict';
 
   var TheMachineAgent = require('../the-machine/the-machine-agent.js'),
-      path = require('path');
+      cardGenerate = require('../card/card-generate.js'),
+      path = require('path'),
 
-  var paths = {
-    scripts: ['features/**/*.js'],
-    cardsContent: ['../cards/**/*.md'],
-    cardsLang: ['../cards/**/*.po'],
-    templates: ['../templates/**/*.json', '../templates/**/*.jpg', '../templates/**/*.png']
-  };
+      PATHS = {
+        SCRIPTS: ['features/**/*.js'],
+        CARDS_CONTENT: ['../cards/**/*.md'],
+        CARDS_LANG: ['../cards/**/*.po'],
+        TEMPLATES: ['../templates/**/*.json', '../templates/**/*.jpg', '../templates/**/*.png']
+      };
 
   var AgentCard = function(theMachine) {
     TheMachineAgent.call(this, theMachine);
@@ -22,45 +23,69 @@
       _this.says('Target acquired, I\'m watching it.');
 
       _this
-        .watch(paths.templates, function(args) {
-          var template = path.dirname(args.path).replace(path.join(__dirname, '../templates') + path.sep, ''),
-              templateName = template.split(path.sep).pop();
+        .watch(PATHS.TEMPLATES, function(args) {
+          var template = args.path
+            .split(path.sep)
+            .pop()
+            .replace('.json', '');
 
           _this
             .newDiscussion()
-            .says('Boss, the template "' + templateName + '" has been updated. I have to regenerate cards.');
+            .says('Boss, the template "' + template + '" has been updated. I have to regenerate cards.');
 
           if(template) {
-            _generate(template);
+            _generate({
+              onlyTemplate: template
+            });
           }
         })
-        .watch(paths.scripts, function() {
+        .watch(PATHS.SCRIPTS, function() {
           _this
             .newDiscussion()
             .says('The Admin is working on your brain boss. I have to regenerate cards.');
 
           _generate();
         })
-        .watch(paths.cardsContent, function() {
+        .watch(PATHS.CARDS_CONTENT, function() {
           _this
             .newDiscussion()
             .says('The cards have new changes. I have to regenerate cards.');
 
           _generate();
         })
-        .watch(paths.cardsLang, function(args) {
+        .watch(PATHS.CARDS_LANG, function(args) {
           _this
             .newDiscussion()
             .says('Someone is trying to speak an other language. I have to regenerate cards.');
 
           var lang = path.basename(args.path, '.po').split('.')[1];
-          _generate(null, lang);
+          _generate({
+            onlyLang: lang
+          });
         });
     }
 
-    function _generate() {
-      _this.says('Cards generated. Everything is ok.', {
-        needGratitude: true
+    function _generate(options) {
+      options = options || {};
+      options.progressLoad = _this.saysFormat().replace('{sentence}', 'Loading [:bar] :current / :total');
+      options.progressGeneration = _this.saysFormat().replace('{sentence}', 'Generation [:bar] :current / :total');
+
+      cardGenerate(options, function(message) {
+        _this.says(message);
+      }, function(success, error) {
+        if(success) {
+          _this.says('Cards generated. Everything is ok.', {
+            needGratitude: true
+          });
+        }
+        else {
+          error.msg = error.msg == 'no card' ? 'Mmm... I\'ve not found any card.' : error.msg;
+          error.msg = error.msg == 'no type' ? 'Mmm... The card "' + error.card + '" has no type in its README file.' : error.msg;
+
+          _this.saysError(error.msg, {
+            needSlaps: true
+          });
+        }
       });
     }
 

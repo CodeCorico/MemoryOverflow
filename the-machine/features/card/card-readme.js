@@ -2,8 +2,7 @@
   'use strict';
 
   var fs = require('fs'),
-      path = require('path'),
-      FileUtils = require('../file/file.js').File;
+      path = require('path');
 
   var CardReadme = function(card) {
     if (!card) {
@@ -74,6 +73,6 @@
 
   };
 
-  exports.CardReadme = CardReadme;
+  module.exports = CardReadme;
 
 })();

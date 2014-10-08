@@ -3,56 +3,59 @@
 
   var fs = require('fs'),
       path = require('path'),
-      FileUtils = require('../file/file.js').File,
+      parserMarkdown = require('../parser-markdown/parser-markdown.js'),
+      parserGettext = require('../parser-gettext/parser-gettext.js'),
       cheerio = require('cheerio');
 
-  function _replaceStyle(content) {
-    return content
-      .replace(new RegExp('\n{/([a-z-]*)}', 'ig'), '</p>')
-      .replace(new RegExp('[^&]{!/|{([a-z-]*)}\n', 'ig'), '<p class="content-$1">')
-      .replace(new RegExp('{/([a-z-]*)}', 'ig'), '</span>')
-      .replace(new RegExp('[^&]{!/|{([a-z-]*)}', 'ig'), '<span class="content-$1">');
-  }
-
-  function _translateHTML(html, translation) {
-    return html.replace(new RegExp('&amp;{(.*?)}', 'g'), function(match, value) {
-      return translation[value];
-    });
-  }
-
-  function _applyStyles($element, json) {
-    for (var key in json) {
-      var value = json[key];
-
-      if (key == 'area') {
-        $element.css({
-          top: value.y1,
-          left: value.x1,
-          height: value.y2 - value.y1,
-          width: value.x2 - value.x1
-        });
-      }
-      else {
-        $element.css(key, value);
-      }
-    }
-  }
-
-  var Card = function(file, templatePath, name) {
-    if (!file || !templatePath) {
+  var Card = function(file, template, name) {
+    if (!file || !template) {
       throw new Error('A file and a template are required.');
     }
 
-    var _name = name,
+    var _this = this,
+        _name = name,
         _languageFiles = {},
         _languages = {},
         _readmeFile = null,
         _cardConfig = null,
-        _templateFilePath = templatePath.substring(templatePath.indexOf('templates/') + 'templates/'.length);
+        _templatePath = path.resolve(path.join(__dirname, '..', '..', '..', 'templates', template)),
+        _templateFilePath = _templatePath.substring(_templatePath.indexOf('templates' + path.sep) + ('templates' + path.sep).length);
+
+    function _replaceStyle(content) {
+      return content
+        .replace(new RegExp('\n{/([a-z-]*)}', 'ig'), '</p>')
+        .replace(new RegExp('[^&]{!/|{([a-z-]*)}\n', 'ig'), '<p class="content-$1">')
+        .replace(new RegExp('{/([a-z-]*)}', 'ig'), '</span>')
+        .replace(new RegExp('[^&]{!/|{([a-z-]*)}', 'ig'), '<span class="content-$1">');
+    }
+
+    function _translateHTML(html, translation) {
+      return html.replace(new RegExp('&amp;{(.*?)}', 'g'), function(match, value) {
+        return translation[value];
+      });
+    }
+
+    function _applyStyles($element, json) {
+      for (var key in json) {
+        var value = json[key];
+
+        if (key == 'area') {
+          $element.css({
+            top: value.y1,
+            left: value.x1,
+            height: value.y2 - value.y1,
+            width: value.x2 - value.x1
+          });
+        }
+        else {
+          $element.css(key, value);
+        }
+      }
+    }
 
     function _loadCard(templateData, card, onLoadComplete) {
       var cardType = _cardConfig.type,
-          imageFile = templatePath + '/' + _templateFilePath + '-' + cardType.replace(/\s+/g, '-').toLowerCase() + '.jpg';
+          imageFile = path.join(_templatePath, _templateFilePath + '-' + cardType.replace(/\s+/g, '-').toLowerCase() + '.jpg');
 
       fs.exists(imageFile, function(exists) {
         if (exists) {
@@ -76,7 +79,7 @@
               height: height
             });
 
-            $image.append($('<image src="' + imageFile + '"></span>'));
+            $image.append($('<img src="' + imageFile + '" />'));
 
             for (var key in templateData) {
               var values = templateData[key];
@@ -94,23 +97,26 @@
                   }
                 }
                 else if (key == 'text-style') {
-                  var style = '<style type="text/css">';
+                  var style = ['<style type="text/css">'];
 
                   for (var styleKey in values) {
                     if (styleKey == 'default') {
-                      style += '.content{\n';
+                      style.push('.content{');
                     }
                     else {
-                      style += '.content-' + styleKey + '{\n';
+                      style.push('.content-' + styleKey + '{');
                     }
 
                     for (var styleValue in values[styleKey]) {
-                      style += styleValue + ': ' + values[styleKey][styleValue] + ';\n';
+                      style.push(styleValue + ': ' + values[styleKey][styleValue] + ';');
                     }
 
-                    style += '}';
+                    style.push('}');
                   }
-                  $('head').append(style + '</style>');
+
+                  style.push('</style>');
+                  $('head').append(style.join('\n'));
+
                   continue;
                 }
                 else {
@@ -135,7 +141,6 @@
                 $content.find('.edition').append('<span>' + content + ' - ' + content.substring(0, 1).toUpperCase() + '</span>');
               }
               else if (key.indexOf('code') === 0) {
-
                 cardCode = key.split(':')[1];
 
                 _cardConfig.codes = _cardConfig.codes || [];
@@ -146,9 +151,9 @@
                 cards.push({
                   html: $.html(),
                   name: card,
+                  template: _this.template(),
                   code: cardCode
                 });
-
               }
               else if (key == 'content') {
                 $content.find('.content').html(content);
@@ -156,11 +161,10 @@
                 cards.push({
                   html: $.html(),
                   name: card,
+                  template: _this.template(),
                   code: null
                 });
-
               }
-
             }
 
             var _cards = [];
@@ -170,21 +174,19 @@
               var html = card.html;
 
               Object.keys(_languageFiles).forEach(function(lang) {
-
                 var _card = {
-                  html : _translateHTML(html, _languageFiles[lang]),
+                  html: _translateHTML(html, _languageFiles[lang]),
                   name: card.name,
+                  template: _this.template(),
                   code: card.code,
                   lang: lang
                 };
                 _cards.push(_card);
-
               });
 
             });
 
             onLoadComplete(null, _cards);
-
           });
         }
         else {
@@ -194,11 +196,20 @@
 
     }
 
-    this.load = function(onLoadComplete) {
-      var splitFile = file.split('/'),
-          card = splitFile[splitFile.length -1].replace('.md', '');
+    this.name = function() {
+      return _name;
+    };
 
-      fs.readFile(templatePath + '/' + _templateFilePath + '.json', 'utf8', function (err, data) {
+    this.template = function() {
+      return template;
+    };
+
+    this.load = function(onLoadComplete) {
+      var splitFile = file.split(path.sep),
+          card = splitFile[splitFile.length -1].replace('.md', ''),
+          jsonFile = path.join(_templatePath, _templateFilePath + '.json');
+
+      fs.readFile(jsonFile, 'utf8', function (err, data) {
         if (err) {
           onLoadComplete(err, null);
           return;
@@ -212,7 +223,7 @@
             return;
           }
 
-          _cardConfig = FileUtils.parseMarkdown(data);
+          _cardConfig = parserMarkdown(data);
           _cardConfig.name = _name;
 
           if (_cardConfig.type) {
@@ -221,7 +232,7 @@
             });
           }
           else {
-            throw new Error('no type in card: ' + card);
+            onLoadComplete('no type', null);
           }
 
         });
@@ -257,14 +268,13 @@
     }
 
     function _parseLanguage(language, file, callback) {
-
       fs.readFile(file, 'utf8', function (err, data) {
         if (err) {
           throw err;
         }
 
         var parsedContent = {};
-        _languages[language] = FileUtils.parsePo(data);
+        _languages[language] = parserGettext(data);
 
         // need to pre-parse the content
         for (var key in _languages[language]) {
@@ -273,11 +283,10 @@
 
         _languageFiles[language] = parsedContent;
 
-        _numberLanguagesToParse --;
+        _numberLanguagesToParse--;
         if (_numberLanguagesToParse === 0 && callback) {
           callback();
         }
-
       });
     }
 
@@ -294,6 +303,6 @@
 
   };
 
-  exports.Card = Card;
+  module.exports = Card;
 
 })();
