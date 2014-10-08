@@ -3,7 +3,7 @@
 
   var assert = require('chai').assert,
       fs = require('fs'),
-      Generator = require('../../index.js').Generator;
+      TheMachine = require('../../index.js').TheMachine;
 
   describe('#valid', function() {
 
@@ -12,7 +12,7 @@
     });
 
     it('should generate cards', function(done) {
-      new Generator(null).generate(function() {
+      new TheMachine(null).generate(function() {
 
         assert(fs.existsSync('../website/data/cards') === true, 'Cards folder has been generated');
 

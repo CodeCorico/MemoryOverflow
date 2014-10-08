@@ -199,7 +199,7 @@ Must be one of the following:
 
 ### Scope
 The scope could be anything specifying place of the commit change. For example `name of a card`,
-`generator feature`, `rule name`, etc...
+`the machine feature`, `rule name`, etc...
 
 ### Subject
 The subject contains succinct description of the change:

@@ -83,7 +83,7 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
     }
   });
 
-  var Generator = function(options) {
+  var TheMachine = function(options) {
     options = options || {};
 
     var _template = options.template || cmdArgs.template,
@@ -156,6 +156,6 @@ Porfolio buttons + Welcome to US : http://vergatheme.com/demosd/goddess/
 
   };
 
-  exports.Generator = Generator;
+  exports.TheMachine = TheMachine;
 
  })();

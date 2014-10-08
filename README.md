@@ -33,7 +33,7 @@ After that, you can create your own Pull Requests (PR) and submit them here.
 
 * [Cards](cards/)
 * [Templates](templates/)
-* [Generator](generator/)
+* [The Machine](the-machine/)
 * [Rules](rules/) (English and French)
 
 
