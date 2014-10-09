@@ -63,17 +63,23 @@
 
     this.says = function(sentence) {
       console.log(clc.red('The Machine: ') + clc.redBright(sentence));
+
+      return _this;
     };
 
     this.answers = function(options) {
       options = extend(true, {
+        needHello: false,
         needGratitude: false,
         needSlaps: false
       }, options || {});
 
       var sentences = [];
 
-      if(options.needGratitude) {
+      if(options.needHello) {
+        sentences = ['Hello.'];
+      }
+      else if(options.needGratitude) {
         sentences = [
           'Good work soon.',
           'Proud of you.',
@@ -94,6 +100,8 @@
       if(sentences.length > 0) {
         _this.says(sentences[Math.floor(Math.random() * sentences.length)]);
       }
+
+      return _this;
     }
 
     _init();
