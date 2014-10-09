@@ -65,7 +65,7 @@
       console.log(clc.red('The Machine: ') + clc.redBright(sentence));
     };
 
-    this.asks = function(options) {
+    this.answers = function(options) {
       options = extend(true, {
         needGratitude: false,
         needSlaps: false
