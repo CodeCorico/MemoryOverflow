@@ -30,7 +30,7 @@
       console.log(_this.saysFormat().replace('{sentence}', sentence));
 
       if(askTheMachine) {
-        theMachine.asks(askTheMachine);
+        theMachine.answers(askTheMachine);
       }
 
       return _this;
