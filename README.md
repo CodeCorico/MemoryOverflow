@@ -5,6 +5,7 @@
 # MemoryOverflow
 
 [![Build Status](https://travis-ci.org/CodeCorico/MemoryOverflow.svg)](https://travis-ci.org/CodeCorico/MemoryOverflow)
+[![Coverage Status](https://img.shields.io/coveralls/CodeCorico/MemoryOverflow.svg)](https://coveralls.io/r/CodeCorico/MemoryOverflow)
 [![Website Status](http://publish.memoryoverflow.codecorico.com/status.svg)](https://github.com/CodeCorico/MemoryOverflow-website)
 
 MemoryOverflow is a TOTALLY FREE card game designed by developers for developers.
