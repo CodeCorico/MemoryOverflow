@@ -9,7 +9,7 @@
 
   describe('Card', function() {
 
-    function _testCardLoad(cardDirectory, cardName, template, lang, done) {
+    function _testCardLoad(cardDirectory, cardName, template, lang, onCardLoaded) {
       expect(fs.existsSync(cardPath)).to.be.true;
 
       var Card = require(cardPath),
@@ -37,9 +37,13 @@
           expect(card.html).not.to.be.empty;
         });
 
-        done();
+        if (onCardLoaded) {
+          onCardLoaded(card, loadedCards);
+        }
       });
     }
+
+    module.exports.testCardLoad = _testCardLoad;
 
     it('should load the card \'foo\' in french', function(done) {
 
@@ -50,13 +54,16 @@
           inError = false;
 
       try {
-        _testCardLoad(cardDirectory, cardName, template, lang, done);
+        _testCardLoad(cardDirectory, cardName, template, lang, function(card) {
+          expect(card).not.to.be.null;
+          done();
+        });
       }
       catch(error) {
         inError = true;
+        expect(inError).to.be.false;
+        done();
       }
-
-      expect(inError).to.be.false;
     });
 
     it('should load the card \'foo\' in english', function(done) {
@@ -68,13 +75,16 @@
           inError = false;
 
       try {
-        _testCardLoad(cardDirectory, cardName, template, lang, done);
+        _testCardLoad(cardDirectory, cardName, template, lang, function(card) {
+          expect(card).not.to.be.null;
+          done();
+        });
       }
       catch(error) {
         inError = true;
+        expect(inError).to.be.false;
+        done();
       }
-
-      expect(inError).to.be.false;
     });
 
   });
