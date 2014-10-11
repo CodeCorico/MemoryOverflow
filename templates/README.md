@@ -3,7 +3,8 @@
 In MemoryOverflow game, cards can be printed with differents design templates. It's possible to choose the template of the printed cards and it's possible to make your own.
 Cards are grouped by editions which represent different themes.
 
- - [Templates](#templates)
+1. [Templates](#templates)
+2. [Contribute!](#contribute)
  - [Create a new card](#create)
  - [Improve/Fix existing template](#fix)
 
@@ -15,11 +16,15 @@ Here are the list of all templates:
 <img src="fototse/fototse-preview.png" alt="Fototse preview" height="150"/><br />
 Fototse by @retovona</a></p>
 
-## <a name="create"></a> Create a new template
+## <a name="contribute"></a> Contribute!
+
+In this project, everyone is free to contribute. To do that, you must first learn how to [use The Machine](../the-machine/). It's very easy and takes 10min to start making your first template. Of course, you don't have to learn writing code or something technical else. The Machine is here to generate your cards automatically.
+
+### <a name="create"></a> Create a new template
 
 To be used by [The Machine](../the-machine/), each template has a generic JSON configuration file.
 
-### The folder structure
+#### The folder structure
 
 A template must be located inside the `/templates` folder in its own folder.
 
@@ -45,7 +50,7 @@ This file contains :
 
 It describe the template spirit
 
-#### [template name]-*.jpg
+##### [template name]-*.jpg
 
 Except for the [template name]-preview.jpg file, all of the pictures files are used to generate cards :
 * `[template name]-back.jpg` is the back design of the card
@@ -53,7 +58,7 @@ Except for the [template name]-preview.jpg file, all of the pictures files are u
 * `[template name]-code.jpg` is the code type design of the card
 * `[template name]-event.jpg` is the event type design of the card
 
-#### [template name].json
+##### [template name].json
 
 This file structure areas and styles of cards:
 
@@ -160,7 +165,7 @@ This file structure areas and styles of cards:
 }
 ```
 
-## <a name="fix"></a> Improve/Fix existing template
+### <a name="fix"></a> Improve/Fix existing template
 
 If a template needs to be fixed, you can :
 * Contact the author of the template so that he corrects himself.
