@@ -11,19 +11,46 @@
           testArray = [
             '# A comment',
             '',
+            'msgid ""',
+            'msgstr "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"',
+            '',
             'msgid "Hello."',
             'msgstr "Bonjour."',
             '',
             '# A second comment',
             '',
-            'msgid "The Machine knows how to translate."',
-            'msgstr "La Machine sait comment traduire."',
+            'msgid "The Machine knows\nhow to translate."',
+            'msgstr "La Machine sait\ncomment traduire."',
+            '',
+            'msgid ""',
+            '"The Machine knows\n"',
+            '"how to translate.\n"',
+            'msgstr ""',
+            '"La Machine sait\n"',
+            '"comment traduire.\n"',
+            '',
+            'msgid "The Machine # knows\nhow to translate."',
+            'msgstr "La Machine # sait\ncomment traduire."',
+            '',
+            'msgid "I have %d apple"',
+            'msgid_plural "I have %d apples"',
+            'msgstr[0] "J\'ai %d pomme"',
+            'msgstr[1] "J\'ai %d pommes"',
+            'msgstr[2] "J\'ai %d pommes"',
             '',
           ],
           testText = testArray.join('\n'),
           expected = {
             'Hello.': 'Bonjour.',
-            'The Machine knows how to translate.': 'La Machine sait comment traduire.'
+            'The Machine knows how to translate.': 'La Machine sait comment traduire.',
+            'The Machine knows\nhow to translate.': 'La Machine sait\ncomment traduire.',
+            'The Machine knows\nhow to translate.\n': 'La Machine sait\ncomment traduire.\n',
+            'The Machine # knows\nhow to translate.': 'La Machine # sait\ncomment traduire.',
+            'I have %d apple': [
+              'J\'ai %d pomme',
+              'J\'ai %d pommes',
+              'J\'ai %d pommes'
+            ]
           };
 
       expect(parserGettext(testText)).to.deep.equal(expected);
