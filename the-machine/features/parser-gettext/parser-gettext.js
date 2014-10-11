@@ -1,30 +1,22 @@
 (function() {
   'use strict';
 
-  function parserGettext(data) {
-    var nodes = data
-          .replace(/\r\n/g, '\n')
-          .replace(/\r/g, '\n')
-          .split('\n'),
-        contents = {},
-        id = null,
-        str = null;
+  var gettextParser = require('gettext-parser');
 
-    nodes.forEach(function(node) {
-      if (node.indexOf('##') === 0 || node.indexOf('#') === 0) {
-        // ignore
-      }
-      else if (node.match(/msgid/g)) {
-        id = node.substring(6).replace(/"/g, '');
-      }
-      else if (node.match(/msgstr/g)) {
-        str = node.substring(7).replace(/"/g, '');
+  function parserGettext(text) {
+    var parsed = gettextParser.po.parse(text),
+        translations = parsed.translations[''],
+        contents = {};
 
-        if (id) {
-          contents[id] = str;
+    Object.keys(translations).forEach(function(key) {
+      if (key) {
+        var value = translations[key].msgstr;
+        if (value.length === 1) {
+          contents[key] = value[0];
         }
-        id = null;
-        str = null;
+        else {
+          contents[key] = value;
+        }
       }
     });
 
