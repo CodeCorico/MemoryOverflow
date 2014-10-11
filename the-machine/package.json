@@ -3,9 +3,10 @@
   "description": "The Machine",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./features/**/*-test.js --timeout 60000",
     "postinstall": "node postinstall.js",
-    "start": "gulp --gulpfile start.js --silent"
+    "start": "gulp --gulpfile start.js --silent",
+    "test": "mocha --reporter spec --bail --check-leaks ./features/**/*-test.js",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks ./features/**/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "gettext-parser": "^0.2.0",
     "glob": "^4.0.6",
     "gulp": "3.8.x",
+    "istanbul": "^0.3.2",
     "mocha": "^1.21.4",
     "progress": "1.1.x"
   }
