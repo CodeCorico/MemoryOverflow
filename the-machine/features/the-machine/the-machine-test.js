@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var assert = require('chai').assert,
+  var expect = require('chai').expect,
       path = require('path'),
       fs = require('fs'),
       theMachine = null,
@@ -26,7 +26,7 @@
   describe('The Machine', function() {
 
     it('should start', function() {
-      assert(fs.existsSync(theMachinePath), 'the-machine.js file exists');
+      expect(fs.existsSync(theMachinePath)).to.be.true;
 
       _stopConsoleLog();
       var TheMachine = require(theMachinePath),
@@ -40,7 +40,7 @@
       }
 
       _startConsoleLog();
-      assert(!inError, 'Start The Machine');
+      expect(inError).to.be.false;
     });
 
     it('should communicate', function() {
@@ -49,7 +49,8 @@
       _stopConsoleLog();
       theMachine.says(sentence);
       _startConsoleLog();
-      assert(lastLog.indexOf('The Machine:') > -1 && lastLog.indexOf(sentence) > -1, 'The Machine knows how to communicate.');
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain(sentence);
 
       _stopConsoleLog();
       theMachine.answers({
@@ -57,7 +58,8 @@
       });
       _startConsoleLog();
 
-      assert(lastLog.indexOf('The Machine:') > -1 && lastLog.indexOf('Hello.') > -1, 'The Machine knows how to answer.');
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
     });
 
   });
@@ -65,7 +67,7 @@
   describe('The Special Agents', function() {
 
     it('should start', function() {
-      assert(fs.existsSync(agentPath), 'the-machine-agent.js file exists');
+      expect(fs.existsSync(agentPath)).to.be.true;
 
       _stopConsoleLog();
       var TheMachineAgent = require(agentPath),
@@ -83,7 +85,7 @@
       }
 
       _startConsoleLog();
-      assert(!inError, 'Start Agent of tests');
+      expect(inError).to.be.false;
     });
 
     it('should communicate with The Machine', function() {
@@ -93,7 +95,9 @@
       agent.says(sentence);
 
       _startConsoleLog();
-      assert(lastLog.indexOf('Agent of tests:') > -1 && lastLog.indexOf(sentence) > -1, 'Agent knows how to communicate.');
+
+      expect(lastLog).to.contain('Agent of tests:');
+      expect(lastLog).to.contain(sentence);
 
       _stopConsoleLog();
       agent.says(sentence, {
@@ -101,7 +105,8 @@
       });
       _startConsoleLog();
 
-      assert(lastLog.indexOf('The Machine:') > -1 && lastLog.indexOf('Hello.') > -1, 'Agent knows how to communicate with The Machine.');
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
     });
 
   });
