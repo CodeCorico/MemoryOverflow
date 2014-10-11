@@ -7,6 +7,7 @@
   describe('Parser gettext', function() {
 
     it('should parse', function() {
+
       var parserGettext = require(path.join(__dirname, 'parser-gettext.js')),
           testArray = [
             '# A comment',
@@ -42,7 +43,6 @@
           testText = testArray.join('\n'),
           expected = {
             'Hello.': 'Bonjour.',
-            'The Machine knows how to translate.': 'La Machine sait comment traduire.',
             'The Machine knows\nhow to translate.': 'La Machine sait\ncomment traduire.',
             'The Machine knows\nhow to translate.\n': 'La Machine sait\ncomment traduire.\n',
             'The Machine # knows\nhow to translate.': 'La Machine # sait\ncomment traduire.',
@@ -53,6 +53,7 @@
             ]
           };
 
+      expect(parserGettext).not.to.be.null;
       expect(parserGettext(testText)).to.deep.equal(expected);
 
     });
