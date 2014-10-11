@@ -3,21 +3,26 @@
 MemoryOverflow game is based on cards. Each one is unique and can be used in many different ways according to the strategy of the player.
 Cards are grouped by editions which represent different themes.
 
- - [Editions](#editions)
- - [Create a new card](#create)
- - [Improve/Fix existing card](#fix)
+ 1. [Editions](#editions)
+ 2. [Contribute!](#contribute)
+  - [Create a new card](#create)
+  - [Improve/Fix existing card](#fix)
 
 ## <a name="editions"></a> Editions
 
 Here are the list of all editions:
 * [Fundamentals edition](fundamentals/)
 
-## <a name="create"></a> Create a new card
+## <a name="contribute"></a> Contribute!
 
-To be used by [The Machine](../the-machine/), each card has a generic configuration.
+In this project, everyone is free to contribute. To do that, you must first learn how to [use The Machine](../the-machine/). It's very easy and takes 10min to start writing your first card. Of course, you don't have to learn writing code or something technical else. The Machine is here to generate your cards automatically.
+
+### <a name="create"></a> Create a new card
+
+To be used by The Machine, each card has a generic configuration.
 It's possible to create cards in differents programming languages and translations.
 
-### The folder structure
+#### The folder structure
 
 A card must be located inside an edition. Each card is composed of files inside a folder name.
 
@@ -32,7 +37,7 @@ Here is the folder configuration:
 
 A card *must have* these files. It's possible to add all of the translation you want but you need to have JavaScript format and english translation by default.
 
-#### README.md file
+##### README.md file
 
 This file describe the card and its spirit.
 Its include:
@@ -44,7 +49,7 @@ Its include:
 * A link to its configuration file
 * Its changelog
 
-#### [card name].md file
+##### [card name].md file
 
 This file is a Markdown format. It describe in details the card divided in sections by title.
 
@@ -100,7 +105,7 @@ Use &{} to encapsulate your translated texts
 
 All translated text need to be encapsulated by &{my text}.
 
-#### [card name].[translation].po files
+##### [card name].[translation].po files
 
 Translations files are used to translate encapsulated texts inside card configuration.
 
@@ -111,7 +116,7 @@ A translation file use the international ISO language code in a [Gettext format]
 ...
 ```
 
-## <a name="fix"></a> Improve/Fix existing card
+### <a name="fix"></a> Improve/Fix existing card
 
 If a card needs to be fixed, you can:
 * Contact the original author of the card so that he corrects himself.
