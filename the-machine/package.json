@@ -17,6 +17,7 @@
     "cli-color": "^0.3.2",
     "extend": "^2.0.0",
     "fs-extra": "^0.12.0",
+    "gettext-parser": "^0.2.0",
     "glob": "^4.0.6",
     "gulp": "3.8.x",
     "mocha": "^1.21.4",
