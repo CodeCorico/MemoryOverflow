@@ -9,6 +9,8 @@
       throw new Error('A card is required.');
     }
 
+    var _readmeFile = card.readmeFile();
+
     function _replaceStyle(content) {
       return content
         .replace(new RegExp('{/([a-z-]*)}', 'ig'), '`')
@@ -36,8 +38,6 @@
             englishLanguage = languages ? languages['en_EN'] : null;
 
         if (languages) {
-          //console.log(languages);
-
           var parsedContent = {};
           // need to pre-parse the content
           for (var key in englishLanguage) {
@@ -61,9 +61,12 @@
           .replace('{card.type}', card.config().type)
           .replace('{card.edition}', card.config().edition);
 
-        fs.writeFile(card.readmeFile(), content, function(err) {
+        fs.writeFile(_readmeFile, content, function(err) {
           if (err) {
-            console.log(err);
+            onGenerationComplete(error, _readmeFile);
+          }
+          else {
+            onGenerationComplete(null, _readmeFile);
           }
         });
 
