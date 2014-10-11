@@ -3,9 +3,10 @@
 
   var fs = require('fs'),
       path = require('path'),
-      parserMarkdown = require('../parser-markdown/parser-markdown.js'),
-      parserGettext = require('../parser-gettext/parser-gettext.js'),
+      parserMarkdown = require(path.join(__dirname, '..', 'parser-markdown', 'parser-markdown.js')),
+      parserGettext = require(path.join(__dirname, '..', 'parser-gettext', 'parser-gettext.js')),
       cheerio = require('cheerio');
+
 
   var Card = function(file, template, name) {
     if (!file || !template) {

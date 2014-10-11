@@ -12,7 +12,7 @@
 
   describe('Card readme', function() {
 
-    it('should load the card \'foo\' in french', function(done) {
+    it('should load the card "foo" in french', function(done) {
 
       var testCardLoad = require(path.join(__dirname, 'card-test.js')).testCardLoad,
           cardName = 'foo',

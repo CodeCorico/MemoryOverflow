@@ -45,7 +45,7 @@
 
     module.exports.testCardLoad = _testCardLoad;
 
-    it('should load the card \'foo\' in french', function(done) {
+    it('should load the card "foo" in french', function(done) {
 
       var cardName = 'foo',
           cardDirectory = path.join(rootDirectory, 'cards', 'fundamentals', 'foo'),
@@ -66,7 +66,7 @@
       }
     });
 
-    it('should load the card \'foo\' in english', function(done) {
+    it('should load the card "foo" in english', function(done) {
 
       var cardName = 'foo',
           cardDirectory = path.join(rootDirectory, 'cards', 'fundamentals', 'foo'),
