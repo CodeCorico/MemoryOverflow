@@ -1,6 +1,10 @@
 {
   "name": "memoryoverflow-the-machine",
   "description": "The Machine",
+  "author": "CodeCorico",
+  "bugs": {
+    "url": "https://github.com/CodeCorico/MemoryOverflow/issues"
+  },
   "main": "index.js",
   "scripts": {
     "postinstall": "node postinstall.js",
