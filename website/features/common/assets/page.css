@@ -491,6 +491,10 @@ a:hover {
   background-image: url("hologram-panel-game.png");
 }
 
+.panel.panel-cards .hologram-panel {
+  background-image: url("hologram-panel-cards.png");
+}
+
 .panel .column, .panel .column:hover, .panel .column:visited {
   position: relative;
   float: left;
@@ -498,6 +502,7 @@ a:hover {
   height: 100%;
   color: white;
   text-decoration: none;
+  text-transform: uppercase;
 
   background: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
   background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(0,0,0,0)),color-stop(30%,rgba(0,0,0,0.03)),color-stop(150%,rgba(0,0,0,0.85)));
@@ -512,6 +517,10 @@ a:hover {
 
 .panel .column:last-child {
   width: 34%;
+}
+
+.panel .column.column-100 {
+  width: 100%;
 }
 
 @-webkit-keyframes cursor-animation { 0% { -webkit-transform: translateY(0px); } 50% { -webkit-transform: translateY(10px); } 100% { -webkit-transform: translateY(0px); } }
