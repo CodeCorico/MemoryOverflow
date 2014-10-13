@@ -27,8 +27,7 @@ If you are subject to or witness unacceptable behavior, or have any other concer
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use MemoryOverflow, please direct these to the [Google Group](https://groups.google.com/forum/#!forum/memoryoverflow)
-discussion list or [StackOverflow](http://stackoverflow.com/questions/tagged/memoryoverflow).
+If you have questions about how to use MemoryOverflow, please direct these to the discussion chat [![Discussion chat](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) or [StackOverflow](http://stackoverflow.com/questions/tagged/memoryoverflow).
 
 ## <a name="issue"></a> Found an Issue?
 If you find a bug in the source code or a mistake in the wiki, you can help us by
