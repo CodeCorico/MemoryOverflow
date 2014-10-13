@@ -121,4 +121,4 @@ A translation file use the international ISO language code in a [Gettext format]
 If a card needs to be fixed, you can:
 * Contact the original author of the card so that he corrects himself.
 * Add an [issue](https://github.com/CodeCorico/MemoryOverflow/issues).
-* Send a new PR linked to your issue (see the [Contribution guidelines](./CONTRIBUTING.md))
+* Send a new PR linked to your issue (see the [Contribution guidelines](../CONTRIBUTING.md))
