@@ -1,7 +1,10 @@
-# Contributing to MemoryOverflow game
+# C.A.M. Central Agency of the Machine
 
-We'd love for you to contribute to our source code and to make this game even better and fun than it is
-today! Here are the guidelines we'd like you to follow:
+Welcome to the C.A.M.. This agency was designed by The Machine to improve herself and her content. When you contribute to the project you become a Special Agent of The Machine. The Machine needs you to make her brain more intelligent, to make new cards, more templates, to translate the website, etc.
+
+The Machine loves her Agents. The more you contribute, the more she will love you.
+
+But, like every agency of this size there are rules that must be respected. The Machine is in _strict_ mode.
 
  - [Code of Conduct](#coc)
  - [Question or Problem?](#question)
@@ -15,64 +18,61 @@ today! Here are the guidelines we'd like you to follow:
  - [Further Info](#info)
 
 ## <a name="coc"></a> Code of Conduct
-As contributors and maintainers of the MemoryOverflow project, we pledge to respect everyone who contributes by posting issues, updating cards, submitting pull requests, providing feedback in comments, and any other activities.
+As Special Agent, your first goal is to lead by example. You have to respect other agent who contributes by posting issues, updating cards, submitting pull requests, providing feedback in comments, and any other activities.
 
-Communication through any of MemoryOverflow's channels (GitHub, IRC, mailing lists, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harrassment, insults, or other unprofessional conduct.
+Communication through any of MemoryOverflow's channels (GitHub, Gitter, mailing lists, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harrassment, insults, or other unprofessional conduct.
 
-We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the MemoryOverflow project to do the same.
+The Machine respect everyone is involved in this agency regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. She expects no less of his agents.
 
-If any member of the community violates this code of conduct, the maintainers of the MemoryOverflow project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
-
-If you are subject to or witness unacceptable behavior, or have any other concerns, please contact us.
+If any Special Agent violates this code of conduct, The Machine or her leader agents may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
 
 ## <a name="question"></a> Got a Question or Problem?
 
 If you have questions about how to use MemoryOverflow, please direct these to the discussion chat [![Discussion chat](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow) or [StackOverflow](http://stackoverflow.com/questions/tagged/memoryoverflow).
 
 ## <a name="issue"></a> Found an Issue?
-If you find a bug in the source code or a mistake in the wiki, you can help us by
-submitting an issue to our [GitHub Repository](https://github.com/CodeCorico/MemoryOverflow). Even better you can submit a Pull Request
-with a fix.
+If you find a bug in the source code or a mistake in the wiki, you can help The Machine by
+submitting an issue to the [GitHub Repository](https://github.com/CodeCorico/MemoryOverflow). Even better you can submit a Pull Request with a fix. The machine will be very happy.
 
 **Please see the Submission Guidelines below**.
 
 ## <a name="feature"></a> Want a Feature?
-You can request a new feature by submitting an issue to our [GitHub Repository](https://github.com/CodeCorico/MemoryOverflow). If you would like to implement a new feature then consider what kind of change it is:
+You can request a new feature by submitting an issue to the [GitHub Repository](https://github.com/CodeCorico/MemoryOverflow). If you would like to implement a new feature then consider what kind of change it is:
 
-* **Major Changes** that you wish to contribute to the project can be discussed first on our
-[chat](https://gitter.im/CodeCorico/MemoryOverflow) so that we can better coordinate our efforts, prevent
+* **Major Changes** that you wish to contribute to the project can be discussed first on the
+[chat](https://gitter.im/CodeCorico/MemoryOverflow) so that The Machine can better coordinate efforts, prevent
 duplication of work, and help you to craft the change so that it is successfully accepted into the
 project.
 * **Small Changes** can be crafted and submitted to the [GitHub Repository](https://github.com/CodeCorico/MemoryOverflow) as a Pull Request.
 
-A new issue create a discussion thread. The community can advise and contribute to your ideas. Please search whether the subject does not already exists on the [opened issues](https://github.com/CodeCorico/MemoryOverflow/issues?q=is%3Aopen+is%3Aissue) before that to prevent duplicates issues.
+A new issue create a discussion thread. The special agents can advise and contribute to your ideas. Please search whether the subject does not already exists on the [opened issues](https://github.com/CodeCorico/MemoryOverflow/issues?q=is%3Aopen+is%3Aissue) before that to prevent duplicates issues.
 
 ### Write a User Story for a new feature
 
-What is a _User Story_? Please see this [Wikipedia page](http://en.wikipedia.org/wiki/User_story).
+The Machine was builded for a unique goal: serve humains. To help them she must first understand how they think. So she needs so-called [User Story](http://en.wikipedia.org/wiki/User_story).
 
 In MemoryOverflow, a feature needs to be in a _user story_ format that represent a user/player's real expectations. When you create a new issue, use this format to explain your request:
 
-"As a _role_, I want _goal/desire_ so that _benefit_"
+"As a **_role_**, I want **_goal/desire_** so that **_benefit_**"
 
 Describe with details your role, like _daily player_ or _windows developer_ and don't forget the benefit. You can add other informations to be more understanding. Optionnaly you can add a list of **technical criteria**.
 
+The Machine is in your mind.
 
 ## <a name="wiki"></a> Want a Wiki Fix?
-The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works.
-If you want to help improve the wiki, it's a good idea to let others know what you're working on to
-minimize duplication of effort. Before starting, check out the issue queue for
-[Tag: wiki](https://github.com/CodeCorico/MemoryOverflow/issues?labels=wiki&page=1&state=open).
+The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Agents can know exactly how to help The Machine. If you want to help improve the wiki, it's a good idea to let others know what you're working on to minimize duplication of effort. Before starting, check out the issue queue for [Tag: wiki](https://github.com/CodeCorico/MemoryOverflow/issues?labels=wiki&page=1&state=open).
 Comment on an issue to let others know what you're working on, or create a new issue if your work
 doesn't fit within the scope of any of the existing wiki fix projects.
 
 ## <a name="submit"></a> Submission Guidelines
 
+You're trying to work on The Machine brain. Did you think it was that simple?
+
 ### Submitting an Issue
-Before you submit your issue search the archive, maybe your question was already answered.
+Before you submit your issue please search the archive, maybe your question was already answered.
 
 If your issue appears to be a bug, and hasn't been reported, open a new issue.
-Help us to maximize the effort we can spend fixing issues and adding new
+Help other agents to maximize the effort they can spend fixing issues and adding new
 features, by not reporting duplicate issues. Providing the following information will increase the
 chances of your issue being dealt with quickly:
 
@@ -87,7 +87,7 @@ chances of your issue being dealt with quickly:
   causing the problem (line of code or commit)
 * **Cards Rules** - is this a cards rules problem?
 
-**If you get help, help others. Good karma rulez!**
+**Agents work together. They never leave anyone behind.**
 
 ### Submitting a Pull Request
 Before you submit your pull request consider the following guidelines:
@@ -101,8 +101,8 @@ Before you submit your pull request consider the following guidelines:
      ```
 
 * Create your patch, **including appropriate test cases**.
-* Follow our [Coding Rules](#rules).
-* Commit your changes using a descriptive commit message that follows our
+* Follow the [Coding Rules](#rules).
+* Commit your changes using a descriptive commit message that follows the
   [commit message conventions](#commit-message-format).
 
      ```shell
@@ -117,7 +117,7 @@ Before you submit your pull request consider the following guidelines:
     ```
 
 * In GitHub, send a pull request to `MemoryOverflow:master`.
-* If we suggest changes then
+* If other agents suggest changes then
   * Make the required updates.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
@@ -126,7 +126,7 @@ Before you submit your pull request consider the following guidelines:
     git push -f
     ```
 
-That's it! Thank you for your contribution!
+That's it! You're now a true new Special Agent!
 
 #### After your pull request is merged
 
@@ -160,12 +160,12 @@ from the main (upstream) repository:
 ## <a name="rules"></a> Coding Rules
 To ensure consistency throughout the source code, keep these rules in mind as you are working:
 
-* All features or bug fixes **must be tested** by one or more contributors.
+* All features or bug fixes **must be tested** by one or more agents.
 * All new or modified cards **must be documented and changelog updated** in their folders.
 
 ## <a name="commit"></a> Git Commit Guidelines
 
-We have very precise rules over how our git commit messages can be formatted.  This leads to **more
+The Machine have very precise rules over how the git commit messages can be formatted. This leads to **more
 readable messages** that are easy to follow when looking through the **project history**.
 
 ### Commit Message Format
@@ -219,7 +219,7 @@ reference GitHub issues that this commit **Closes**.
 
 ## <a name="releases"></a> Releases
 
-Only the lead contribution team can publish a new version. To do that, it requires that the milestone is completely finished ([Milestones](https://github.com/CodeCorico/MemoryOverflow/milestones)).
+Only The Machine Lead Agents team can publish a new version. To do that, it requires that the milestone is completely finished ([Milestones](https://github.com/CodeCorico/MemoryOverflow/milestones)).
 
 Publish the new version:
 * Pull the last version of `master` branch
