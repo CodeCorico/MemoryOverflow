@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.gif"/>
+  <img src="logo.png"/>
 </p>
 
 # MemoryOverflow
