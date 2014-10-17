@@ -348,7 +348,7 @@ a:hover {
   top: 760px;
 }
 
-.body-content-content .panel-project {
+.body-content-content .panel-contribute {
   top: 1110px;
 }
 
@@ -380,7 +380,7 @@ a:hover {
   top: 835px;
 }
 
-.hologram-laser-project {
+.hologram-laser-contribute {
   top: 1186px;
 }
 
@@ -396,7 +396,7 @@ a:hover {
   left: 0;
   width: 1000px;
   height: 320px;
-  background: url("hologram-panel.png") no-repeat center center;
+  background: no-repeat center center;
 
   -webkit-transform: scale(0);
      -moz-transform: scale(0);
@@ -417,6 +417,10 @@ a:hover {
 
 .panel.panel-cards .hologram-panel {
   background-image: url("hologram-panel-cards.png");
+}
+
+.panel.panel-contribute .hologram-panel {
+  background-image: url("hologram-panel-contribute.png");
 }
 
 .panel .column, .panel .column:hover, .panel .column:visited {
