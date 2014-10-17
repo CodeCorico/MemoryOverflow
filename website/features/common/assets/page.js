@@ -18,7 +18,7 @@ $(function() {
       }, {
         selector: '.panel-cards'
       }, {
-        selector: '.panel-project'
+        selector: '.panel-contribute'
       }];
 
   function _onScroll() {
