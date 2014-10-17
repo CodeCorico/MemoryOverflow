@@ -1,5 +1,9 @@
 # C.A.M. Central Agency of the Machine
 
+<p align="center">
+  <img src="rules/images/Central Agency of The Machine.png" width="300" />
+</p>
+
 Welcome to the C.A.M.. This agency was designed by The Machine to improve herself and her content. When you contribute to the project you become a Special Agent of The Machine. The Machine needs you to make her brain more intelligent, to make new cards, more templates, to translate the website, etc.
 
 The Machine loves her Agents. The more you contribute, the more she will love you.
