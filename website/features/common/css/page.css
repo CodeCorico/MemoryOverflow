@@ -1,0 +1,265 @@
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+a{background:transparent}
+a:active,a:hover{outline:0}
+abbr[title]{border-bottom:1px dotted}
+dfn{font-style:italic}
+h1{font-size:2em;margin:.67em 0}
+mark{background:#ff0;color:#000}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:1em 40px}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+button{overflow:visible}
+button,select{text-transform:none}
+button,html input[type=button],/* 1 */
+input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input{line-height:normal}
+input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+b,strong,optgroup{font-weight:bold}
+pre,textarea{overflow:auto}
+button::-moz-focus-inner,input::-moz-focus-inner,legend{border:0;padding:0}
+
+/* Fontello fixes */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  margin: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+body {
+  font-family: "Orbitron", "sans serif";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  background: #2d2d2d;
+  color: white;
+}
+
+a, a:hover, a:visited, a:focus {
+  color: #E1B700;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@-webkit-keyframes rotate-right-animation { 0% { -webkit-transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); } }
+@-moz-keyframes    rotate-right-animation { 0% { -moz-transform: rotate(0deg); }    100% { -moz-transform: rotate(360deg); } }
+@-ms-keyframes     rotate-right-animation { 0% { -ms-transform: rotate(0deg); }     100% { -ms-transform: rotate(360deg); } }
+@-o-keyframes      rotate-right-animation { 0% { -o-transform: rotate(0deg); }      100% { -o-transform: rotate(360deg); } }
+@keyframes         rotate-right-animation { 0% { transform: rotate(0deg); }         100% { transform: rotate(360deg); } }
+
+@-webkit-keyframes rotate-left-animation { 0% { -webkit-transform: rotate(0deg); } 100% { -webkit-transform: rotate(-360deg); } }
+@-moz-keyframes    rotate-left-animation { 0% { -moz-transform: rotate(0deg); }    100% { -moz-transform: rotate(-360deg); } }
+@-ms-keyframes     rotate-left-animation { 0% { -ms-transform: rotate(0deg); }     100% { -ms-transform: rotate(-360deg); } }
+@-o-keyframes      rotate-left-animation { 0% { -o-transform: rotate(0deg); }      100% { -o-transform: rotate(-360deg); } }
+@keyframes         rotate-left-animation { 0% { transform: rotate(0deg); }         100% { transform: rotate(-360deg); } }
+
+.body-header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.body-header-content {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 210px;
+}
+
+.logo-bg {
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 156px;
+  background: url("../images/logo-animation.png") no-repeat;
+  background-size: 100% 100%;
+
+  -webkit-animation: rotate-right-animation 120s linear infinite;
+     -moz-animation: rotate-right-animation 120s linear infinite;
+      -ms-animation: rotate-right-animation 120s linear infinite;
+       -o-animation: rotate-right-animation 120s linear infinite;
+          animation: rotate-right-animation 120s linear infinite;
+}
+
+.logo-bg-1 {
+  opacity: 0.15;
+  top: 190px;
+  left: 213px;
+  width: 100px;
+  height: 100px;
+}
+
+.logo-bg-2 {
+  top: -100px;
+  left: auto;
+  width: 200px;
+  height: 200px;
+  right: 168px;
+}
+
+.logo-bg-3 {
+  opacity: 0.2;
+  top: 14px;
+  left: 2px;
+  width: 250px;
+  height: 250px;
+}
+
+.logo-bg-4 {
+  top: -100px;
+  left: 260px;
+  width: 400px;
+  height: 400px;
+}
+
+.logo-bg-5 {
+  opacity: 0.15;
+  top: 40px;
+  right: 1px;
+  width: 250px;
+  height: 250px;
+  left: auto;
+}
+
+.logo-bg-6 {
+  top: -148px;
+  right: -366px;
+  width: 400px;
+  height: 400px;
+  left: auto;
+}
+
+.logo-bg-7 {
+  opacity: 0.15;
+  top: -85px;
+  left: -279px;
+  width: 300px;
+  height: 300px;
+}
+
+.logo-bg-3, .logo-bg-4, .logo-bg-5 {
+  -webkit-animation: rotate-left-animation 120s linear infinite;
+     -moz-animation: rotate-left-animation 120s linear infinite;
+      -ms-animation: rotate-left-animation 120s linear infinite;
+       -o-animation: rotate-left-animation 120s linear infinite;
+          animation: rotate-left-animation 120s linear infinite;
+}
+
+.body-header .logo, .body-header .logo:hover {
+  position: absolute;
+  top: 30px;
+  left: 227px;
+  width: 546px;
+  height: 156px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.body-header .logo .logo-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 156px;
+  height: 156px;
+  background: url("../images/logo-animation.png") no-repeat;
+
+  -webkit-animation: rotate-right-animation 90s linear infinite;
+     -moz-animation: rotate-right-animation 90s linear infinite;
+      -ms-animation: rotate-right-animation 90s linear infinite;
+       -o-animation: rotate-right-animation 90s linear infinite;
+          animation: rotate-right-animation 90s linear infinite;
+}
+
+.body-header .logo h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 546px;
+  height: 156px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: -99999px;
+  background: url("../images/logo.png") no-repeat;
+}
+
+.body-header .logo p {
+  margin: 0;
+}
+
+.body-header .home-message {
+  font-size: 28px;
+  line-height: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.body-header .home-message span {
+  font-size: 20px;
+}
+
+.body-content {
+  position: relative;
+  width: 100%;
+  height: 1442px;
+  background: url("../images/background.png") repeat-x;
+}
+
+.body-content-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1411px;
+  overflow: hidden;
+}
+
+.city {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -938px; /* width / 2 */
+  height: 776px;
+  width: 1876px;
+  background: url("../images/city.png") no-repeat;
+}
+
+.body-footer {
+  width: 1000px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 20px 0 50px;
+}
+
+.body-footer p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 18px;
+  color: #999;
+}
