@@ -28,7 +28,8 @@ $(function() {
     }
 
     function _onPageRedraw() {
-      var windowHeight = _this.$el('window').height(),
+      var windowWidth = _this.$el('window').width(),
+          windowHeight = _this.$el('window').height(),
           scrollTop = _this.$el('window').scrollTop(),
           scrollBottom = scrollTop + windowHeight,
           windowCenter = scrollTop + (windowHeight / 2),
@@ -47,6 +48,7 @@ $(function() {
       _this.$el('city').css('bottom', (_cityRules.normalPosition - scrollBottom) * _cityRules.scrollSpeed);
 
       _this.fire('pageRedraw', {
+        windowWidth: windowWidth,
         windowHeight: windowHeight,
         scrollTop: scrollTop,
         scrollBottom: scrollBottom,

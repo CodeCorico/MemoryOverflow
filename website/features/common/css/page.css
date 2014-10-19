@@ -174,7 +174,8 @@ a:hover {
 .body-header .logo, .body-header .logo:hover {
   position: absolute;
   top: 30px;
-  left: 227px;
+  left: 50%;
+  margin-left: -273px;
   width: 546px;
   height: 156px;
   overflow: hidden;
@@ -217,7 +218,7 @@ a:hover {
   font-size: 28px;
   line-height: 40px;
   text-align: center;
-  margin: 0;
+  margin: 0 10px;
 }
 
 .body-header .home-message span {
@@ -227,6 +228,7 @@ a:hover {
 .body-content {
   position: relative;
   width: 100%;
+  overflow: hidden;
   height: 1442px;
   background: url("../images/background.png") repeat-x;
 }
@@ -280,4 +282,81 @@ a:hover {
 
 .body-footer p {
   color: #999;
+}
+
+@media (max-width: 1000px) {
+
+  .body-header-content {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .logo-bg {
+    display: none;
+  }
+
+  .body-header .home-message {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .body-content {
+    height: auto;
+  }
+
+  .body-footer {
+    width: 100%;
+  }
+
+  .body-footer .column {
+    width: 50%;
+  }
+
+  .body-footer .column:first-child {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .body-footer h4, .body-footer p {
+    padding: 0 10px;
+  }
+
+  .body-footer .column:first-child h4, .body-footer .column:first-child p {
+    text-align: center;
+  }
+
+  .body-footer .column:nth-child(2) {
+    text-align: right;
+  }
+
+  .body-footer .column ul {
+    margin: 0 10px;
+  }
+
+}
+
+@media (max-width: 555px) {
+
+  .body-header-content {
+    padding-top: 160px;
+  }
+
+  .body-header .logo, .body-header .logo:hover {
+    width: 300px;
+    height: 86px;
+    margin-left: -150px;
+  }
+
+  .body-header .logo .logo-animation {
+    width: 86px;
+    height: 86px;
+    background-size: 100% 100%;
+  }
+
+  .body-header .logo h1 {
+    width: 300px;
+    height: 86px;
+    background-size: 100% 100%;
+  }
+
 }
