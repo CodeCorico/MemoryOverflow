@@ -252,14 +252,32 @@ a:hover {
 
 .body-footer {
   width: 1000px;
-  height: 300px;
   margin: 0 auto;
   padding: 20px 0 50px;
 }
 
-.body-footer p {
-  text-align: center;
+.body-footer h4 {
+  margin: 0 0 15px;
   font-size: 16px;
-  line-height: 18px;
+  font-weight: normal;
+}
+
+.body-footer .column {
+  position: relative;
+  float: left;
+  width: 20%;
+}
+
+.body-footer .column:first-child {
+  width: 60%;
+}
+
+.body-footer .column ul, .body-footer .column li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.body-footer p {
   color: #999;
 }
