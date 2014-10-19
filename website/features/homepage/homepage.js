@@ -5,7 +5,7 @@ $(function() {
     return;
   }
 
-  var _panelsVisibilityMargin = 160,
+  var _panelsVisibilityMargin = 0,
       _panels = [{
         selector: '.panel-game'
       }, {
@@ -20,18 +20,25 @@ $(function() {
 
       $.extend(true, panel, {
         height: $panel.outerHeight(),
-        top: $panel.position().top,
+        top: $panel.offset().top,
         center: $panel.offset().top + ($panel.outerHeight() / 2)
       });
     });
   }
 
   window.Page.onPageRedraw(function(args) {
+    if(args.windowWidth <= 1000) {
+      $('.panel').css({
+        display: '',
+        transform: ''
+      });
+
+      return;
+    }
+
     $.each(_panels, function(index, panel) {
       var $panel = $(panel.selector),
           $hologramPanel = $panel.find('.hologram-panel'),
-          panelMinCenter = panel.center - _panelsVisibilityMargin,
-          panelMaxCenter = panel.center + _panelsVisibilityMargin,
           panelTopOffset = (Math.abs(args.windowCenter - panel.center) * 0.6),
           translateY = 0;
 
@@ -44,7 +51,7 @@ $(function() {
 
       $panel.css('transform', 'translateY(' + translateY + 'px)');
 
-      if(panelMinCenter <= args.windowCenter && panelMaxCenter >= args.windowCenter) {
+      if(panel.top > args.scrollTop - _panelsVisibilityMargin && panel.top + panel.height < args.scrollBottom + _panelsVisibilityMargin) {
         if(!$hologramPanel.data('open')) {
           $hologramPanel.data('open', true);
 

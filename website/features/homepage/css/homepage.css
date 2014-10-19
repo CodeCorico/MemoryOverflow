@@ -79,6 +79,7 @@
   width: 1000px;
   height: 1442px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .body-homepage .panel {
@@ -108,10 +109,11 @@
 
 .hologram-laser {
   position: absolute;
-  left: 406px;
+  left: 50%;
   width: 165px;
   height: 165px;
   background: url("../images/hologram-laser.png") no-repeat;
+  margin-left: -96px;
 
   -webkit-animation: hologram-laser-animation 0.1s linear infinite;
      -moz-animation: hologram-laser-animation 0.1s linear infinite;
@@ -235,4 +237,135 @@
   font-size: 26px;
   line-height: 36px;
   text-align: center;
+}
+
+@media (max-width: 1000px) {
+
+  .body-homepage {
+    width: 100%;
+    height: auto;
+  }
+
+  .body-content-container {
+    display: none;
+  }
+
+  .card-light, .machine-red-eye, .hero-light, .machine-tower {
+    display: none;
+  }
+
+  .hologram-laser {
+    display: none;
+  }
+
+  .panel .hologram-panel {
+    position: relative;
+    top: 0;
+    left: 0;
+
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+        -ms-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+
+    -webkit-animation: none;
+       -moz-animation: none;
+         -o-animation: none;
+        -ms-animation: none;
+            animation: none;
+  }
+
+  .body-homepage .panel {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 20px auto;
+  }
+
+  .panel .hologram-panel {
+    width: 100%;
+    height: 280px;
+    background-position: center center;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .body-homepage .panel-game, .body-homepage .panel-cards, .body-homepage .panel-contribute {
+    top: 0;
+  }
+
+  .panel.panel-game {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .panel.panel-game .hologram-panel {
+    background: none;
+    height: auto;
+  }
+
+  .panel.panel-game .hologram-panel .column, .panel.panel-game .hologram-panel .column:hover, .panel.panel-game .hologram-panel .column:visited {
+    position: relative;
+    display: block;
+    float: none;
+    width: 280px;
+    height: 280px;
+    margin: 20px auto;
+    background-position: center center;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .panel.panel-game .hologram-panel .column:first-child {
+    background-image: url("../images/hologram-mini-memoryoverflow.png");
+  }
+
+  .panel.panel-game .hologram-panel .column:nth-child(2) {
+    background-image: url("../images/hologram-mini-themachine.png");
+  }
+
+  .panel.panel-game .hologram-panel .column:last-child {
+    background-image: url("../images/hologram-mini-rules.png");
+  }
+
+  .panel.panel-cards .hologram-panel {
+    background-image: url("../images/hologram-mini-cards.png");
+  }
+
+  .panel.panel-contribute .hologram-panel {
+    background-image: url("../images/hologram-mini-contribute.png");
+  }
+
+  .panel .column:hover .cursor {
+    display: none;
+  }
+
+  .panel.panel-game .column .cursor, .panel.panel-game .column:hover .cursor {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 0;
+
+    background: -moz-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(0,0,0,0)),color-stop(30%,rgba(0,0,0,0.03)),color-stop(150%,rgba(0,0,0,0.85)));
+    background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
+    background: -o-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
+    background: -ms-linear-gradient(top,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
+    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.03) 30%,rgba(0,0,0,0.85) 150%);
+
+    -webkit-animation: none;
+       -moz-animation: none;
+         -o-animation: none;
+        -ms-animation: none;
+            animation: none;
+  }
+
 }
