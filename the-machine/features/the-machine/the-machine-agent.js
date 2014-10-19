@@ -26,8 +26,17 @@
       return clc.blue('Agent ' + _this.name() + ': ') + clc.blueBright('{sentence}');
     };
 
-    this.says = function(sentence, askTheMachine) {
-      console.log(_this.saysFormat().replace('{sentence}', sentence));
+    this.says = function(sentence, askTheMachine, specialColor) {
+      specialColor = specialColor || clc.blueBright;
+
+      process.stdout.write(clc.blue('Agent ' + _this.name() + ': '));
+      for(var i = 0, len = sentence.length; i < len; i++) {
+        process.stdout.write(specialColor(sentence[i]));
+        var wait = 20,
+            stop = 1 * new Date();
+        while(1 * new Date() < stop + wait) { }
+      }
+      process.stdout.write('\n');
 
       if(askTheMachine) {
         theMachine.answers(askTheMachine);
@@ -37,7 +46,7 @@
     };
 
     this.saysError = function(sentence, askTheMachine) {
-      _this.says(clc.yellow(sentence), askTheMachine);
+      _this.says(sentence, askTheMachine, clc.yellow);
       return _this;
     };
 

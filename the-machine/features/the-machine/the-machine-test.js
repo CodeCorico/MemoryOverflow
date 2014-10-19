@@ -9,18 +9,34 @@
       agent = null,
       agentPath = path.resolve(path.join(__dirname, 'the-machine-agent.js')),
       log = null,
+      stdoutWrite = null,
       lastLog = '';
 
   function _stopConsoleLog() {
+    _cleanLog();
     log = console.log;
+    stdoutWrite = process.stdout.write;
 
     console.log = function(string) {
       lastLog = string;
     };
+
+    process.stdout.write = function(string) {
+      lastLog += string;
+    };
+  }
+
+  function _cleanLog() {
+    lastLog = '';
+  }
+
+  function _cleanLastLogConsole() {
+    lastLog = lastLog.replace(/\u001b/g, '').replace(/\[.*?m/g, '');
   }
 
   function _startConsoleLog() {
     console.log = log;
+    process.stdout.write = stdoutWrite;
   }
 
   describe('The Machine', function() {
@@ -49,6 +65,7 @@
       _stopConsoleLog();
       theMachine.says(sentence);
       _startConsoleLog();
+      _cleanLastLogConsole();
       expect(lastLog).to.contain('The Machine:');
       expect(lastLog).to.contain(sentence);
 
@@ -58,6 +75,7 @@
       });
       _startConsoleLog();
 
+      _cleanLastLogConsole();
       expect(lastLog).to.contain('The Machine:');
       expect(lastLog).to.contain('Hello.');
     });
@@ -96,6 +114,7 @@
 
       _startConsoleLog();
 
+      _cleanLastLogConsole();
       expect(lastLog).to.contain('Agent of tests:');
       expect(lastLog).to.contain(sentence);
 
@@ -105,6 +124,7 @@
       });
       _startConsoleLog();
 
+      _cleanLastLogConsole();
       expect(lastLog).to.contain('The Machine:');
       expect(lastLog).to.contain('Hello.');
     });

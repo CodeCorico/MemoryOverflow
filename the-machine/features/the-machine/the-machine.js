@@ -7,7 +7,6 @@
       extend = require('extend');
 
   var TheMachine = function() {
-
     var _this = this,
         _agents = [];
 
@@ -62,7 +61,14 @@
     }
 
     this.says = function(sentence) {
-      console.log(clc.red('The Machine: ') + clc.redBright(sentence));
+      process.stdout.write(clc.red('The Machine: '));
+      for(var i = 0, len = sentence.length; i < len; i++) {
+        process.stdout.write(clc.redBright(sentence[i]));
+        var wait = 20,
+            stop = 1 * new Date();
+        while(1 * new Date() < stop + wait) { }
+      }
+      process.stdout.write('\n');
 
       return _this;
     };
