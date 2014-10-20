@@ -1,11 +1,11 @@
 # MemoryOverflow - Website
 
-This part of the project is what you see on http://memoryoverflow.codecorico.com. But, in this repository, it contains only the website skeleton.
+This part of the project is what you see on http://memoryoverflow.org. But, in this repository, it contains only the website skeleton.
 When The Machine is started, she's able to generate the website from the .ejs files and the cards.
 
 Whenever a contributor create/fix a card, a template, the rules or something else, The Machine don't want to sees commmits relates to the final website and cards generated in this repository. This is a "sources" repo.
 So The Machine have made a second repository, the [MemoryOverflow-website](https://github.com/CodeCorico/MemoryOverflow-website). Each time she sees a new commit, she regenerates the website and update it on the second repo if necessary.
-The second repository is directly plugged on the http://memoryoverflow.codecorico.com domain.
+The second repository is directly plugged on the http://memoryoverflow.org domain.
 
 1. [Contribute!](#contribute)
  - [Improve/Fix website](#fix)
