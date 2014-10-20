@@ -1,0 +1,48 @@
+
+  </div>
+
+  <footer class="body-footer">
+    <div class="column">
+      <h4>&laquo; The Machine sees everything &raquo;</h4>
+      <p>Memory Overflow is a card game for developers, by developers.</p>
+      <p>This project is FREE and OPEN for everyone. The Machine as many contributors (named Special Agents) who work everyday to improve the game.</p>
+    </div>
+    <div class="column">
+      <h4>Play!</h4>
+      <ul>
+        <li><a href="#">Memory Overflow</a></li>
+        <li><a href="#">The Machine story</a></li>
+        <li><a href="#">Game rules</a></li>
+        <li><a href="#">Print cards</a></li>
+      </ul>
+    </div>
+    <div class="column">
+      <h4>Contribute!</h4>
+      <ul>
+        <li><a href="https://github.com/CodeCorico/MemoryOverflow" target="_blank">The GitHub project</a></li>
+        <li><a href="#">Join the C.A.M.</a></li>
+        <li><a href="#">Create cards</a></li>
+        <li><a href="#">Create templates</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+  </footer>
+
+  <script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="vendor/velocityjs/velocity.min.js"></script>
+  <script type="text/javascript" src="features/common/js/page.js"></script>
+
+<% for(var i = 0, len = js.length; i < len; i++) { -%>
+  <script type="text/javascript" src="<%= js[i] -%>"></script>
+<% } -%>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-55434884-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
