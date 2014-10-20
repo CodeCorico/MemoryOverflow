@@ -30,13 +30,20 @@
       specialColor = specialColor || clc.blueBright;
 
       process.stdout.write(clc.blue('Agent ' + _this.name() + ': '));
-      for(var i = 0, len = sentence.length; i < len; i++) {
-        process.stdout.write(specialColor(sentence[i]));
-        var wait = 20,
-            stop = 1 * new Date();
-        while(1 * new Date() < stop + wait) { }
+
+      if(theMachine.isOneShot()) {
+        process.stdout.write(specialColor(sentence));
+      }
+      else {
+        for(var i = 0, len = sentence.length; i < len; i++) {
+          process.stdout.write(specialColor(sentence[i]));
+          var wait = 20,
+              stop = 1 * new Date();
+          while(1 * new Date() < stop + wait) { }
+        }
       }
       process.stdout.write('\n');
+
 
       if(askTheMachine) {
         theMachine.answers(askTheMachine);

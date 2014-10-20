@@ -19,6 +19,11 @@
     function _init() {
       _this.name('of Cards');
 
+      if(theMachine.isOneShot()) {
+        _this.says('Sorry boss, I don\'t support the one shot generation for now.');
+        return;
+      }
+
       _this.says('Target acquired, I\'m watching it.');
 
       _this

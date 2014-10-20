@@ -19,6 +19,11 @@
     function _init() {
       _this.name('of Website');
 
+      if(theMachine.isOneShot()) {
+        _this.says('Sorry boss, I don\'t support the one shot generation for now.');
+        return;
+      }
+
       _this.says('Website acquired, I\'m watching this files.');
 
       _this

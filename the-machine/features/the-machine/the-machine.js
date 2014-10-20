@@ -6,7 +6,9 @@
       glob = require('glob'),
       extend = require('extend');
 
-  var TheMachine = function() {
+  var TheMachine = function(oneShot) {
+    oneShot = oneShot || false;
+
     var _this = this,
         _agents = [];
 
@@ -38,7 +40,12 @@
 
       console.log([clc.reset].concat(banner).join(''));
 
-      _this.says('Special agents, go watching your targets.');
+      if(oneShot) {
+        _this.says('Special agents, go generate your targets.');
+      }
+      else {
+        _this.says('Special agents, go watching your targets.');
+      }
 
       var files = glob.sync('./features/**/agent-*.js');
 
@@ -47,6 +54,10 @@
           var agent = require(file.replace('./features', '../'));
           _agents.push(new agent(_this));
         });
+
+        if(oneShot) {
+          return;
+        }
 
         gulp.task('watch', function() {
           _agents.forEach(function(agent) {
@@ -60,13 +71,23 @@
       gulp.task('default', ['watch']);
     }
 
+    this.isOneShot = function() {
+      return oneShot;
+    };
+
     this.says = function(sentence) {
       process.stdout.write(clc.red('The Machine: '));
-      for(var i = 0, len = sentence.length; i < len; i++) {
-        process.stdout.write(clc.redBright(sentence[i]));
-        var wait = 20,
-            stop = 1 * new Date();
-        while(1 * new Date() < stop + wait) { }
+
+      if(oneShot) {
+        process.stdout.write(clc.redBright(sentence));
+      }
+      else {
+        for(var i = 0, len = sentence.length; i < len; i++) {
+          process.stdout.write(clc.redBright(sentence[i]));
+          var wait = 20,
+              stop = 1 * new Date();
+          while(1 * new Date() < stop + wait) { }
+        }
       }
       process.stdout.write('\n');
 
@@ -108,7 +129,7 @@
       }
 
       return _this;
-    }
+    };
 
     _init();
 
