@@ -13,32 +13,35 @@
         _agents = [];
 
     function _init() {
-      var bannerWidth = 52,
-          margin = new Array(Math.floor((clc.width - bannerWidth) / 2)).join(' '),
-          fillBar = margin.replace(/ /g, '░');
+      if(clc.width) {
+        var bannerWidth = 52,
+            fillCharasNb = Math.floor((clc.width - bannerWidth) / 2),
+            margin = fillCharasNb > 0 ? new Array(Math.floor((clc.width - bannerWidth) / 2)).join(' ') : '',
+            fillBar = margin.replace(/ /g, '░');
 
-      var banner = [
-        clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n',
-        clc.red(          '             ░░                      ░░             ') + '\n',
-        clc.red(          '           ░░                          ░░           ') + '\n',
-        clc.red(          '         ░░                              ░░         ') + '\n',
-        clc.red(          '         ░░   ' +                 ' ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ' +           '   ░░         ') + '\n',
-        clc.red(          '         ░░   ') + clc.redBright('████████████████████████') + clc.red('   ░░         ') + '\n',
-        clc.red(          '         ░░   ' +                 ' ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ' +           '   ░░         ') + '\n',
-        clc.red(          '         ░░                              ░░         ') + '\n',
-        clc.red(          '           ░░                          ░░           ') + '\n',
-        clc.red(          '             ░░                      ░░             ') + '\n',
-        clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n\n',
-        clc.red(          '           « The Machine sees everything »') + '\n\n\n'
-      ];
+        var banner = [
+          clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n',
+          clc.red(          '             ░░                      ░░             ') + '\n',
+          clc.red(          '           ░░                          ░░           ') + '\n',
+          clc.red(          '         ░░                              ░░         ') + '\n',
+          clc.red(          '         ░░   ' +                 ' ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ' +           '   ░░         ') + '\n',
+          clc.red(          '         ░░   ') + clc.redBright('████████████████████████') + clc.red('   ░░         ') + '\n',
+          clc.red(          '         ░░   ' +                 ' ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀ ' +           '   ░░         ') + '\n',
+          clc.red(          '         ░░                              ░░         ') + '\n',
+          clc.red(          '           ░░                          ░░           ') + '\n',
+          clc.red(          '             ░░                      ░░             ') + '\n',
+          clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n\n',
+          clc.red(          '           « The Machine sees everything »') + '\n\n\n'
+        ];
 
-      for(var i = 0, len = banner.length; i < len; i++) {
-        if(i !== 0 && i != 10) {
-          banner[i] = margin + banner[i];
+        for(var i = 0, len = banner.length; i < len; i++) {
+          if(i !== 0 && i != 10) {
+            banner[i] = margin + banner[i];
+          }
         }
-      }
 
-      console.log([clc.reset].concat(banner).join(''));
+        console.log([clc.reset].concat(banner).join(''));
+      }
 
       if(oneShot) {
         _this.says('Special agents, go generate your targets.');
