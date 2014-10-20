@@ -20,7 +20,11 @@
       _this.name('of Website');
 
       if(theMachine.isOneShot()) {
-        _this.says('Sorry boss, I don\'t support the one shot generation for now.');
+        _this.newDiscussion();
+        _this.says('Website acquired, I generate it right now!');
+
+        _work('all');
+
         return;
       }
 
@@ -37,18 +41,23 @@
     }
 
     function _work(type, ejsFile, folder) {
+      ejsFile = ejsFile || '';
+      folder = folder || '';
+
       var htmlFile = ejsFile.replace('.ejs', '.html'),
           htmlDestination = path.join(folder, htmlFile),
           ejsSource = path.join(folder, ejsFile);
 
-      _this.newDiscussion();
+      if(type != 'all') {
+        _this.newDiscussion();
+      }
 
-      if(folder.indexOf(path.sep + 'features' + path.sep) > -1) {
-        _this.says('Boss, a website feature has been ' + type + '. I have to regenerate all the HTML files.');
-
+      if(type == 'all' || folder.indexOf(path.sep + 'features' + path.sep) > -1) {
+        if(type != 'all') {
+          _this.says('Boss, a website feature has been ' + type + '. I have to regenerate all the HTML files.');
+        }
 
         var ejsfiles = glob.sync(PATHS.WEBSITE_EJS).map(function(file) {
-
           var source = path.resolve(file),
               destination = source.replace('.ejs', '.html');
 
