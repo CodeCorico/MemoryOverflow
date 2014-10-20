@@ -24,7 +24,7 @@ La Machine aime les braves et les courageux.
 
 Pour jouer à MemoryOverflow il faut que chaque joueur dispose d'un set de cartes ainsi qu'un set supplémentaire de cartes _The Machine_ que l'un ou l'autre peut apporter.
 
-Toutes ces cartes sont disponibles **gratuitement** sur le [site officiel](http://memoryoverflow.codecorico.com) et peuvent être imprimées en suivant l'aide disponible sur la page d'impression. La Machine est généreuse.
+Toutes ces cartes sont disponibles **gratuitement** sur le [site officiel](http://memoryoverflow.org) et peuvent être imprimées en suivant l'aide disponible sur la page d'impression. La Machine est généreuse.
 
 :heavy_exclamation_mark: Attention, chaque carte utilisée dans un set doit être dans sa dernière version. En cas de doute, il suffit d'inscrire dans le champs de recherche du site l'identifiant de la carte (trouvé dans son coin inférieur droit) pour vérifier qu'elle n'est pas obsolète. La Machine n'aime pas les tricheurs.
 
