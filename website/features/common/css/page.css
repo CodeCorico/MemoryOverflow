@@ -229,7 +229,6 @@ a:hover {
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 1442px;
   background: url("../images/background.png") repeat-x;
 }
 
@@ -298,10 +297,6 @@ a:hover {
   .body-header .home-message {
     font-size: 20px;
     line-height: 30px;
-  }
-
-  .body-content {
-    height: auto;
   }
 
   .body-footer {
