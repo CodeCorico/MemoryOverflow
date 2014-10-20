@@ -6,7 +6,6 @@
       path = require('path'),
 
       PATHS = {
-        SCRIPTS: ['features/**/*.js'],
         CARDS_CONTENT: ['../cards/**/*.md'],
         CARDS_LANG: ['../cards/**/*.po'],
         TEMPLATES: ['../templates/**/*.json', '../templates/**/*.jpg', '../templates/**/*.png']
@@ -38,13 +37,6 @@
               onlyTemplate: template
             });
           }
-        })
-        .watch(PATHS.SCRIPTS, function() {
-          _this
-            .newDiscussion()
-            .says('The Admin is working on your brain boss. I have to regenerate cards.');
-
-          _generate();
         })
         .watch(PATHS.CARDS_CONTENT, function() {
           _this
