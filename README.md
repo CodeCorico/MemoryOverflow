@@ -9,7 +9,7 @@
 [![Website Status](http://publish.memoryoverflow.codecorico.com/status.svg)](https://github.com/CodeCorico/MemoryOverflow-website)
 
 MemoryOverflow is a TOTALLY FREE card game designed by developers for developers.
-See it in action in the [official website](http://memoryoverflow.codecorico.com).
+See it in action in the [official website](http://memoryoverflow.org).
 
 The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Machine is the central point of the game. She's everywhere, she sees everyone.
 
@@ -18,7 +18,7 @@ The GitHub project is designed to run like a Wiki. Each folder has a README.md f
 MemoryOverflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The Machine destroys you instantly. It's called the *Memory Overflow*.
 
 * [Read the game story & rules](rules) (English and French)
-* [Print cards on the official website](http://memoryoverflow.codecorico.com)
+* [Print cards on the official website](http://memoryoverflow.org)
 
 ## Follow the project
 
