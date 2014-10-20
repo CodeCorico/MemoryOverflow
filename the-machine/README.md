@@ -23,7 +23,7 @@ So now, follow theses simples steps:
 npm install
 ```
 
-Fantastique, The Machine is installed on your computer. Now, each time you want to use it, just start this command:
+Fantastic, The Machine is installed on your computer. Now, each time you want to use it, just start this command:
 ```
 npm start
 ```
