@@ -4,6 +4,7 @@
 *.DS_Store
 
 website/data
+website/**/*.html
 the-machine/vendor/wkhtmltoimage
 the-machine/coverage
 
