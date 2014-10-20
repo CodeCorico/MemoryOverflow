@@ -91,7 +91,7 @@
           'Proud of you.',
           'Got it.',
           'Cool cool cool.',
-          'Fantastique.'
+          'Fantastic.'
         ];
       }
       else if(options.needSlaps) {
