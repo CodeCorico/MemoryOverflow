@@ -194,6 +194,7 @@ Must be one of the following:
 * **chore**: Changes to the build process or auxiliary tools, libraries...
 * **feat**: A new feature
 * **fix**: A bug fix
+* **test**: Adding missing tests
 * **card**: Card modification or added
 * **rules**: Modifications on rules
 * **tpl**: Modifications on templates
