@@ -54,6 +54,10 @@
 
       if(files || files.length) {
         files.forEach(function(file) {
+          if(file.indexOf('-test') > -1) {
+            return;
+          }
+
           var agent = require(file.replace('./features', '../'));
           _agents.push(new agent(_this));
         });

@@ -28,7 +28,7 @@
         return;
       }
 
-      _this.says('Website acquired, I\'m watching this files.');
+      _this.says('Website acquired, I\'m watching its files.');
 
       _this
         .watch([PATHS.WEBSITE_EJS], function(args) {
