@@ -191,6 +191,7 @@ to read on github as well as in various git tools.
 Must be one of the following:
 
 * **mo**: Modifications on MemoryOverflow project details (wiki)
+* **chore**: Changes to the build process or auxiliary tools, libraries...
 * **feat**: A new feature
 * **fix**: A bug fix
 * **card**: Card modification or added
