@@ -37,7 +37,7 @@
       else {
         for(var i = 0, len = sentence.length; i < len; i++) {
           process.stdout.write(specialColor(sentence[i]));
-          var wait = 20,
+          var wait = 10,
               stop = 1 * new Date();
           while(1 * new Date() < stop + wait) { }
         }
