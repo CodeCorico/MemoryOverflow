@@ -75,11 +75,8 @@
 }
 
 .body-homepage {
-  position: relative;
-  width: 1000px;
   height: 1500px;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .body-homepage .panel {

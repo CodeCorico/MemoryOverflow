@@ -251,6 +251,40 @@ a:hover {
   background: url("../images/city.png") no-repeat;
 }
 
+.body-page {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto;
+  overflow: hidden;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.body-page strong {
+  font-weight: 400;
+}
+
+.body-page h1 {
+  font-family: "Orbitron", "sans serif";
+  font-weight: 400;
+  font-size: 4em;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+.body-page p {
+  margin: 15px 0;
+}
+
+.body-page .blockquote {
+  padding-left: 20px;
+  font-style: italic;
+  color: #aaa;
+}
+
 .body-footer {
   width: 1000px;
   margin: 0 auto;
