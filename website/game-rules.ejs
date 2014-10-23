@@ -1,0 +1,199 @@
+<% title('Game rules') -%>
+<% include features/common/header -%>
+
+<article class="body-page">
+
+  <h1>Les règles du jeu</h1>
+
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#prerequis">Prérequis</a></li>
+    <li><a href="#partie">Le déroulement d'une partie</a>
+      <ol>
+        <li><a href="#plateau">Le plateau de jeu</a></li>
+        <li><a href="#engagements">Engagements/désengagements</a></li>
+        <li><a href="#debut">Débuter une partie</a></li>
+        <li><a href="#tour">Les phases d'un tour</a></li>
+        <li><a href="#evenements">Les évènements</a></li>
+      </ol>
+    </li>
+    <li><a href="#types">Les 3 types de cartes jouables</a></li>
+  </ol>
+
+  <a name="introduction"></a>
+  <h2>Introduction</h2>
+
+  <p>MemoryOverflow est un jeu de cartes stratégique dans lequel 2 joueurs s'affrontent pour le contrôle de <span class="italic">La Machine</span>. Le jeu se déroule en tour par tour. Chaque adversaire place des cartes sur la table pour créer un algorithme dont le but est de percer le code de La Machine et ainsi gagner la partie.</p>
+
+  <p>Le succès d'une partie se détermine dans la stratégie mais surtout dans la créativité de programmation des joueurs. En alliant plusieurs cartes, il est possible de créer de parfaits combos dont la puissance peut faire changer le cours du jeu et détruire son adversaire. Plus un joueur est bon développeur, plus il a de chances de remporter la victoire.</p>
+
+  <p>La Machine aime les braves et les courageux.</p>
+
+  <a name="prerequis"></a>
+  <h2>Prérequis</h2>
+
+  <p>Pour jouer à MemoryOverflow il faut que chaque joueur dispose d'un set de cartes ainsi qu'un set supplémentaire de cartes <span class="italic">The Machine</span> que l'un ou l'autre peut apporter.</p>
+
+  <p>Toutes ces cartes sont disponibles <strong>gratuitement</strong> sur le site officiel et peuvent être imprimées en suivant l'aide disponible sur la page d'impression. La Machine est généreuse.</p>
+
+  <p>Attention, chaque carte utilisée dans un set doit être dans sa dernière version. En cas de doute, il suffit d'inscrire dans le champs de recherche du site l'identifiant de la carte (trouvé dans son coin inférieur droit) pour vérifier qu'elle n'est pas obsolète. La Machine n'aime pas les tricheurs.</p>
+
+  <a name="partie"></a>
+  <h2>Le déroulement d'une partie</h2>
+
+  <p>Avant de commencer une partie, chaque joueur doit disposer d'un set composé d'au minimum 60 cartes et maximum 70 qui composera son jeu. On appelle ce set <span class="italic"><a href="http://fr.wikipedia.org/wiki/Noosph%C3%A8re" target="_blank">La Noosphère</a></span> en hommage aux idées qui nous arrivent lorsque l'on code sans savoir exactement d'où elles proviennent. Pour construire une Noosphère il faut choisir parmi les <a href="#types">3 types de cartes</a> communes. Hormis pour les cartes <span class="italic"><a href="variable">Variable</a></span> il n'est pas permis de prendre plus de 2 fois la même carte, sauf bien sur si la carte en question indique le contraire. Il est conseillé de mettre au moins 20% de cartes <span class="italic">Variable</span> pour être certain d'en piocher suffisamment rapidement et ne pas bloquer son jeu dés le départ.</p>
+
+  <p>Une fois que vous avez votre Noosphère il vous faut créer un set de 10 cartes <span class="italic">Machine</span> déjà définies par le jeu, à savoir :
+    <ul>
+      <li>3 cartes de valeur <span class="italic">18</span></li>
+      <li>3 cartes de valeur <span class="italic">19</span></li>
+      <li>3 cartes de valeur <span class="italic">20</span></li>
+      <li>1 carte de valeur <span class="italic">22</span></li>
+    </ul>
+  </p>
+
+  </p>Ces cartes constituent le set appelé <span class="italic">La Machine</span>.</p>
+
+  <p>Pendant une partie les joueurs construisent des algorithmes, chacun leur tour, en plaçant des cartes sur la table. Le but du jeu est de créer un ou plusieurs algorithmes qui permettent à une variable d'atteindre le même nombre que le code demandé par La Machine pour la déverrouiller (<a href="story.html">lire l'histoire du jeu</a>). La Machine affiche son code clairement mais attention, elle le change aussi très souvent. Si jamais une variable dépasse le code demandé, le joueur est détruit par La Machine, il perd la partie. La Machine est colérique.</p>
+
+  <p>Il existe de nombreuses stratégies pour décoder La Machine rapidement ou au contaire pour faire perdre l'adversaire. Un joueur qui arrive à combiner ces deux aspects du jeu peut être redoutable.</p>
+
+  <a name="plateau"></a>
+  <h3>Le plateau de jeu</h3>
+
+  <p align="center">
+    <img src="/features/common/images/game-board.jpg" style="max-width: 100%" />
+  </p>
+
+  <a name="engagements"></a>
+  <h3>Engagements/désengagements</h3>
+
+  <p>En de nombreux endroits dans les règles du jeu il est question d'<span class="italic">engagement</span> et de <span class="italic">désengagement</span> des cartes. Engager une carte revient à l'<strong>activer</strong>. Dans ce cas il faut tourner la carte à 90° vers la droite pour qu'elle soit couchée (comme <strong>(3.b)</strong>). La désengager revient à la <strong>désactiver</strong> et à la remettre dans son état original, à la verticale.</p>
+
+  <a name="debut"></a>
+  <h3>Débuter une partie</h3>
+
+  <p>Pour commencer une partie, les deux adversaires se placent l'un en face de l'autre. Chacun dépose sa Noosphère sur la table <strong>(1)</strong>, bien mélangée et coupée par le joueur opposé.</p>
+
+  <p>Chaque fois qu'une carte d'un joueur est détruite elle doit être placé dans une pile sur la droite de la Noosphère, face visible. Cette pile se nomme le <span class="italic">Garbage collector</span> <strong>(2)</strong>. Il est possible que certaines cartes utilisent le <span class="italic">Garbage collector</span> pour des actions spécifiques.</p>
+
+  <p>Il faut ensuite placer le set de cartes <span class="italic">The Machine</span> <strong>(5)</strong> (qu'un des deux joueurs aura apporté) faces cachées au milieu de la table entre les deux joueurs.</p>
+
+  <p>Les joueurs tirent au sort pour déterminer lequel des deux commence.</p>
+
+  <p>Une partie est composée de tours. Un tour appartient à un joueur et contient plusieurs phases expliquées plus loin. Lorsqu'il est terminé, le joueur suivant prend la main et débute son propre tour.</p>
+
+  <a name="tour"></a>
+  <h3>Les phases d'un tour</h3>
+
+  <p>Un tour est constitué de 5 phases que le joueur doit respecter dans l'ordre :
+    <ul>
+      <li>La phase de La Machine</li>
+      <li>La phase de réfactorisation</li>
+      <li>La phase de pioche</li>
+      <li>La phase d'action</li>
+      <li>La phase d'engagement</li>
+    </ul>
+  </p>
+
+  <h4>La phase de La Machine</h4>
+
+  <p>Avant qu'un joueur ai le droit de jouer, La Machine a son mot à dire.</p>
+
+  <p>Lors du tout premier tour, le joueur qui commence pioche une carte <span class="italic">Machine</span> puis la place face visible sur le coté <strong>(5.b)</strong>. C'est ce code qui devra être résolu pendant les prochains tours de jeu. Le joueur pioche ensuite une seconde carte Machine qu'il place face visible sur le dessus du tas de carte <strong>(5.a)</strong>. Cette carte sera le prochain code demandé par La Machine. La Machine permet de le voir en avance pour préparer de futures stratégies. La Machine est votre amie.</p>
+
+  <p>Lors des autres tours, durant cette phase, le joueur doit faire tourner de 90° la carte Machine active dans le sens des aiguilles d'une montre. Au bout de 4 tours, la carte retourne à sa position d'origine <strong>(5.b)</strong> ce qui indique que le code est périmé. Il est temps de passer au prochain. Il faut donc placer la carte qui est sur le dessus du tas <strong>(5.a)</strong> sur la carte de code actuelle <strong>(5.b)</strong> et tirer une nouvelle carte à placer sur le dessus du tas.</p>
+
+  <p>Si jamais il n'y a plus aucun carte Machine à tirer, le joueur reprend toute la pile de La Machine et recommence la suite de codes comme au premier tour. La Machine sait redémarrer.</p>
+
+  <h4>La phase de réfactorisation</h4>
+
+  <p>Une fois que La Machine a remplit ses actions, le joueur peut enfin commencer son tour. La Machine est gentille.</p>
+
+  <p>Cette phase est très simple, il faut au joueur désengager toutes ses cartes <span class="italic">Variable</span>. Elles n'ont plus d'effet sur La Machine. Il lui faut ensuite engager toutes ses cartes <span class="italic">Événement</span> qui ne sont pas encore engagées. A partir de maintenant il peut les utiliser. (Plus de détails dans la suite des explications).</p>
+
+  <h4>La phase de pioche</h4>
+
+  <p>Le joueur pioche une nouvelle carte dans sa Noosphère. Si jamais il n'y a plus aucune carte à piocher il est obligé de déclarer forfait car il n'a plus aucune idée. La Machine n'aime pas les paresseux.</p>
+
+  <h4>La phase d'action</h4>
+
+  <p>Cette phase permet au joueur de construire ses algorithmes. Il peut poser sur la table :
+    <ul>
+      <li>Une seule carte <span class="italic">Variable</span> <strong>(4)</strong>.</li>
+      <li>Autant de cartes <span class="italic">Code</span> qu'il le souhaite <strong>(4)</strong>.</li>
+      <li>Une seule carte <span class="italic">Événement</span> <strong>(3)</strong> (désengagée et face cachée).</li>
+    </ul>
+  </p>
+
+  <p>Attention de bien lire les effets secondaires de certaines cartes qui peuvent s'appliquer immédiatement pendant cette phase.</p>
+
+  <p>Le principe est de toujours brancher ses cartes ensemble. Une carte <span class="italic">Code</span> ne peut exister seule sur la table si elle n'est pas branchée logiquement à une <span class="italic">Variable</span> ou une autre carte <span class="italic">Code</span>. Dans ce cas là, elle doit être détruite à la fin de cette phase. La Machine n'aime pas le code commenté.</p>
+
+  <p>Sur la présentation du <a href="#plateau">plateau de jeu</a> la carte <strong>(4.a)</strong> est une <span class="italic">Variable</span> et les cartes <strong>(4.b)</strong> sont deux cartes <span class="italic">Codes</span> branchées les unes derrières les autres, le tout formant un algorithme.</p>
+
+  <p>Sur la figure <strong>(4.c)</strong> une carte <span class="italic">Code</span> est branchées sur 2 cartes <span class="italic">Variable</span>.</p>
+
+  <p>Il est possible d'avoir des cartes <span class="italic">Variable</span> libres comparé aux cartes <span class="italic">Code</span>.</p>
+
+  <h4>La phase d'engagement</h3>
+
+  <p>Dans cette dernière phase, le joueur doit engager toutes ses variables. Elles activent donc tous les algorithmes du joueur et calculent leurs points. Ces variables restent engagées jusqu'à la prochaine phase de réfactorisation du joueur, lors de son prochain tour. Si les points d'une <span class="italic">Variable</span> dépasse à n'importe quel moment le code de La Machine, cette dernière détruit immédiatement le joueur, il perd la partie. La Machine aime l'odeur de la chair brulée.</p>
+
+  <p>Pendant que les variables d'un joueur sont engagées, plusieurs cas peuvent se produire :
+    <ul>
+      <li>L'adversaire est capable, avec des cartes <span class="italic">Événement</span>, d'augmenter les variables du joueur et ainsi le faire passer en <span class="italic">Memory Overflow</span></li>
+      <li>La Machine change de code durant sa phase et peut détruire le joueur si le code est plus petit que les points d'une variable, ou à l'inverse le faire gagner si le code est en phase avec les points.</li>
+    </ul>
+  </p>
+
+  <p>Il faut donc faire bien attention à préparer en avance sa stratégie car une fois les variables engagées, le risque d'un <span class="italic">Memory Overflow</span> augmente considérablement. La Machine vous surveille. Même lorsque ses cartes sont rangées.</p>
+
+  <p>A la fin de cette phase, si le joueur possède plus de 7 cartes dans sa main, il est obligé d'en détruire autant qu'il faut pour toujours n'en garder que 7. La Machine est radine en allocation de mémoire.</p>
+
+  <a name="evenements"></a>
+  <h3>Les événements</h3>
+
+  <p>Les cartes <span class="italic">Événement</span> <strong>(3)</strong> ont un statut particulier comparé aux cartes <span class="italic">Variable</span> et <span class="italic">Code</span>. Elles ne peuvent être utilisées le premier tour où elles sont placé sur la table. C'est pourquoi lors de la phase d'action le joueur les place de manière désengagées <strong>(3.a)</strong>. Au prochain tour, lors de la phase de réfactorisation, il engagera les cartes <span class="italic">Événement</span> qui n'avaient précédemment pas pu être utilisées.</p>
+
+  <p>Il n'est pas possible d'avoir plus de 4 cartes <span class="italic">Événement</span> dans le jeu d'un joueur, qu'elles soient engagées ou non.</p>
+
+  <p>Une carte <span class="italic">Événement</span> engagée peut être jouée à *n'importe quel moment de n'importe quelle phase de n'importe quel joueur*. L'unique phase dans laquelle elle n'a pas le droit d'intervenir est la phase de La Machine. La Machine ne le permet pas. Elle est La Machine. Ces cartes font office de pièges la plupart du temps et s'avèrent être très stratégique pour faire des combos.</p>
+
+  <p>Lorsque l'une de ces cartes est jouée, elle est immédiatement détruite, sauf cas contraire indiqué sur la carte.</p>
+
+  <h3>Le Memory Overflow</h3>
+
+  <p>Le <span class="italic">Memory Overflow</span> est le grand piège du jeu. Telle la boule 8 d'un billard, il est possible de déclencher la mort subite d'un joueur. Pour remporter la partie, les joueurs doivent se rapprocher le plus possible du code de La Machine tout en se risquant à un <span class="italic">Memory Overflow</span> ce qui oblige à créer de véritables stratégies de vitesse et d'intelligence.</p>
+
+  <p>Attention, lorsque les variables d'un joueur sont engagées, il est possible qu'une de ses variables ai le même nombre de points que le code tandis qu'une autre ai le cas d'un <span class="italic">Memory Overflow</span>. Quoi qu'il arrive, c'est le <span class="italic">Memory Overflow</span> qui l'emporte et le joueur est détruit. La Machine ne rigole pas avec ces choses là.</p>
+
+  <p>Comme pour le jeu des Echecs, où le joueur perdant abaisse son roi, il est de coutume dans MemoryOverflow de prendre la carte Machine et de la poser face cachée sur le jeu du joueur perdant. La Machine est fière.</p>
+
+  <a name="types"></a>
+  <h2>Les 3 types de cartes jouables</h2>
+
+  <p>Il existe en tout 4 types de cartes. Les carte de La Machine ainsi que les cartes jouables dans les Noosphères des joueurs.</p>
+
+  <a name="variable"></a>
+  <h3>La variable</h3>
+
+  <p>La carte <span class="italic">Variable</span> est le point de départ des algorithmes. Il est aussi bien possible de brancher des cartes <span class="italic">Code</span> dessus que de la brancher elle-même sur ces cartes. Hormis certaines cartes rares, sa seule fonction est d'initialiser une variable qui contiendra des points incrémentés par les algorithmes.</p>
+
+  <p>Ce sont les points que va prendre cette carte qui sont comparés au code de La Machine et permettent de déverrouiller cette dernière.</p>
+
+  <a name="code"></a>
+  <h3>Le code</h3>
+
+  <p>La carte de <span class="italic">Code</span> est une partie de l’algorithme qui permet d'ajouter ou supprimer des points aux variables. Pour trouver le code exact de La Machine, il faut faire preuve de ruse et créer des algorithmes modifiables à volonté.</p>
+
+  <p>A n'importe quel moment au cours du jeu il est possible de modifier ses branchements de <span class="italic">Code</span> et de <span class="italic">Variable</span>. Cela permet de recycler les cartes qui n'auraient plus de branchement ou tout simplement d'éviter le <span class="italic">Memory Overflow</span>. Certaines stratégies se basent sur la création de faux algorithmes modifiables en cours de partie pour créer le code de La Machine sans que l'adversaire ne l'ai anticipé.</p>
+
+  <a name="evenement"></a>
+  <h3>L'évènement</h3>
+
+  <p>La carte <span class="italic">Événement</span> est synonyme de carte piège. Elle permet aussi bien de renforcer son jeu que de détruire celui de l'adversaire. Néanmoins il faut faire très attention. Il est possible de contrer une carte <span class="italic">Événement</span> par une autre carte <span class="italic">Événement</span> ce qui peut déboucher à des suites de contre-attaques où le premier attaquant n'est pas forcement celui qui s'en sort le mieux.</p>
+
+</article>
+
+<% include features/common/footer -%>
