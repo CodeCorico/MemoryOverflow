@@ -45,38 +45,46 @@
 
   describe('The Agent of Website', function() {
 
-    it('should start', function() {
-      expect(fs.existsSync(agentWebsitePath)).to.be.true;
+    describe('In "normal" mode', function() {
 
-      AgentWebsite = require(agentWebsitePath);
+      it('should start', function() {
+        expect(fs.existsSync(agentWebsitePath)).to.be.true;
 
-      var inError = false;
-      _stopConsoleLog();
-      try {
-        theMachine = new TheMachine();
-        agentWebsite = new AgentWebsite(theMachine);
-      }
-      catch(error) {
-        inError = true;
-      }
+        AgentWebsite = require(agentWebsitePath);
 
-      _startConsoleLog();
-      expect(inError).to.be.false;
+        var inError = false;
+        _stopConsoleLog();
+        try {
+          theMachine = new TheMachine();
+          agentWebsite = new AgentWebsite(theMachine);
+        }
+        catch(error) {
+          inError = true;
+        }
+
+        _startConsoleLog();
+        expect(inError).to.be.false;
+      });
+
     });
 
-    it('should start in one shot mode', function() {
-      var inError = false;
-      _stopConsoleLog();
-      try {
-        theMachineOneShot = new TheMachine(true);
-        agentWebsiteOneShot = new AgentWebsite(theMachineOneShot);
-      }
-      catch(error) {
-        inError = true;
-      }
+    describe('In "one shot" mode', function() {
 
-      _startConsoleLog();
-      expect(inError).to.be.false;
+      it('should start', function() {
+        var inError = false;
+        _stopConsoleLog();
+        try {
+          theMachineOneShot = new TheMachine(true);
+          agentWebsiteOneShot = new AgentWebsite(theMachineOneShot);
+        }
+        catch(error) {
+          inError = true;
+        }
+
+        _startConsoleLog();
+        expect(inError).to.be.false;
+      });
+
     });
 
   });
