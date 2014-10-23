@@ -6,6 +6,7 @@
       path = require('path'),
       ejs = require('ejs'),
       glob = require('glob'),
+      extend = require('extend'),
 
       PATHS = {
         WEBSITE_EJS: '../website/**/*.ejs'
@@ -127,6 +128,22 @@
       callback(true);
     }
 
+    function _ejsAPI() {
+      var title = '';
+
+      return {
+        css: [],
+        js: [],
+        title: function(newTitle) {
+          if(typeof newTitle == 'string') {
+            title = newTitle;
+          }
+
+          return title;
+        }
+      };
+    }
+
     function _generate(ejsfiles, callback) {
       callback = callback || function() {};
 
@@ -147,11 +164,9 @@
           break;
         }
 
-        var html = ejs.render(ejsString, {
-          filename: source,
-          css: [],
-          js: []
-        });
+        var html = ejs.render(ejsString, extend(true, {
+          filename: source
+        }, _ejsAPI()));
 
         if(!html) {
           error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix it!';
