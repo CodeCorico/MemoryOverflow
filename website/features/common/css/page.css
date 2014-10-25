@@ -227,9 +227,9 @@ a:hover {
 
 .body-content {
   position: relative;
-  width: 100%;
   overflow: hidden;
   background: url("../images/background.png") repeat-x;
+  padding: 0 10px;
 }
 
 .body-content-container {
@@ -282,7 +282,7 @@ a:hover {
 .body-page .blockquote {
   padding-left: 20px;
   font-style: italic;
-  color: #aaa;
+  color: #ddd;
 }
 
 .body-footer {
