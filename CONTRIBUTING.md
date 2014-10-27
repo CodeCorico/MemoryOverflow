@@ -59,12 +59,12 @@ In MemoryOverflow, a feature needs to be in a _user story_ format that represent
 
 "As a **_role_**, I want **_goal/desire_** so that **_benefit_**"
 
-Describe with details your role, like _daily player_ or _windows developer_ and don't forget the benefit. You can add other informations to be more understanding. Optionnaly you can add a list of **technical criteria**.
+Describe with details your role, like _daily player_ or _windows developer_ and don't forget the benefit. You can add other informations to be more understanding. Optionnaly you can add a list of **technical criteria** with actions to do.
 
 The Machine is in your mind.
 
 ## <a name="wiki"></a> Want a Wiki Fix?
-The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Agents can know exactly how to help The Machine. If you want to help improve the wiki, it's a good idea to let others know what you're working on to minimize duplication of effort. Before starting, check out the issue queue for [Tag: wiki](https://github.com/CodeCorico/MemoryOverflow/issues?labels=wiki&page=1&state=open).
+The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Agents can know exactly how to help The Machine. If you want to help improve the wiki, it's a good idea to let others know what you're working on to minimize duplication of effort. Before starting, check out the issue queue for [Tag: wiki](https://github.com/CodeCorico/MemoryOverflow/issues?labels=feat:%20wiki&page=1&state=open).
 Comment on an issue to let others know what you're working on, or create a new issue if your work
 doesn't fit within the scope of any of the existing wiki fix projects.
 
