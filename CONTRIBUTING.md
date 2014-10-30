@@ -51,13 +51,31 @@ project.
 
 A new issue create a discussion thread. The special agents can advise and contribute to your ideas. Please search whether the subject does not already exists on the [opened issues](https://github.com/CodeCorico/MemoryOverflow/issues?q=is%3Aopen+is%3Aissue) before that to prevent duplicates issues.
 
+### Write a _How to reproduce_ for a bug
+
+The Machine hates sentences like _It doesn't work_ without any explanation. That's why she designed a _Bug issue pattern_ that all agents should use. When you create a new bug issue, use this format to explain your unexpected behavior:
+
+```
+**Bug**
+<BLANK LINE>
+The description of your bug
+<BLANK LINE>
+**How to reproduce**
+<BLANK LINE>
+How to reproduce your bug, step by step.
+More information you add, the faster the bug will be
+understood by other agents and corrected.
+```
+
 ### Write a User Story for a new feature
 
 The Machine was builded for a unique goal: serve humains. To help them she must first understand how they think. So she needs so-called [User Story](http://en.wikipedia.org/wiki/User_story).
 
 In MemoryOverflow, a feature needs to be in a _user story_ format that represent a user/player's real expectations. When you create a new issue, use this format to explain your request:
 
-"As a **_role_**, I want **_goal/desire_** so that **_benefit_**"
+```
+As a <role> I want <goal/desire> so that <benefit>
+```
 
 Describe with details your role, like _daily player_ or _windows developer_ and don't forget the benefit. You can add other informations to be more understanding. Optionnaly you can add a list of **technical criteria** with actions to do.
 
