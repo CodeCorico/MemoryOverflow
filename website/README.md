@@ -1,4 +1,5 @@
 # MemoryOverflow - Website
+[![Website Status](http://agent.memoryoverflow.org/status.svg)](https://github.com/CodeCorico/MemoryOverflow-website)
 
 This part of the project is what you see on http://memoryoverflow.org. But, in this repository, it contains only the website skeleton.
 When The Machine is started, she's able to generate the website from the .ejs files and the cards.
