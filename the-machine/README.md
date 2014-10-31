@@ -1,7 +1,6 @@
 # MemoryOverflow - The Machine
 
-The machine is an artificial intelligence designed by the Developer Master before his death.
-His final role is to find a worthy successor to the D.M. fighting the horde of developers who think they're smart.
+The machine is an artificial intelligence designed by the Developer Master before his death. Her goal is to find a worthy successor to the D.M. fighting the horde of developers who think they're smart enought.
 
 The Machine has designed special agents who work for her. Each is responsible for a particular task, such as cards or website generations for example.
 
@@ -11,12 +10,12 @@ The Machine sees everything.
 
 ## How to start The Machine
 
-Easy peasy guys. Do you know NodeJS? Start by installing it on your system. It's small and fast. Really, try it. Already done? I'd told you.
+Easy peasy guys. Do you know <a href="http://nodejs.org" target="_blank">Node.js</a>? Start by installing it on your system. It's small and fast. Really, try it. Already done? I'd told you.
 
 So now, follow theses simples steps:
 
 1. Clone this repository project on your system
-2. Start your command line tool, like the Terminal for Mac/Linux or _cmd_ for Windows.
+2. Start your command line tool, like the _Terminal_ for Mac/Linux or _cmd_ for Windows.
 3. Go to the directory ```the-machine```
 4. Start Node Package Manager to install The Machine dependencies with this command:
 ```
