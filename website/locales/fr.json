@@ -2,6 +2,9 @@
   "MemoryOverflow":
   "MemoryOverflow",
 
+  "Memory Overflow":
+  "Memory Overflow",
+
   "Card game by developers for developers - Destroy your enemies, controls the Machine, be the new Developer Master":
   "Jeu de cartes créé par des développeurs, pour des développeurs - Détruis tes ennemis, prends le contrôle de la machine, deviens le nouveau Maître développeur",
 
@@ -47,15 +50,63 @@
   "Create templates":
   "Créer des thèmes",
 
+  "Card game by developers for developers":
+  "Jeu de cartes créé par des développeurs",
+
   "The Story":
   "L'histoire",
-
-  "Game rules":
-  "Règles du jeu",
 
   "Cards & Editions":
   "Cartes & Editions",
 
   "Contribute! Join the C.A.M.":
-  "Contribues ! Rejoins la C.A.M."
+  "Contribues ! Rejoins la C.A.M.",
+
+  "Memory Overflow is a %sTOTALLY FREE%s card game designed by developers for developers.":
+  "Memory Overflow est un jeu de cartes %sTOTALLEMENT GRATUIT%s créé par des développeurs pour des développeurs.",
+
+  "You will find here all the resources to be able to play with other developers and become THE Developer Master.":
+  "Vous trouverez ici toutes les ressources pour pouvoir jouer avec d'autres développeurs et devenir LE Maître développeur.",
+
+  "What is it":
+  "Qu'est-ce que c'est",
+
+  "How to play?":
+  "Comment jouer ?",
+
+  "Memory Overflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The Machine destroys you instantly. It's called the Memory Overflow.":
+  "Memory Overflow est un jeu de cartes où deux joueurs s'affrontent pour le contrôle de La Machine. Le premier qui décode le code secret de La Machine gagne. Mais attention, si le code d'un joueur est plus grand que celui demandé par La Machine, elle le détruit instantanément. On appelle ça le Memory Overflow.",
+
+  "Read the game story":
+  "Lire l'histoire du jeu",
+
+  "Learn the rules":
+  "Apprendre les règles du jeu",
+
+  "Print your cards":
+  "Imprimer les cartes",
+
+  "The project":
+  "Le projet",
+
+  "The project is maintened by an enthusiast community of Special Agents working for The Machine. They work together on enhancing the game by making new cards, templates and more on GitHub.":
+  "Le projet est maintenu par une communauté enthousiaste d'agents spéciaux qui travaillent pour La Machine. Ils travaillent ensemble chaque jour sur son amélioration en créant de nouvelles cartes, thèmes et bien plus sur GitHub.",
+
+  "Join the C.A.M. and be part of the community":
+  "Rejoins la C.A.M. et prends part à la communauté",
+
+  "C.A.M. Discussion chat":
+  "Salle de discussion de la C.A.M.",
+
+  "GitHub project":
+  "Projet GitHub",
+
+  "The CodeCorico team Twitter":
+  "Le Twitter de l'équipe CodeCorico",
+
+  "Contribute in the Central Agency of the Machine":
+  "Contribues dans l'Agence Centrale de La Machine (C.A.M.)",
+
+  "Story of The Machine":
+  "L'histoire de La Machine"
 }
