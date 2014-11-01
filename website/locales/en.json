@@ -1,4 +1,7 @@
 {
+  "MemoryOverflow":
+  "MemoryOverflow",
+
   "Memory Overflow":
   "Memory Overflow",
 
@@ -47,15 +50,63 @@
   "Create templates":
   "Create templates",
 
+  "Card game by developers for developers":
+  "Card game by developers for developers",
+
   "The Story":
   "The Story",
-
-  "Game rules":
-  "Game rules",
 
   "Cards & Editions":
   "Cards & Editions",
 
   "Contribute! Join the C.A.M.":
-  "Contribute! Join the C.A.M."
+  "Contribute! Join the C.A.M.",
+
+  "Memory Overflow is a %sTOTALLY FREE%s card game designed by developers for developers.":
+  "Memory Overflow is a %sTOTALLY FREE%s card game designed by developers for developers.",
+
+  "You will find here all the resources to be able to play with other developers and become THE Developer Master.":
+  "You will find here all the resources to be able to play with other developers and become THE Developer Master.",
+
+  "What is it":
+  "What is it",
+
+  "How to play?":
+  "How to play?",
+
+  "Memory Overflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The Machine destroys you instantly. It's called the Memory Overflow.":
+  "Memory Overflow is a card game where two players battle to control The Machine. The first to reach the specific number requested by The Machine wins. Be careful, if your number is larger than the requested number, The Machine destroys you instantly. It's called the Memory Overflow.",
+
+  "Read the game story":
+  "Read the game story",
+
+  "Learn the rules":
+  "Learn the rules",
+
+  "Print your cards":
+  "Print your cards",
+
+  "The project":
+  "The project",
+
+  "The project is maintened by an enthusiast community of Special Agents working for The Machine. They work together on enhancing the game by making new cards, templates and more on GitHub.":
+  "The project is maintened by an enthusiast community of Special Agents working for The Machine. They work together on enhancing the game by making new cards, templates and more on GitHub.",
+
+  "Join the C.A.M. and be part of the community":
+  "Join the C.A.M. and be part of the community",
+
+  "C.A.M. Discussion chat":
+  "C.A.M. Discussion chat",
+
+  "GitHub project":
+  "GitHub project",
+
+  "The CodeCorico team Twitter":
+  "The CodeCorico team Twitter",
+
+  "Contribute in the Central Agency of the Machine":
+  "Contribute in the Central Agency of the Machine",
+
+  "Story of The Machine":
+  "Story of The Machine"
 }

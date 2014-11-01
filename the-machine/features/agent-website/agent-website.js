@@ -15,9 +15,7 @@
       },
       LANGS = {
         INDEX: 'en',
-        DIRECTORIES: [
-          'fr'
-        ]
+        DIRECTORIES: []
       };
 
   var AgentWebsite = function(theMachine) {
@@ -27,6 +25,10 @@
 
     function _init() {
       _this.name('of Website');
+
+      LANGS.DIRECTORIES = glob.sync(PATHS.WEBSITE_LOCALES + '/*.json').map(function(file) {
+        return path.basename(file.replace('.json', ''));
+      });
 
       if(theMachine.isOneShot()) {
         _this.newDiscussion();
@@ -173,18 +175,17 @@
       callback = callback || function() {};
 
       var i18n = require('i18n'),
-          error = null,
-          langs = [LANGS.INDEX].concat(LANGS.DIRECTORIES);
+          error = null;
 
       i18n.configure({
-        locales: langs,
+        locales: LANGS.DIRECTORIES,
         defaultLocale: LANGS.INDEX,
         directory: path.resolve(PATHS.WEBSITE_LOCALES),
         updateFiles: false
       });
 
-      for(var langIndex = 0, langLength = langs.length; langIndex < langLength; langIndex++) {
-        var lang = langs[langIndex],
+      for(var langIndex = 0, langLength = LANGS.DIRECTORIES.length; langIndex < langLength; langIndex++) {
+        var lang = LANGS.DIRECTORIES[langIndex],
             subdir = '.';
 
         if(lang != LANGS.INDEX) {
