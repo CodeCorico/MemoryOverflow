@@ -3,36 +3,36 @@
 
   <footer class="body-footer">
     <div class="column">
-      <h4>&laquo; The Machine sees everything &raquo;</h4>
-      <p>Memory Overflow is a card game for developers, by developers.</p>
-      <p>This project is FREE and OPEN for everyone. The Machine as many contributors (named Special Agents) who work everyday to improve the game.</p>
+      <h4><%= __('« The Machine sees everything »') %></h4>
+      <p><%= __('Memory Overflow is a card game for developers, by developers.') %></p>
+      <p><%= __('This project is FREE and OPEN for everyone. The Machine as many contributors (named Special Agents) who work everyday to improve the game.') %></p>
     </div>
     <div class="column">
-      <h4>Play!</h4>
+      <h4><%= __('Play!') %></h4>
       <ul>
-        <li><a href="memory-overflow.html">Memory Overflow</a></li>
-        <li><a href="story.html">The Machine story</a></li>
-        <li><a href="game-rules.html">Game rules</a></li>
-        <li><a href="#">Print cards</a></li>
+        <li><a href="memory-overflow.html"><%= __('Memory Overflow') %></a></li>
+        <li><a href="story.html"><%= __('The Machine story') %></a></li>
+        <li><a href="game-rules.html"><%= __('Game rules') %></a></li>
+        <li><a href="#"><%= __('Print cards') %></a></li>
       </ul>
     </div>
     <div class="column">
-      <h4>Contribute!</h4>
+      <h4><%= __('Contribute!') %></h4>
       <ul>
-        <li><a href="https://github.com/CodeCorico/MemoryOverflow" target="_blank">The GitHub project</a></li>
-        <li><a href="contribute.html">Join the C.A.M.!</a></li>
-        <li><a href="contribute.html#cards">Create cards</a></li>
-        <li><a href="contribute.html#templates">Create templates</a></li>
+        <li><a href="https://github.com/CodeCorico/MemoryOverflow" target="_blank"><%= __('The GitHub project') %></a></li>
+        <li><a href="contribute.html"><%= __('Join the C.A.M.!') %></a></li>
+        <li><a href="contribute.html#cards"><%= __('Create cards') %></a></li>
+        <li><a href="contribute.html#templates"><%= __('Create templates') %></a></li>
       </ul>
     </div>
     <div class="clear"></div>
   </footer>
 
-  <script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="vendor/velocityjs/velocity.min.js"></script>
-  <script type="text/javascript" src="features/common/js/page.js"></script>
+  <script type="text/javascript" src="<%= base() %>vendor/jquery/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="<%= base() %>vendor/velocityjs/velocity.min.js"></script>
+  <script type="text/javascript" src="<%= base() %>features/common/js/page.js"></script>
 <% for(var i = 0, len = js.length; i < len; i++) { -%>
-  <script type="text/javascript" src="<%= js[i] -%>"></script>
+  <script type="text/javascript" src="<%= base() + js[i] -%>"></script>
 <% } %>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
