@@ -1,7 +1,9 @@
 // BINARIES:
 // https://code.google.com/p/wkhtmltopdf/downloads/list?can=1
 
-var URL = 'http://cdn.codecorico.com/wkhtmltoimage',
+'use strict';
+
+var HTI_URL = 'http://cdn.codecorico.com/wkhtmltoimage',
     DESTINATION = 'vendor/wkhtmltoimage',
     LINKS = {
       'windows-32-old': 'win32-old/wkhtmltoimage.exe',
@@ -42,12 +44,12 @@ if(!link.length) {
   return console.error('This operating system doesn\'t support The Machine');
 }
 
-link = URL + '/' + LINKS[link.join('-')];
+link = HTI_URL + '/' + LINKS[link.join('-')];
 
 var file = link.substr(link.lastIndexOf('/') + 1, link.length - link.lastIndexOf('/') - 1),
     fileDestination = DESTINATION + '/' + file;
 
-console.log('Downloading the card renderer (wkhtmltoimage)')
+console.log('Downloading the card renderer (wkhtmltoimage)');
 
 http.get(link, function(response) {
   fs.mkdirSync(DESTINATION);
@@ -69,5 +71,5 @@ http.get(link, function(response) {
 
   response.on('data', function(chunk) {
     progressbar.tick(chunk.length);
-  })
+  });
 });
