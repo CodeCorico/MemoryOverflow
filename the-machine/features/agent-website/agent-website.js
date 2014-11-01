@@ -15,7 +15,9 @@
       },
       LANGS = {
         INDEX: 'en',
-        DIRECTORIES: []
+        DIRECTORIES: [
+          'fr'
+        ]
       };
 
   var AgentWebsite = function(theMachine) {
