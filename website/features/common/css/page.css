@@ -300,21 +300,25 @@ a:hover {
 .body-footer .column {
   position: relative;
   float: left;
-  width: 20%;
+  width: 17%;
+  padding-right: 3%
 }
 
 .body-footer .column:first-child {
-  width: 60%;
+  width: 57%;
+  padding-right: 3%;
 }
 
 .body-footer .column ul, .body-footer .column li {
   list-style: none;
   margin: 0;
   padding: 0;
+  line-height: 20px;
 }
 
 .body-footer p {
   color: #999;
+  line-height: 18px;
 }
 
 @media (max-width: 1000px) {
