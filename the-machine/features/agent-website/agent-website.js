@@ -9,7 +9,13 @@
       extend = require('extend'),
 
       PATHS = {
-        WEBSITE_EJS: '../website/**/*.ejs'
+        WEBSITE: '../website',
+        WEBSITE_EJS: '../website/**/*.ejs',
+        WEBSITE_LOCALES: '../website/locales'
+      },
+      LANGS = {
+        INDEX: 'en',
+        DIRECTORIES: []
       };
 
   var AgentWebsite = function(theMachine) {
@@ -59,12 +65,12 @@
         }
 
         var ejsfiles = glob.sync(PATHS.WEBSITE_EJS).map(function(file) {
-          var source = path.resolve(file),
-              destination = source.replace('.ejs', '.html');
+          var source = path.resolve(file);
 
           return {
             source: source,
-            destination: destination
+            destinationFolder: path.dirname(source),
+            destinationFile: path.basename(source.replace('.ejs', '.html'))
           };
         }).filter(function(file) {
           return file.source.indexOf(path.sep + 'features' + path.sep) === -1;
@@ -104,7 +110,8 @@
 
         _generate([{
           source: ejsSource,
-          destination: htmlDestination
+          destinationFolder: folder,
+          destinationFile: htmlFile
         }], function(success, error) {
           if(success) {
             _this.says('"' + htmlFile + '" file generated. Everything is ok.', {
@@ -128,52 +135,91 @@
       callback(true);
     }
 
-    function _ejsAPI() {
-      var title = '';
+    function _ejsAPI(i18n, lang, subdir) {
+      var title = '',
+          api = {
+            css: [],
+            js: [],
+            title: function(newTitle) {
+              if(typeof newTitle == 'string') {
+                title = newTitle;
+              }
 
-      return {
-        css: [],
-        js: [],
-        title: function(newTitle) {
-          if(typeof newTitle == 'string') {
-            title = newTitle;
-          }
+              return i18n.__(title);
+            },
+            __: function() {
+              return i18n.__.apply(i18n, arguments);
+            },
+            _n: function() {
+              return i18n._n.apply(i18n, arguments);
+            },
+            base: function() {
+              return subdir == '.' ? '' : '../';
+            },
+            index: function() {
+              return '/' + (subdir == '.' ? '' : subdir + '/');
+            },
+            lang: function() {
+              return lang;
+            }
+          };
 
-          return title;
-        }
-      };
+      return api;
     }
 
     function _generate(ejsfiles, callback) {
       callback = callback || function() {};
 
-      var error = null;
+      var i18n = require('i18n'),
+          error = null,
+          langs = [LANGS.INDEX].concat(LANGS.DIRECTORIES);
 
-      for(var i = 0, len = ejsfiles.length; i < len; i++) {
-        var source = ejsfiles[i].source,
-            destination = ejsfiles[i].destination;
+      i18n.configure({
+        locales: langs,
+        defaultLocale: LANGS.INDEX,
+        directory: path.resolve(PATHS.WEBSITE_LOCALES),
+        updateFiles: false
+      });
 
-        if(!fs.existsSync(source)) {
-          error = 'Mmm something wired appends, "' + source + '" didn\'t exists.';
-          break;
+      for(var langIndex = 0, langLength = langs.length; langIndex < langLength; langIndex++) {
+        var lang = langs[langIndex],
+            subdir = '.';
+
+        if(lang != LANGS.INDEX) {
+          subdir = lang;
+          fs.ensureDir(path.join(PATHS.WEBSITE, subdir));
         }
 
-        var ejsString = fs.readFileSync(source, 'utf8');
-        if(!ejsString) {
-          error = 'Mmm I can\'t read "' + source + '".';
-          break;
+        i18n.setLocale(lang);
+
+        for(var i = 0, len = ejsfiles.length; i < len; i++) {
+          var ejsFile = ejsfiles[i],
+              source = ejsFile.source,
+              destination = path.join(ejsFile.destinationFolder, subdir, ejsFile.destinationFile);
+
+          if(!fs.existsSync(source)) {
+            error = 'Mmm something wired appends, "' + source + '" didn\'t exists.';
+            break;
+          }
+
+          var ejsString = fs.readFileSync(source, 'utf8');
+          if(!ejsString) {
+            error = 'Mmm I can\'t read "' + source + '".';
+            break;
+          }
+
+          var html = ejs.render(ejsString, extend(true, {
+            filename: source
+          }, _ejsAPI(i18n, lang, subdir)));
+
+          if(!html) {
+            error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix it!';
+            break;
+          }
+
+          fs.outputFileSync(destination, html);
         }
 
-        var html = ejs.render(ejsString, extend(true, {
-          filename: source
-        }, _ejsAPI()));
-
-        if(!html) {
-          error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix it!';
-          break;
-        }
-
-        fs.outputFileSync(destination, html);
       }
 
       return callback(!error, error);
