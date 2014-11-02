@@ -56,6 +56,48 @@
 
           _work('all');
         });
+
+      _checkWebsiteVersion();
+    }
+
+    function _checkWebsiteVersion() {
+      var missingFiles = [],
+          firstTime = true;
+
+      glob.sync(PATHS.WEBSITE_EJS).map(function(file) {
+        var source = path.resolve(file),
+            dir = path.dirname(source),
+            fileHTML = path.basename(source.replace('.ejs', '.html'));
+
+        if(source.indexOf(path.sep + 'features' + path.sep) > -1) {
+          return;
+        }
+
+        for(var langIndex = 0, langLength = LANGS.DIRECTORIES.length; langIndex < langLength; langIndex++) {
+          var lang = LANGS.DIRECTORIES[langIndex],
+              subdir = lang == LANGS.INDEX ? '.' : lang,
+              dirHTML = path.join(dir, subdir, fileHTML);
+
+          if(!fs.existsSync(dirHTML)) {
+            missingFiles.push(dirHTML);
+          }
+          else {
+            firstTime = false;
+          }
+        }
+
+      });
+
+      if(missingFiles.length > 0) {
+        var message = firstTime ?
+          'Boss I think the website has been generated. I have to regenerate all the HTML files.' :
+          'Mmm something\'s wrong with the website, ' + missingFiles.length + ' HTML files are missing. I have to regenerate them.';
+
+        _this.newDiscussion();
+        _this.says(message);
+
+        _work('all');
+      }
     }
 
     function _work(type, ejsFile, folder) {
