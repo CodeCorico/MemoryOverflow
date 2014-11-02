@@ -108,5 +108,107 @@
   "Contribute in the Central Agency of the Machine",
 
   "Story of The Machine":
-  "Story of The Machine"
+  "Story of The Machine",
+
+  "Central Agency of the Machine":
+  "Central Agency of the Machine",
+
+  "Welcome to the C.A.M.. This agency was designed by The Machine to improve herself and her content. When you contribute to the project you become a Special Agent of The Machine. The Machine needs you to make her brain more intelligent, to make new cards, more templates, to translate the website, etc.":
+  "Welcome to the C.A.M.. This agency was designed by The Machine to improve herself and her content. When you contribute to the project you become a Special Agent of The Machine. The Machine needs you to make her brain more intelligent, to make new cards, more templates, to translate the website, etc.",
+
+  "The Machine loves her Agents. The more you contribute, the more she will love you.":
+  "The Machine loves her Agents. The more you contribute, the more she will love you.",
+
+  "Contribution types":
+  "Contribution types",
+
+  "There are 5 types of contribution in the project. All have the same goal: create a beautiful, smart and awesome card game.":
+  "There are 5 types of contribution in the project. All have the same goal: create a beautiful, smart and awesome card game.",
+
+  "Cards":
+  "Cards",
+
+  "Templates":
+  "Templates",
+
+  "Website":
+  "Website",
+
+  "The Machine":
+  "The Machine",
+
+  "Translations":
+  "Translations",
+
+  "Code of Conduct":
+  "Code of Conduct",
+
+  "Before contributing to the project and become a Special Agent, you have to know The Machine code of conduct. As Special Agent, your first goal is to lead by example. You have to respect other agent who contributes by posting issues, updating cards, submitting pull requests, providing feedback in comments, and any other activities.":
+  "Before contributing to the project and become a Special Agent, you have to know The Machine code of conduct. As Special Agent, your first goal is to lead by example. You have to respect other agent who contributes by posting issues, updating cards, submitting pull requests, providing feedback in comments, and any other activities.",
+
+  "Communication through any of Memory Overflow's channels (GitHub, Gitter, mailing lists, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harrassment, insults, or other unprofessional conduct.":
+  "Communication through any of Memory Overflow's channels (GitHub, Gitter, mailing lists, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harrassment, insults, or other unprofessional conduct.",
+
+  "The Machine respect everyone is involved in this agency regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. She expects no less of her agents.":
+  "The Machine respect everyone is involved in this agency regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. She expects no less of her agents.",
+
+  "If any Special Agent violates this code of conduct, The Machine or her leader agents may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.":
+  "If any Special Agent violates this code of conduct, The Machine or her leader agents may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.",
+
+  "Contributions":
+  "Contributions",
+
+  "The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Machine is the central point of the game. She's everywhere, she sees everyone.":
+  "The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Machine is the central point of the game. She's everywhere, she sees everyone.",
+
+  "Each contribution type described below will redirect you to the specific part in the Github project.":
+  "Each contribution type described below will redirect you to the specific part in the Github project.",
+
+  "Cards are grouped by edition. There are %s3 playable card types%s and the special cards The Machine. Each card is design to create the %s\"amazing! effect\"%s when two players fighting. By contributing on cards, you have the power to create new rules, new combos and new play opportunities.":
+  "Cards are grouped by edition. There are %s3 playable card types%s and the special cards The Machine. Each card is design to create the %s\"amazing! effect\"%s when two players fighting. By contributing on cards, you have the power to create new rules, new combos and new play opportunities.",
+
+  "Cards are written in multiple programming languages. You can easily add all of the language you want and contribute to existing card to add new langagues support.":
+  "Cards are written in multiple programming languages. You can easily add all of the language you want and contribute to existing card to add new langagues support.",
+
+  "Before creating new cards, the best thing is to discuss with all of the agents in the %sC.A.M. discussion room%s. Feel free to create new %sissue%s formatted in %suser story%s or directly pull request to explain you new card ideas.":
+  "Before creating new cards, the best thing is to discuss with all of the agents in the %sC.A.M. discussion room%s. Feel free to create new %sissue%s formatted in %suser story%s or directly pull request to explain you new card ideas.",
+
+  "Go creating cards!":
+  "Go creating cards!",
+
+  "Templates makes the atmosphere of the physical game. They are close to The Machine as they represent her soul in the players hands.":
+  "Templates makes the atmosphere of the physical game. They are close to The Machine as they represent her soul in the players hands.",
+
+  "It's really easy to create a card template. The skeleton is the same for all of the templates. So you just have to draw your template and set each position and style of the cards parts (card title, version, content, etc.)":
+  "It's really easy to create a card template. The skeleton is the same for all of the templates. So you just have to draw your template and set each position and style of the cards parts (card title, version, content, etc.)",
+
+  "Go creating templates!":
+  "Go creating templates!",
+
+  "The website is the media that allows players to easily access to cards. It's written in %sEJS%s and when its source code is updated and published in the GitHub repository, a Special Agent regenerate automatically the official website.":
+  "The website is the media that allows players to easily access to cards. It's written in %sEJS%s and when its source code is updated and published in the GitHub repository, a Special Agent regenerate automatically the official website.",
+
+  "It's possible to improve its design, to make more usefull pages or features. You can contribute to create what you want to use.":
+  "It's possible to improve its design, to make more usefull pages or features. You can contribute to create what you want to use.",
+
+  "Go updating the website!":
+  "Go updating the website!",
+
+  "The machine is an artificial intelligence designed by the Developer Master before his death. Her goal is to find a worthy successor to the D.M. fighting the horde of developers who think they're smart enought.":
+  "The machine is an artificial intelligence designed by the Developer Master before his death. Her goal is to find a worthy successor to the D.M. fighting the horde of developers who think they're smart enought.",
+
+  "The Machine has designed special agents who work for her. Each is responsible for a particular task, such as cards or website generations for example. She, and its agents, are written in JavaScript with Node.js. To contribute to the flowering of The Machine you need to have good strong back.":
+  "The Machine has designed special agents who work for her. Each is responsible for a particular task, such as cards or website generations for example. She, and its agents, are written in JavaScript with Node.js. To contribute to the flowering of The Machine you need to have good strong back.",
+
+  "Go working on The Machine brain!":
+  "Go working on The Machine brain!",
+
+  "The cards and the website must be read in several languages. Each one use a simple system of internationalisation to allow players to read the rules, print and play cards in their languages.":
+  "The cards and the website must be read in several languages. Each one use a simple system of internationalisation to allow players to read the rules, print and play cards in their languages.",
+
+  "Go translating cards!":
+  "Go translating cards!",
+
+  "Go translating the website!":
+  "Go translating the website!"
 }
