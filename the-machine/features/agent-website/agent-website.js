@@ -11,7 +11,8 @@
       PATHS = {
         WEBSITE: '../website',
         WEBSITE_EJS: '../website/**/*.ejs',
-        WEBSITE_LOCALES: '../website/locales'
+        WEBSITE_LOCALES: '../website/locales',
+        WEBSITE_LOCALES_JSON: '../website/locales/*.json'
       },
       LANGS = {
         INDEX: 'en',
@@ -26,7 +27,7 @@
     function _init() {
       _this.name('of Website');
 
-      LANGS.DIRECTORIES = glob.sync(PATHS.WEBSITE_LOCALES + '/*.json').map(function(file) {
+      LANGS.DIRECTORIES = glob.sync(PATHS.WEBSITE_LOCALES_JSON).map(function(file) {
         return path.basename(file.replace('.json', ''));
       });
 
@@ -48,6 +49,12 @@
               folder = filePath.join(path.sep);
 
           _work(args.type, file, folder);
+        })
+        .watch([PATHS.WEBSITE_LOCALES_JSON], function() {
+          _this.newDiscussion();
+          _this.says('Boss, a website locale file has been updated, I have to regenerate all the HTML files.');
+
+          _work('all');
         });
     }
 
