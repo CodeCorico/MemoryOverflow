@@ -12,7 +12,7 @@
   "« Détruis tes ennemis, prends le contrôle de la machine, deviens le nouveau Maître développeur »",
 
   "D.M.":
-  "D.M.",
+  "M.D.",
 
   "« The Machine sees everything »":
   "« La Machine voit tout »",
@@ -108,5 +108,107 @@
   "Contribues dans l'Agence Centrale de La Machine (C.A.M.)",
 
   "Story of The Machine":
-  "L'histoire de La Machine"
+  "L'histoire de La Machine",
+
+  "Central Agency of the Machine":
+  "Agence Centrale de La Machine (C.A.M.)",
+
+  "Welcome to the C.A.M.. This agency was designed by The Machine to improve herself and her content. When you contribute to the project you become a Special Agent of The Machine. The Machine needs you to make her brain more intelligent, to make new cards, more templates, to translate the website, etc.":
+  "Bienvenue dans la C.A.M.. Cette agence a été créée par La Machine pour améliorer ses fonctions ainsi que son contenu. Lorsque tu contribue au projet tu deviens un Agent Spécial de La Machine. La Machine a besoin de toi pour rendre son cerveau plus intelligent, pour créer de nouvelles cartes, de nouveaux thèmes, pour traduire le site web et bien plus.",
+
+  "The Machine loves her Agents. The more you contribute, the more she will love you.":
+  "La Machine aime ses Agents. Plus tu contribue plus elle t'aimera.",
+
+  "Contribution types":
+  "Types de contribution",
+
+  "There are 5 types of contribution in the project. All have the same goal: create a beautiful, smart and awesome card game.":
+  "Dans ce projet, il existe 5 types de contribution. Tous ont le même but : créer un jeu de cartes magnifique, intelligent et explosif.",
+
+  "Cards":
+  "Cartes",
+
+  "Templates":
+  "Thèmes",
+
+  "Website":
+  "Site web",
+
+  "The Machine":
+  "La Machine",
+
+  "Translations":
+  "Traductions",
+
+  "Code of Conduct":
+  "Code de conduite",
+
+  "Before contributing to the project and become a Special Agent, you have to know The Machine code of conduct. As Special Agent, your first goal is to lead by example. You have to respect other agent who contributes by posting issues, updating cards, submitting pull requests, providing feedback in comments, and any other activities.":
+  "Avant de commencer à contribuer au projet et devenir un Agent Spécial, tu dois connaître le code du conduite de La Machine. Comme Agent Spécial, ton premier but est de diriger par l'exemple. Tu te dois de respecter tous autre Agents qui contribuent lorsqu'ils postent des issues, qu'ils mettent à jour des cartes, qu'ils soumettent des pull requests, qu'ils donnent leur avis dans un commentaire, ou toute autre activité.",
+
+  "Communication through any of Memory Overflow's channels (GitHub, Gitter, mailing lists, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harrassment, insults, or other unprofessional conduct.":
+  "La communication au travers de chaque cannal de Memory Overflow (GitHub, Gitter, emails, Google+, Twitter, etc.) doit être constructive et ne doit jamais dépendre d'une attaque personnelle, d'un troll, d'une humiliation publique ou privée, d'insultes, ou tout autre conduite non professionnelle.",
+
+  "The Machine respect everyone is involved in this agency regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. She expects no less of her agents.":
+  "La Machine respecte chaque personne impliquée dans son agence quel que soit son sexe, son orientation sexuelle, ses handicaps, son âge, son origine ethnique, sa religion, ou son niveau d'experience. Elle n'en attend pas moins de ses agents.",
+
+  "If any Special Agent violates this code of conduct, The Machine or her leader agents may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.":
+  "Si le moindre Agent viole ce code de conduite, La Machine ou l'un de ses Agent leader pourra prendre des actions a son encontre, comme supprimer des issues, commentaires et pull requests. Elle se permettra également de faire bloquer un compte au sein du projet.",
+
+  "Contributions":
+  "Contributions",
+
+  "The GitHub project is designed to run like a Wiki. Each folder has a README.md file to describe the way it works. The Machine is the central point of the game. She's everywhere, she sees everyone.":
+  "Le projet sur GitHub est conçu comme un wiki. Chaque répertoire contient un fichier README.md qui décrit comment s'utilise la fonctionnalité en question et comment y contribuer. La Machine est le point central du jeu. Elle est partout, elle voit tout.",
+
+  "Each contribution type described below will redirect you to the specific part in the Github project.":
+  "Chaque type de contribution est expliqué ci-dessous et te redirigera directement dans sa partie spécifique sur GitHub.",
+
+  "Cards are grouped by edition. There are %s3 playable card types%s and the special cards The Machine. Each card is design to create the %s\"amazing! effect\"%s when two players fighting. By contributing on cards, you have the power to create new rules, new combos and new play opportunities.":
+  "Les cartes sont groupées par edition. Il existe %s3 types de cartes jouable%s ainsi que les cartes spéciales de La Machine. Chaque carte est conçue pour créer un \"effet WAW !\" lorsque deux joueurs se combattent. En créant de nouvelles cartes, tu as le pouvoir de créer de nouvelles règles, de nouveaux combos et de nouvelles opportunités de jeu.",
+
+  "Cards are written in multiple programming languages. You can easily add all of the language you want and contribute to existing card to add new langagues support.":
+  "Les cartes sont écrites dans de multiples langages de programmation. Tu peux facilement ajouter de nouveaux langages au cartes existantes pour supporter de nouveaux types de joueurs développeurs.",
+
+  "Before creating new cards, the best thing is to discuss with all of the agents in the %sC.A.M. discussion room%s. Feel free to create new %sissue%s formatted in %suser story%s or directly pull request to explain you new card ideas.":
+  "Avant de créer de nouvelles cartes, la meilleure chose à faire est d'en discuter avec les autres agents dans la %ssalle du discussion de la C.A.M.%s. Soit libre de créer de nouvelles %sissues%s formattées en %suser story%s ou en soumettant directement des pull requests pour expliquer tes idées de cartes.",
+
+  "Go creating cards!":
+  "Créer des cartes !",
+
+  "Templates makes the atmosphere of the physical game. They are close to The Machine as they represent her soul in the players hands.":
+  "Les thèmes de cartes construisent l'atmosphère de jeu. Ils sont proches de La Machine et représentent son âme lorsqu'un joueur à ses cartes en main.",
+
+  "It's really easy to create a card template. The skeleton is the same for all of the templates. So you just have to draw your template and set each position and style of the cards parts (card title, version, content, etc.)":
+  "Il est très facile de créer un thème de cartes. Le squelette est le même pour tous les thèmes. Il te faut juste dessiner ton thème et définir la position et le style de chaque partie des cartes (titre de la carte, version, contenu, etc.)",
+
+  "Go creating templates!":
+  "Créer des thèmes !",
+
+  "The website is the media that allows players to easily access to cards. It's written in %sEJS%s and when its source code is updated and published in the GitHub repository, a Special Agent regenerate automatically the official website.":
+  "Le site web est le support qui permet aux joueurs d'acceder facilement aux cartes. Il est écrit en %sEJS%s et lorsque son code source est mis à jour et publié sur le projet GitHub, un Agent Special le regénère automatiquement sur le site officiel.",
+
+  "It's possible to improve its design, to make more usefull pages or features. You can contribute to create what you want to use.":
+  "Il est possible d'améliorer son graphisme de créer des pages et des fonctionnalités plus utiles. Tu peux créer ce qu'au final tu veux utiliser.",
+
+  "Go updating the website!":
+  "Mettre à jour le site web !",
+
+  "The machine is an artificial intelligence designed by the Developer Master before his death. Her goal is to find a worthy successor to the D.M. fighting the horde of developers who think they're smart enought.":
+  "La machine est une intelligence artificielle crééer par le Maître développeur avant sa mort. Sont but est de trouver le digne successeur du M.D. en se battant contre la horde de développeurs qui pensent en être suffisement capable.",
+
+  "The Machine has designed special agents who work for her. Each is responsible for a particular task, such as cards or website generations for example. She, and its agents, are written in JavaScript with Node.js. To contribute to the flowering of The Machine you need to have good strong back.":
+  "La Machine a conçu des agents spéciaux qui travaillent pour elle. Chacun est responsable d'une tâche particulière, comme la génération finale des cartes ou du site web par exemple. Elle, et ses agents, sont écrit en JavaScript sur Node.js. Pour contribuer à l'épanouissance de La Machine tu devra avoir les reins très solides.",
+
+  "Go working on The Machine brain!":
+  "Travailler sur le cerveau de La Machine !",
+
+  "The cards and the website must be read in several languages. Each one use a simple system of internationalisation to allow players to read the rules, print and play cards in their languages.":
+  "Les cartes ainsi que le site web doivent pouvoir être utilisés dans le plus grand nombre de langues. Chacun possède son propre système de traduction qui permet aux joueurs de lire les règles du jeu, d'imprimer et de jouer des cartes, le tout dans leur langue.",
+
+  "Go translating cards!":
+  "Traduire des cartes !",
+
+  "Go translating the website !":
+  "Traduire le site web !"
 }
