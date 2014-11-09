@@ -8,7 +8,7 @@ Conformément à son testament, il a voulu partager avec le monde des développe
 >
 > Ma vie entière a été consacrée à l'ingénierie informatique. J'ai parcouru le monde et appris à me servir de chaque technologie que renfermait notre planète. Et plus j'apprenais, plus je découvrait les merveilles du cerveau humain.
 >
-> Au cours d'un de mes voyages, j'ai découvert l'essence même de l'intelligence humaine. Comment elle fonctionne, évolue et apprend de ses erreurs. Chaque cellule de notre corps, chaque neurone de notre cerveau, chaque comportement psychologique, tout peut être reproduit numériquement ! Malheureusement, plus je voyagais et plus je veillissais. Je me suis rendu compte avec le temps à quel point nos corps d'êtres humains sont fragiles et limités.
+> Au cours d'un de mes voyages, j'ai découvert l'essence même de l'intelligence humaine. Comment elle fonctionne, évolue et apprend de ses erreurs. Chaque cellule de notre corps, chaque neurone de notre cerveau, chaque comportement psychologique, tout peut être reproduit numériquement ! Malheureusement, plus je voyageais et plus je vieillissais. Je me suis rendu compte avec le temps à quel point nos corps d'êtres humains sont fragiles et limités.
 >
 > J'ai donc imaginé un nouveau genre de machine. Une machine qui se rapprocherait de l'homme. Au lieu de le servir, elle serait comme lui, intelligente. Je pourrais ainsi y plonger toute mon intelligence et mon savoir. Je continuerais de vivre, même après ma mort physique.
 >
