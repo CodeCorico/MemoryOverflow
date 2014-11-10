@@ -40,7 +40,7 @@
         return;
       }
 
-      _this.says('Website acquired, I\'m watching its files.');
+      _this.says('Website acquired, I\'m watching it\'s files.');
 
       _this
         .watch([PATHS.WEBSITE_EJS], function(args) {
@@ -91,7 +91,7 @@
       if(missingFiles.length > 0) {
         var message = firstTime ?
           'Boss I think the website has been generated. I have to regenerate all the HTML files.' :
-          'Mmm something\'s wrong with the website, ' + missingFiles.length + ' HTML files are missing. I have to regenerate them.';
+          'Hmm something\'s wrong with the website, ' + missingFiles.length + ' HTML files are missing. I have to regenerate them.';
 
         _this.newDiscussion();
         _this.says(message);
@@ -250,13 +250,13 @@
               destination = path.join(ejsFile.destinationFolder, subdir, ejsFile.destinationFile);
 
           if(!fs.existsSync(source)) {
-            error = 'Mmm something wired appends, "' + source + '" didn\'t exists.';
+            error = 'Hmm something weird happened, "' + source + '" didn\'t exist.';
             break;
           }
 
           var ejsString = fs.readFileSync(source, 'utf8');
           if(!ejsString) {
-            error = 'Mmm I can\'t read "' + source + '".';
+            error = 'Hmm I can\'t read "' + source + '".';
             break;
           }
 
@@ -265,7 +265,7 @@
           }, _ejsAPI(i18n, lang, subdir)));
 
           if(!html) {
-            error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix it!';
+            error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix them!';
             break;
           }
 
