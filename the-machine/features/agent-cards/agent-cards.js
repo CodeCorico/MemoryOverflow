@@ -76,8 +76,8 @@
           });
         }
         else {
-          error.msg = error.msg == 'no card' ? 'Mmm... I\'ve not found any card.' : error.msg;
-          error.msg = error.msg == 'no type' ? 'Mmm... The card "' + error.card + '" has no type in its README file.' : error.msg;
+          error.msg = error.msg == 'no card' ? 'Hmm... I haven\'t found any card.' : error.msg;
+          error.msg = error.msg == 'no type' ? 'Hmm... The card "' + error.card + '" has no type in its README file.' : error.msg;
 
           _this.saysError(error.msg, {
             needSlaps: true
