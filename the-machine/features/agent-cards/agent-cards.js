@@ -43,20 +43,26 @@
             });
           }
         })
-        .watch(PATHS.CARDS_CONTENT, function() {
+        .watch(PATHS.CARDS_CONTENT, function(args) {
           _this
             .newDiscussion()
-            .says('The cards have new changes. I have to regenerate cards.');
+            .says('The card has new changes. I have to regenerate cards.');
 
-          _generate();
+          var name = path.basename(args.path, '.md').split('.')[0];
+          _generate({
+            onlyName: name
+          });
         })
         .watch(PATHS.CARDS_LANG, function(args) {
           _this
             .newDiscussion()
             .says('Someone is trying to speak an other language. I have to regenerate cards.');
 
-          var lang = path.basename(args.path, '.po').split('.')[1];
+          var splittedPath = path.basename(args.path, '.po').split('.'),
+              name = splittedPath[0],
+              lang = splittedPath[1];
           _generate({
+            onlyName: name,
             onlyLang: lang
           });
         });

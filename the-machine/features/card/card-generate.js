@@ -20,6 +20,7 @@
   function cardGenerate(options, log, onGenerationComplete) {
     options = extend(true, {
       onlyTemplate: null,
+      onlyName: null,
       onlyLang: null,
       progressLoad: '[:bar] :current / :total',
       progressGeneration: '[:bar] :current / :total'
@@ -64,24 +65,27 @@
 
         files.forEach(function(file) {
           if (_endsWith(file, 'md') && !_endsWith(file, 'README.md')) {
-            templates.forEach(function(template) {
-              var name = path.basename(file, '.md');
-              _cards[name] = new Card(file, template, name);
-              _cardsToLoad++;
-            });
+            var name = path.basename(file, '.md');
+
+            if (!options.onlyName || options.onlyName == name) {
+              templates.forEach(function(template) {
+                _cards[name] = new Card(file, template, name);
+                _cardsToLoad++;
+              });
+            }
           }
         });
 
         files.forEach(function(file) {
           if (_endsWith(file, 'po')) {
-            var name = path.basename(file, '.po'),
-                splited = name.split('.'),
-                fileLang = splited[1];
+            var splitted = path.basename(file, '.po').split('.'),
+                name = splitted[0],
+                fileLang = splitted[1];
 
-            if (!options.onlyLang || options.onlyLang == fileLang) {
+            if ((!options.onlyLang || options.onlyLang == fileLang) && _cards[name]) {
               atLeastOneCard = true;
 
-              _cards[splited[0]].languageFiles(fileLang, file);
+              _cards[name].languageFiles(fileLang, file);
             }
           }
           else if (_endsWith(file, 'README.md')) {
