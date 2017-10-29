@@ -1,7 +1,8 @@
 language: node_js
 before_install: cd the-machine
+env:
+  - WEBSITE_TARGET=../website
 node_js:
-  - "0.11"
-  - "0.10"
+  - "8.7.0"
 script: "npm run-script test-travis"
 after_script: "npm install coveralls@2.11.2 && cat ./coverage/lcov.info | coveralls"
