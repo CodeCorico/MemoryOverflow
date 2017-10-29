@@ -2,10 +2,12 @@
 *node_modules
 *.log
 *.DS_Store
+*.db
 
 website/data
 website/**/*.html
 the-machine/vendor/wkhtmltoimage
 the-machine/coverage
+the-machine/.env
 
 .jshintrc

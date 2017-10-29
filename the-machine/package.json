@@ -36,6 +36,10 @@
     "i18n": "^0.8.3",
     "progress": "2.0.x"
   },
+  "engines": {
+    "node": ">=8.7.0",
+    "npm": ">=5.4.2"
+  },
   "licenses": [
     {
       "type": "MIT",
