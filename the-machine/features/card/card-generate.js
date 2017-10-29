@@ -11,10 +11,10 @@
       ProgressBar = require('progress'),
 
       PATHS = {
-        WKHTMLTOIMAGE: path.resolve(path.join(__dirname, '..', '..', 'vendor', 'wkhtmltoimage', 'wkhtmltoimage') + (process.platform == 'win32' ? '.exe' : '')),
-        CARDS: path.join(__dirname, '..', '..', '..', 'cards', '**', '**', '*.+(md|po)'),
-        WEBSITE_PRINT: path.join(__dirname, '..', '..', '..', 'website', 'data', 'print'),
-        TEMPLATES: path.join(__dirname, '..', '..', '..', 'templates', '**', '*.json')
+        WKHTMLTOIMAGE: path.resolve(path.join(__dirname, '../../vendor/wkhtmltoimage/wkhtmltoimage') + (process.platform == 'win32' ? '.exe' : '')),
+        CARDS: path.join(__dirname, '../../../cards/**/**/*.+(md|po)'),
+        TEMPLATES: path.join(__dirname, '../../../templates/**/*.json'),
+        WEBSITE_PRINT: path.join(process.env.WEBSITE_TARGET, 'cards')
       };
 
   function cardGenerate(options, log, onGenerationComplete) {

@@ -1,8 +1,5 @@
-(function() {
-  'use strict';
+require('dotenv').config();
 
-  var TheMachine = require('./features/the-machine/the-machine');
+var TheMachine = require('./features/the-machine/the-machine');
 
-  new TheMachine(true);
-
- })();
+new TheMachine(true);

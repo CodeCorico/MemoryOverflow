@@ -20,11 +20,18 @@
       _this.name('of Cards');
 
       if(theMachine.isOneShot()) {
-        _this.says('Sorry boss, I don\'t support the one shot generation for now.');
+        return;
+
+        _this
+          .newDiscussion()
+          .says('Cards acquired, I generate them right now!');
+
+        _generate();
+
         return;
       }
 
-      _this.says('Target acquired, I\'m watching it.');
+      _this.says('Cards acquired, I\'m watching them.');
 
       _this
         .watch(PATHS.TEMPLATES, function(args) {
@@ -82,7 +89,7 @@
           });
         }
         else {
-          error.msg = error.msg == 'no card' ? 'Hmm... I haven\'t found any card.' : error.msg;
+          error.msg = error.msg == 'no card' ? 'Mmm... I didn\'t found a card.' : error.msg;
           error.msg = error.msg == 'no type' ? 'Hmm... The card "' + error.card + '" has no type in its README file.' : error.msg;
 
           _this.saysError(error.msg, {

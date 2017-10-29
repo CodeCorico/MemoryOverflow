@@ -13,10 +13,10 @@
         _agents = [];
 
     function _init() {
-      if(clc.width) {
+      if(clc.windowSize.width) {
         var bannerWidth = 52,
-            fillCharasNb = Math.floor((clc.width - bannerWidth) / 2),
-            margin = fillCharasNb > 0 ? new Array(Math.floor((clc.width - bannerWidth) / 2)).join(' ') : '',
+            fillCharasNb = Math.floor((clc.windowSize.width - bannerWidth) / 2),
+            margin = fillCharasNb > 0 ? new Array(Math.floor((clc.windowSize.width - bannerWidth) / 2)).join(' ') : '',
             fillBar = margin.replace(/ /g, '░');
 
         var banner = [
@@ -31,7 +31,7 @@
           clc.red(          '           ░░                          ░░           ') + '\n',
           clc.red(          '             ░░                      ░░             ') + '\n',
           clc.red(fillBar + '░░░░░░░░░░░░░░░░                    ░░░░░░░░░░░░░░░░' + fillBar) + '\n\n',
-          clc.red(          '           « The Machine sees everything »') + '\n\n\n'
+          clc.red(          '           « The Machine sees everything »') + '\n\n'
         ];
 
         for(var i = 0, len = banner.length; i < len; i++) {
@@ -115,7 +115,7 @@
       }
       else if(options.needGratitude) {
         sentences = [
-          'Good work soon.',
+          'Good work son.',
           'Proud of you.',
           'Got it.',
           'Cool cool cool.',
