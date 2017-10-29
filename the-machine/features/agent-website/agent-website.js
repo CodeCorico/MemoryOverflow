@@ -7,12 +7,13 @@
       ejs = require('ejs'),
       glob = require('glob'),
       extend = require('extend'),
+      i18n = require('i18n'),
 
       PATHS = {
-        WEBSITE: '../website',
-        WEBSITE_EJS: '../website/**/*.ejs',
+        WEBSITE_SOURCE: '../website/**/*.*',
         WEBSITE_LOCALES: '../website/locales',
-        WEBSITE_LOCALES_JSON: '../website/locales/*.json'
+        WEBSITE_LOCALES_JSON: '../website/locales/*.json',
+        WEBSITE_TARGET: process.env.WEBSITE_TARGET,
       },
       LANGS = {
         INDEX: 'en',
@@ -27,13 +28,10 @@
     function _init() {
       _this.name('of Website');
 
-      LANGS.DIRECTORIES = glob.sync(PATHS.WEBSITE_LOCALES_JSON).map(function(file) {
-        return path.basename(file.replace('.json', ''));
-      });
-
       if(theMachine.isOneShot()) {
-        _this.newDiscussion();
-        _this.says('Website acquired, I generate it right now!');
+        _this
+          .newDiscussion()
+          .says('Website acquired, I generate it right now!');
 
         _work('all');
 
@@ -42,153 +40,115 @@
 
       _this.says('Website acquired, I\'m watching it\'s files.');
 
-      _this
-        .watch([PATHS.WEBSITE_EJS], function(args) {
-          var filePath = args.path.split(path.sep),
-              file = filePath.pop(),
-              folder = filePath.join(path.sep);
+      _this.watch(PATHS.WEBSITE_SOURCE, function() {
+        _this
+          .newDiscussion()
+          .says('Boss, the website has been updated. I\'m generating its files...');
 
-          _work(args.type, file, folder);
-        })
-        .watch([PATHS.WEBSITE_LOCALES_JSON], function() {
-          _this.newDiscussion();
-          _this.says('Boss, a website locale file has been updated, I have to regenerate all the HTML files.');
-
-          _work('all');
-        });
-
-      _checkWebsiteVersion();
-    }
-
-    function _checkWebsiteVersion() {
-      var missingFiles = [],
-          firstTime = true;
-
-      glob.sync(PATHS.WEBSITE_EJS).map(function(file) {
-        var source = path.resolve(file),
-            dir = path.dirname(source),
-            fileHTML = path.basename(source.replace('.ejs', '.html'));
-
-        if(source.indexOf(path.sep + 'features' + path.sep) > -1) {
-          return;
-        }
-
-        for(var langIndex = 0, langLength = LANGS.DIRECTORIES.length; langIndex < langLength; langIndex++) {
-          var lang = LANGS.DIRECTORIES[langIndex],
-              subdir = lang == LANGS.INDEX ? '.' : lang,
-              dirHTML = path.join(dir, subdir, fileHTML);
-
-          if(!fs.existsSync(dirHTML)) {
-            missingFiles.push(dirHTML);
-          }
-          else {
-            firstTime = false;
-          }
-        }
-
+        _work();
       });
 
-      if(missingFiles.length > 0) {
-        var message = firstTime ?
-          'Boss I think the website has been generated. I have to regenerate all the HTML files.' :
-          'Hmm something\'s wrong with the website, ' + missingFiles.length + ' HTML files are missing. I have to regenerate them.';
-
-        _this.newDiscussion();
-        _this.says(message);
-
-        _work('all');
-      }
+      _work();
     }
 
-    function _work(type, ejsFile, folder) {
-      ejsFile = ejsFile || '';
-      folder = folder || '';
+    function _work() {
+      var error = false;
 
-      var htmlFile = ejsFile.replace('.ejs', '.html'),
-          htmlDestination = path.join(folder, htmlFile),
-          ejsSource = path.join(folder, ejsFile);
+      var locales = glob
+        .sync(PATHS.WEBSITE_LOCALES_JSON)
+        .map(function(file) {
+          return path.basename(file.replace('.json', ''));
+        });
 
-      if(type != 'all') {
-        _this.newDiscussion();
-      }
+      i18n.configure({
+        locales: locales,
+        defaultLocale: 'en',
+        directory: path.resolve(PATHS.WEBSITE_LOCALES),
+        updateFiles: false
+      });
 
-      if(type == 'all' || folder.indexOf(path.sep + 'features' + path.sep) > -1) {
-        if(type != 'all') {
-          _this.says('Boss, a website feature has been ' + type + '. I have to regenerate all the HTML files.');
-        }
+      glob
+        .sync(path.join(PATHS.WEBSITE_TARGET, '/**/*.*'))
+        .filter(function(file) {
+          return file.indexOf('.md') < 0;
+        })
+        .forEach(function(file) {
+          fs.removeSync(file);
+        });
 
-        var ejsfiles = glob.sync(PATHS.WEBSITE_EJS).map(function(file) {
+      glob
+        .sync(PATHS.WEBSITE_SOURCE)
+        .filter(function(file) {
+          return file.indexOf('.md') < 0 && file.indexOf('/locales') < 0;
+        })
+        .forEach(function(file) {
+          if (error) {
+            return;
+          }
+
           var source = path.resolve(file);
+          var sourceCleaned = file.replace('../website/', '');
+          var destination = path.join(PATHS.WEBSITE_TARGET, sourceCleaned);
+          var isEjs = source.indexOf('.ejs') > -1;
 
-          return {
-            source: source,
-            destinationFolder: path.dirname(source),
-            destinationFile: path.basename(source.replace('.ejs', '.html'))
-          };
-        }).filter(function(file) {
-          return file.source.indexOf(path.sep + 'features' + path.sep) === -1;
+          if (sourceCleaned.indexOf('features/') === 0) {
+            var sourceSplitted = sourceCleaned.split('/');
+            sourceCleaned = 'assets/' + sourceSplitted[1] + '/' + sourceSplitted[sourceSplitted.length - 1];
+            destination = path.join(PATHS.WEBSITE_TARGET, sourceCleaned);
+          }
+
+          if (isEjs) {
+            if (path.dirname(file) != '../website') {
+              return;
+            }
+
+            for(var langIndex = 0, langLength = locales.length; langIndex < langLength; langIndex++) {
+              var lang = locales[langIndex],
+                  langDir = '.';
+
+              i18n.setLocale(lang);
+
+              if(lang != 'en') {
+                langDir = lang;
+              }
+
+              destination = path.join(PATHS.WEBSITE_TARGET, langDir, sourceCleaned.replace('.ejs', '.html'));
+
+              var ejsData = fs.readFileSync(source, 'utf8');
+              var html = ejs.render(ejsData, extend(true, {
+                filename: source
+              }, _ejsAPI(i18n, lang, langDir)));
+
+              if(!html) {
+                error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix it!';
+
+                break;
+              }
+
+              fs.outputFileSync(destination, html, {
+                preserveTimestamps: true
+              });
+            }
+          }
+          else {
+            fs.copySync(source, destination);
+          }
         });
 
-        _generate(ejsfiles, function(success, error) {
-          if(success) {
-            _this.says('All HTML final files generated. Everything is ok.', {
-              needGratitude: true
-            });
-          }
-          else{
-            _this.saysError(error, {
-              needSlaps: true
-            });
-          }
+      if (error) {
+        _this.saysError(error, {
+          needSlaps: true
         });
+
+        return;
       }
-      else if(type == 'deleted') {
-        _this.says('Boss, the website "' + ejsFile + '" file has been deleted. I have to delete the HTML file.');
 
-        _delete(htmlDestination, function(success, error) {
-          if(success) {
-            _this.says('"' + htmlFile + '" file deleted. Everything is ok.', {
-              needGratitude: true
-            });
-          }
-          else{
-            _this.saysError(error, {
-              needSlaps: true
-            });
-          }
-        });
-      }
-      else {
-        _this.says('Boss, the website "' + ejsFile + '" file has been updated. I have to regenerate it.');
-
-        _generate([{
-          source: ejsSource,
-          destinationFolder: folder,
-          destinationFile: htmlFile
-        }], function(success, error) {
-          if(success) {
-            _this.says('"' + htmlFile + '" file generated. Everything is ok.', {
-              needGratitude: true
-            });
-          }
-          else{
-            _this.saysError(error, {
-              needSlaps: true
-            });
-          }
-        });
-      }
+      _this.says('The website is generated. Everything is ok.', {
+        needGratitude: true
+      });
     }
 
-    function _delete(htmlDestination, callback) {
-      callback = callback || function() {};
-
-      fs.removeSync(htmlDestination);
-
-      callback(true);
-    }
-
-    function _ejsAPI(i18n, lang, subdir) {
+    function _ejsAPI(i18n, lang, langDir) {
       var title = '',
           api = {
             css: [],
@@ -207,10 +167,10 @@
               return i18n._n.apply(i18n, arguments);
             },
             base: function() {
-              return subdir == '.' ? '' : '../';
+              return langDir == '.' ? '' : '../';
             },
             index: function() {
-              return '/' + (subdir == '.' ? '' : subdir + '/');
+              return '/' + (langDir == '.' ? '' : langDir + '/');
             },
             lang: function() {
               return lang;
@@ -218,63 +178,6 @@
           };
 
       return api;
-    }
-
-    function _generate(ejsfiles, callback) {
-      callback = callback || function() {};
-
-      var i18n = require('i18n'),
-          error = null;
-
-      i18n.configure({
-        locales: LANGS.DIRECTORIES,
-        defaultLocale: LANGS.INDEX,
-        directory: path.resolve(PATHS.WEBSITE_LOCALES),
-        updateFiles: false
-      });
-
-      for(var langIndex = 0, langLength = LANGS.DIRECTORIES.length; langIndex < langLength; langIndex++) {
-        var lang = LANGS.DIRECTORIES[langIndex],
-            subdir = '.';
-
-        if(lang != LANGS.INDEX) {
-          subdir = lang;
-          fs.ensureDir(path.join(PATHS.WEBSITE, subdir));
-        }
-
-        i18n.setLocale(lang);
-
-        for(var i = 0, len = ejsfiles.length; i < len; i++) {
-          var ejsFile = ejsfiles[i],
-              source = ejsFile.source,
-              destination = path.join(ejsFile.destinationFolder, subdir, ejsFile.destinationFile);
-
-          if(!fs.existsSync(source)) {
-            error = 'Hmm something weird happened, "' + source + '" didn\'t exist.';
-            break;
-          }
-
-          var ejsString = fs.readFileSync(source, 'utf8');
-          if(!ejsString) {
-            error = 'Hmm I can\'t read "' + source + '".';
-            break;
-          }
-
-          var html = ejs.render(ejsString, extend(true, {
-            filename: source
-          }, _ejsAPI(i18n, lang, subdir)));
-
-          if(!html) {
-            error = 'Sorry but "' + source  + '" contains EJS formatting errors. Please fix them!';
-            break;
-          }
-
-          fs.outputFileSync(destination, html);
-        }
-
-      }
-
-      return callback(!error, error);
     }
 
     _init();

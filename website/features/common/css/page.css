@@ -97,7 +97,7 @@ a:hover {
   left: 0;
   width: 156px;
   height: 156px;
-  background: url("../images/logo-animation.png") no-repeat;
+  background: url("logo-animation.png") no-repeat;
   background-size: 100% 100%;
 
   -webkit-animation: rotate-right-animation 120s linear infinite;
@@ -188,7 +188,7 @@ a:hover {
   left: 0;
   width: 156px;
   height: 156px;
-  background: url("../images/logo-animation.png") no-repeat;
+  background: url("logo-animation.png") no-repeat;
 
   -webkit-animation: rotate-right-animation 90s linear infinite;
      -moz-animation: rotate-right-animation 90s linear infinite;
@@ -207,7 +207,7 @@ a:hover {
   padding: 0;
   overflow: hidden;
   text-indent: -99999px;
-  background: url("../images/logo.png") no-repeat;
+  background: url("logo.png") no-repeat;
 }
 
 .body-header .logo p {
@@ -228,7 +228,7 @@ a:hover {
 .body-content {
   position: relative;
   overflow: hidden;
-  background: url("../images/background.png") repeat-x;
+  background: url("background.png") repeat-x;
   padding: 0 10px;
 }
 
@@ -248,7 +248,7 @@ a:hover {
   margin-left: -938px; /* width / 2 */
   height: 776px;
   width: 1876px;
-  background: url("../images/city.png") no-repeat;
+  background: url("city.png") no-repeat;
 }
 
 .body-page {

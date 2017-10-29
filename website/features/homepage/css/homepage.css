@@ -5,7 +5,7 @@
   margin-left: -216px; /* width / 2 */
   width: 432px;
   height: 1200px;
-  background: url("../images/machine-tower.png") no-repeat;
+  background: url("machine-tower.png") no-repeat;
 }
 
 @-webkit-keyframes hero-light-animation { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
@@ -21,7 +21,7 @@
   margin-left: -52px;
   width: 84px;
   height: 176px;
-  background: url("../images/hero-light.png") no-repeat;
+  background: url("hero-light.png") no-repeat;
 
   -webkit-animation: hero-light-animation 5s linear infinite;
      -moz-animation: hero-light-animation 5s linear infinite;
@@ -43,7 +43,7 @@
   margin-left: -256px;
   width: 428px;
   height: 428px;
-  background: url("../images/card-light.png") no-repeat;
+  background: url("card-light.png") no-repeat;
 
   -webkit-animation: card-light-animation 5s linear infinite;
      -moz-animation: card-light-animation 5s linear infinite;
@@ -65,7 +65,7 @@
   margin-left: -80px;
   width: 80px;
   height: 8px;
-  background: url("../images/machine-red-eye.png") no-repeat;
+  background: url("machine-red-eye.png") no-repeat;
 
   -webkit-animation: red-eye-animation 2s ease-out infinite;
      -moz-animation: red-eye-animation 2s ease-out infinite;
@@ -109,7 +109,7 @@
   left: 50%;
   width: 165px;
   height: 165px;
-  background: url("../images/hologram-laser.png") no-repeat;
+  background: url("hologram-laser.png") no-repeat;
   margin-left: -96px;
 
   -webkit-animation: hologram-laser-animation 0.1s linear infinite;
@@ -159,15 +159,15 @@
 }
 
 .panel.panel-game .hologram-panel {
-  background-image: url("../images/hologram-panel-game.png");
+  background-image: url("hologram-panel-game.png");
 }
 
 .panel.panel-cards .hologram-panel {
-  background-image: url("../images/hologram-panel-cards.png");
+  background-image: url("hologram-panel-cards.png");
 }
 
 .panel.panel-contribute .hologram-panel {
-  background-image: url("../images/hologram-panel-contribute.png");
+  background-image: url("hologram-panel-contribute.png");
 }
 
 .panel .column, .panel .column:hover, .panel .column:visited {
@@ -212,7 +212,7 @@
   width: 35px;
   margin-left: -17px;
   height: 20px;
-  background: url("../../common/images/cursor.png") no-repeat;
+  background: url("../common/cursor.png") no-repeat;
 
   -webkit-animation: cursor-animation 0.5s ease-out infinite;
      -moz-animation: cursor-animation 0.5s ease-out infinite;
@@ -317,23 +317,23 @@
   }
 
   .panel.panel-game .hologram-panel .column:first-child {
-    background-image: url("../images/hologram-mini-memoryoverflow.png");
+    background-image: url("hologram-mini-memoryoverflow.png");
   }
 
   .panel.panel-game .hologram-panel .column:nth-child(2) {
-    background-image: url("../images/hologram-mini-themachine.png");
+    background-image: url("hologram-mini-themachine.png");
   }
 
   .panel.panel-game .hologram-panel .column:last-child {
-    background-image: url("../images/hologram-mini-rules.png");
+    background-image: url("hologram-mini-rules.png");
   }
 
   .panel.panel-cards .hologram-panel {
-    background-image: url("../images/hologram-mini-cards.png");
+    background-image: url("hologram-mini-cards.png");
   }
 
   .panel.panel-contribute .hologram-panel {
-    background-image: url("../images/hologram-mini-contribute.png");
+    background-image: url("hologram-mini-contribute.png");
   }
 
   .panel .column:hover .cursor {

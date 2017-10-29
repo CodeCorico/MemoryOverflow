@@ -17,9 +17,14 @@ So now, follow theses simples steps:
 1. Clone this repository project on your system
 2. Start your command line tool, like the _Terminal_ for Mac/Linux or _cmd_ for Windows.
 3. Go to the directory ```the-machine```
-4. Start Node Package Manager to install The Machine dependencies with this command:
+4. Start NPM to install The Machine dependencies with this command:
 ```
 npm install
+```
+5. Add these environment variables to your system or in a ```.env``` file inside the ```the-machine``` directory:
+```
+# Path of the generated website
+WEBSITE_TARGET=/home/my-user/MemoryOverflow-website
 ```
 
 Fantastic, The Machine is installed on your computer. Now, each time you want to use it, just start this command:
