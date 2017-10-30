@@ -20,8 +20,6 @@
       _this.name('of Cards');
 
       if(theMachine.isOneShot()) {
-        return;
-
         _this
           .newDiscussion()
           .says('Cards acquired, I generate them right now!');
