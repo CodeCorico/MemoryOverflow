@@ -190,6 +190,8 @@
               _bar.tick();
             }
 
+            fs.removeSync(htmlFile);
+
             _cardsToGenerate--;
             if (_cardsToGenerate === 0) {
               if (onGenerationComplete) {
