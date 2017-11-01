@@ -25,7 +25,7 @@ Xavier Boubert @xavierboubert
 # code:javascript
 
 {code}
-{operator}for{/operator}({operator}var{/operator} i {operator}={/operator} 0; i {operator}<{/operator} variable; i{operator}++{/operator}) {
+{operator}for{/operator} ({operator}var{/operator} i {operator}={/operator} 0; i {operator}<{/operator} variable; i{operator}++{/operator}) {
   ...
 {/code}
 
