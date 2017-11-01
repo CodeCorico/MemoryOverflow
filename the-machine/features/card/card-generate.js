@@ -5,7 +5,7 @@
       extend = require('extend'),
       path = require('path'),
       glob = require('glob'),
-      spawn = require('child_process').spawn,
+      spawnSync = require('child_process').spawnSync,
       Card = require('./card'),
       CardReadme = require('./card-readme'),
       ProgressBar = require('progress'),
@@ -22,14 +22,11 @@
       onlyTemplate: null,
       onlyName: null,
       onlyLang: null,
-      progressLoad: '[:bar] :current / :total',
       progressGeneration: '[:bar] :current / :total'
     }, options || {});
 
     var _bar = null,
-        _cardsToLoad = 0,
         _loadedCards = [],
-        _cardsToGenerate = 0,
         _cards = [],
         templates = [];
 
@@ -53,9 +50,6 @@
 
     function _loadCards() {
       var atLeastOneCard = false;
-
-      _cardsToLoad = 0;
-
       var files = glob.sync(PATHS.CARDS);
 
       if (files && files.length) {
@@ -70,7 +64,6 @@
             if (!options.onlyName || options.onlyName == name) {
               templates.forEach(function(template) {
                 _cards[name] = new Card(file, template, name);
-                _cardsToLoad++;
               });
             }
           }
@@ -99,18 +92,24 @@
       }
 
       if (atLeastOneCard) {
-        _bar = new ProgressBar(options.progressLoad, {
+        for (var file in _cards) {
+          _loadCard(_cards[file]);
+        }
+
+        let cardsLength = Object.keys(_loadedCards).length;
+
+        console.log(cardsLength);
+
+        _bar = new ProgressBar(options.progressGeneration, {
           complete: '=',
           incomplete: ' ',
-          width: _cardsToLoad * 4,
-          total: _cardsToLoad
+          width: cardsLength * 4,
+          total: cardsLength
         });
 
         _bar.render();
 
-        for (var file in _cards) {
-          _loadCard(_cards[file]);
-        }
+        _generateCards();
       }
       else {
         onGenerationComplete(false, {
@@ -124,6 +123,7 @@
 
       if (typeof cards == 'string') {
         _bar.terminate();
+
         onGenerationComplete(false, {
           msg: cards,
           card: card.name()
@@ -132,35 +132,30 @@
         return;
       }
 
-      if (_bar) {
-        _bar.tick();
-      }
-
       //new CardReadme(card).generate();
 
       _loadedCards = _loadedCards.concat(cards);
-
-      _cardsToLoad--;
-      if (_cardsToLoad === 0) {
-        _generateCards();
-      }
     }
 
-    function _generateCards() {
-      _cardsToGenerate = Object.keys(_loadedCards).length;
+    function _generateCards(i) {
+      i = i || 0;
 
-      _bar = new ProgressBar(options.progressGeneration, {
-        complete: '=',
-        incomplete: ' ',
-        width: _cardsToGenerate * 4,
-        total: _cardsToGenerate
-      });
+      if (_loadedCards[i]) {
+        let card = _loadedCards[i];
 
-      _bar.render();
-
-      _loadedCards.forEach(function(card) {
         _generateCard(card.html, card.name, card.template, card.code, card.lang);
-      });
+
+        _bar.tick();
+
+        setTimeout(() => {
+          _generateCards(++i);
+        });
+      }
+      else {
+        if (onGenerationComplete) {
+          onGenerationComplete(true);
+        }
+      }
     }
 
     function _generateCard(html, card, template, code, lang) {
@@ -170,45 +165,29 @@
       fs.ensureDirSync(htmlFile);
       htmlFile = path.join(htmlFile, output + '.html');
 
-      fs.writeFile(htmlFile, html, function(err) {
-        if (err) {
-          throw new Error(err);
-        }
+      fs.writeFileSync(htmlFile, html);
 
-        try {
-          var imgFile = path.join(PATHS.WEBSITE_PRINT, template);
-          fs.ensureDirSync(imgFile);
-          imgFile = path.join(imgFile, output + '.jpg');
+      try {
+        var imgFile = path.join(PATHS.WEBSITE_PRINT, template);
+        fs.ensureDirSync(imgFile);
+        imgFile = path.join(imgFile, output + '.jpg');
 
-          spawn(
-            PATHS.WKHTMLTOIMAGE, [
-              '--disable-javascript',
-              htmlFile,
-              imgFile
-            ]
-          ).stdout.on('end', function() {
-            if (_bar) {
-              _bar.tick();
-            }
+        spawnSync(
+          PATHS.WKHTMLTOIMAGE, [
+            '--disable-javascript',
+            htmlFile,
+            imgFile
+          ]
+        )
 
-            fs.removeSync(htmlFile);
-
-            _cardsToGenerate--;
-            if (_cardsToGenerate === 0) {
-              if (onGenerationComplete) {
-                onGenerationComplete(true);
-              }
-            }
-          });
-        }
-        catch (err1) {
-          throw new Error(err1);
-        }
-      });
+        fs.removeSync(htmlFile);
+      }
+      catch (err1) {
+        throw new Error(err1);
+      }
     }
 
     _loadCards();
-
   };
 
   module.exports = cardGenerate;
