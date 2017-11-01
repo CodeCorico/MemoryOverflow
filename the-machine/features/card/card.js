@@ -16,7 +16,7 @@ function Card (file, template, name) {
   let _languages = {};
   let _readmeFile = null;
   let _cardConfig = null;
-  let _templatePath = path.resolve(path.join(__dirname, '..', '..', '..', 'templates', template));
+  let _templatePath = path.resolve(path.join(__dirname, '../../../templates', template));
   let _templateFilePath = _templatePath.substring(_templatePath.indexOf('templates' + path.sep) + ('templates' + path.sep).length);
   let _numberLanguagesToParse = 0;
 
@@ -149,7 +149,7 @@ function Card (file, template, name) {
         $content.find('.title').html(content);
       }
       else if (key == 'edition') {
-        $content.find('.edition').append('<span>' + content + ' - ' + content.substring(0, 1).toUpperCase() + '</span>');
+        $content.find('.edition').append('<span>' + content + ' - ' + _cardConfig.id + templateData.id + _cardConfig.version + '</span>');
       }
       else if (key.indexOf('code') === 0) {
         cardCode = key.split(':')[1];
@@ -186,9 +186,12 @@ function Card (file, template, name) {
 
       Object.keys(_languageFiles).forEach((lang) => {
         let _card = {
+          id: _cardConfig.id,
+          version: _cardConfig.version,
           html: translateHTML(html, _languageFiles[lang]),
           name: card.name,
           template: _this.template(),
+          templateId: templateData.id,
           code: card.code,
           lang: lang
         };
@@ -201,7 +204,7 @@ function Card (file, template, name) {
     return _cards;
   };
 
-  const getLanguageContent = (callback) => {
+  const getLanguageContent = () => {
     if (!_languages) {
       return;
     }
@@ -241,7 +244,7 @@ function Card (file, template, name) {
     return template;
   };
 
-  this.load = (onLoadComplete) => {
+  this.load = () => {
     let splitFile = file.split(path.sep);
     let card = splitFile[splitFile.length -1].replace('.md', '');
     let jsonFile = path.join(_templatePath, _templateFilePath + '.json');
