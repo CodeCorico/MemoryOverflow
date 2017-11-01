@@ -120,29 +120,30 @@
     }
 
     function _loadCard(card) {
-      card.load(function(error, loadedCards) {
-        if (error) {
-          _bar.terminate();
-          onGenerationComplete(false, {
-            msg: error,
-            card: card.name()
-          });
-          return;
-        }
+      let cards = card.load();
 
-        if (_bar) {
-          _bar.tick();
-        }
+      if (typeof cards == 'string') {
+        _bar.terminate();
+        onGenerationComplete(false, {
+          msg: cards,
+          card: card.name()
+        });
 
-        //new CardReadme(card).generate();
+        return;
+      }
 
-        _loadedCards = _loadedCards.concat(loadedCards);
+      if (_bar) {
+        _bar.tick();
+      }
 
-        _cardsToLoad--;
-        if (_cardsToLoad === 0) {
-          _generateCards();
-        }
-      });
+      //new CardReadme(card).generate();
+
+      _loadedCards = _loadedCards.concat(cards);
+
+      _cardsToLoad--;
+      if (_cardsToLoad === 0) {
+        _generateCards();
+      }
     }
 
     function _generateCards() {
