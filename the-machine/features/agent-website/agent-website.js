@@ -67,7 +67,7 @@ var AgentWebsite = function(theMachine) {
     glob
       .sync(path.join(PATHS.WEBSITE_TARGET, '/**/*.*'))
       .filter(function(file) {
-        return file.indexOf('.md') < 0;
+        return file.indexOf('.md') < 0 && file.indexOf('/cards/') < 0;
       })
       .forEach(function(file) {
         fs.removeSync(file);
