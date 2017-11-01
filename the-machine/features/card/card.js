@@ -102,7 +102,7 @@ function Card (file, template, name) {
         if (key.indexOf('type-') === 0) {
           className = 'content content-' + cardType;
 
-          if (key.split('-')[1] != cardType) {
+          if (key.replace('type-', '') != cardType) {
             continue;
           }
         }
