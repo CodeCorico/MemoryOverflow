@@ -1,27 +1,24 @@
-(function() {
-  'use strict';
+const gettextParser = require('gettext-parser');
 
-  var gettextParser = require('gettext-parser');
+module.exports = (text) => {
+  var parsed = gettextParser.po.parse(text);
+  let translations = parsed.translations[''];
+  let contents = {};
 
-  function parserGettext(text) {
-    var parsed = gettextParser.po.parse(text),
-        translations = parsed.translations[''],
-        contents = {};
+  Object.keys(translations).forEach(function(key) {
+    if (!key) {
+      return;
+    }
 
-    Object.keys(translations).forEach(function(key) {
-      if (key) {
-        var value = translations[key].msgstr;
-        if (value.length === 1) {
-          contents[key] = value[0];
-        }
-        else {
-          contents[key] = value;
-        }
-      }
-    });
+    let value = translations[key].msgstr;
 
-    return contents;
-  }
+    if (value.length === 1) {
+      contents[key] = value[0];
+    }
+    else {
+      contents[key] = value;
+    }
+  });
 
-  module.exports = parserGettext;
-})();
+  return contents;
+};
