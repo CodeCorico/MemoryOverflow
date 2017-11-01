@@ -1,6 +1,7 @@
 {
   "author": "Michael Lepaysan @retovona",
   "name": "Fototse",
+  "id": "F",
   "default": {
     "font-family": "Open Sans",
     "font-weight": 400,
@@ -8,19 +9,19 @@
     "color": "#ffffff"
   },
   "title": {
-    "font-weight": 300,
-    "font-size": "200pt",
+    "font-weight": 400,
+    "font-size": "130pt",
     "area": {
-      "y1": 230,
+      "y1": 270,
       "x1": 293,
       "y2": 467,
       "x2": 2940
     }
   },
   "brand": {
-    "font-size": "100pt",
+    "font-size": "80pt",
     "area": {
-      "y1": 4765,
+      "y1": 4780,
       "x1": 350,
       "y2": 4960,
       "x2": 1540
@@ -32,7 +33,7 @@
     "area": {
       "y1": 4780,
       "x1": 1780,
-      "y2": 4961,
+      "y2": 4960,
       "x2": 3133
     }
   },
