@@ -1,26 +1,19 @@
-(function() {
-  'use strict';
+module.exports = (data) => {
+  let delimiter = /^#.*/gm;
+  let headers = data.match(delimiter);
+  let contents = data.split(delimiter);
+  let results = null;
 
-  function parserMarkdown(data) {
+  if(headers) {
+    headers.forEach((header, i) => {
+      let headerCleaned = header.replace('#', '').trim();
+      let content = contents[i + 1].trim();
 
-    var delimiter = /^#.*/gm,
-        headers = data.match(delimiter),
-        contents = data.split(delimiter),
-        results = null;
+      results = results || {};
 
-    if(headers) {
-      for (var i = 0, len = headers.length; i < len; i ++) {
-        var header = headers[i].replace('#', '').trim(),
-            content = contents[i + 1].trim();
-
-        results = results || {};
-
-        results[header] = content;
-      }
-    }
-
-    return results;
+      results[headerCleaned] = content;
+    });
   }
 
-  module.exports = parserMarkdown;
-})();
+  return results;
+};
