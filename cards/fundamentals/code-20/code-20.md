@@ -16,7 +16,7 @@ Fundamentals
 
 # type
 
-the machine
+the-machine
 
 # author
 
