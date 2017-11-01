@@ -10,9 +10,12 @@ const ProgressBar = require('progress');
 const PATHS = {
   WKHTMLTOIMAGE: path.resolve(path.join(__dirname, '../../vendor/wkhtmltoimage/wkhtmltoimage') + (process.platform == 'win32' ? '.exe' : '')),
   CARDS: path.join(__dirname, '../../../cards/**/**/*.+(md|po)'),
-  TEMPLATES: path.join(__dirname, '../../../templates/**/*.json'),
+  TEMPLATES_CONFIG: path.join(__dirname, '../../../templates/**/*.json'),
+  TEMPLATES: path.join(__dirname, '../../../templates'),
   WEBSITE_PRINT: path.join(process.env.WEBSITE_TARGET, 'cards')
 };
+
+const backCardTemplate = fs.readFileSync(path.resolve(__dirname, 'card-back.html.tpl'), 'utf8');
 
 module.exports = (options, log, onGenerationComplete) => {
   options = extend(true, {
@@ -22,16 +25,16 @@ module.exports = (options, log, onGenerationComplete) => {
     progressGeneration: '[:bar] :current / :total'
   }, options || {});
 
-  var _bar = null,
-      _loadedCards = [],
-      _cards = [],
-      templates = [];
+  let _bar = null;
+  let _loadedCards = [];
+  let _cards = [];
+  let templates = [];
 
   if(options.onlyTemplate) {
     templates.push(options.onlyTemplate);
   }
   else {
-    var files = glob.sync(PATHS.TEMPLATES);
+    var files = glob.sync(PATHS.TEMPLATES_CONFIG);
     files.forEach(function(file) {
       templates.push(file
         .split('/')
@@ -40,6 +43,23 @@ module.exports = (options, log, onGenerationComplete) => {
       );
     });
   }
+
+  templates.forEach((template) => {
+    _loadedCards.push({
+      html: backCardTemplate.replace('{{img}}', path.join(PATHS.TEMPLATES, template, `${template}-back.jpg`)),
+      name: 'back',
+      template: template,
+      code: null,
+      lang: null
+    });
+    _loadedCards.push({
+      html: backCardTemplate.replace('{{img}}', path.join(PATHS.TEMPLATES, template, `${template}-the-machine-back.jpg`)),
+      name: 'the-machine-back',
+      template: template,
+      code: null,
+      lang: null
+    });
+  });
 
   function _endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
@@ -94,8 +114,6 @@ module.exports = (options, log, onGenerationComplete) => {
       }
 
       let cardsLength = Object.keys(_loadedCards).length;
-
-      console.log(cardsLength);
 
       _bar = new ProgressBar(options.progressGeneration, {
         complete: '=',
