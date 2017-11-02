@@ -4,6 +4,10 @@
   "id": "F",
   "default": {
     "font-family": "Open Sans",
+    "font-urls": [
+      "https://fonts.googleapis.com/css?family=Open+Sans",
+      "https://fonts.googleapis.com/css?family=Orbitron"
+    ],
     "font-weight": 400,
     "font-size": "30pt",
     "color": "#ffffff"
