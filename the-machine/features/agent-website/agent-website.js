@@ -1,21 +1,21 @@
-var TheMachineAgent = require('../the-machine/the-machine-agent.js'),
-    fs = require('fs-extra'),
-    path = require('path'),
-    ejs = require('ejs'),
-    glob = require('glob'),
-    extend = require('extend'),
-    i18n = require('i18n'),
+const fs = require('fs-extra');
+const path = require('path');
+const ejs = require('ejs');
+const glob = require('glob');
+const extend = require('extend');
+const i18n = require('i18n');
+const TheMachineAgent = require(path.resolve(__dirname, '../the-machine/the-machine-agent.js'));
 
-    PATHS = {
-      WEBSITE_SOURCE: '../website/**/*.*',
-      WEBSITE_LOCALES: '../website/locales',
-      WEBSITE_LOCALES_JSON: '../website/locales/*.json',
-      WEBSITE_TARGET: process.env.WEBSITE_TARGET,
-    },
-    LANGS = {
-      INDEX: 'en',
-      DIRECTORIES: []
-    };
+const PATHS = {
+  WEBSITE_SOURCE: '../website/**/*.*',
+  WEBSITE_LOCALES: '../website/locales',
+  WEBSITE_LOCALES_JSON: '../website/locales/*.json',
+  WEBSITE_TARGET: process.env.WEBSITE_TARGET
+};
+const LANGS = {
+  INDEX: 'en',
+  DIRECTORIES: []
+};
 
 var AgentWebsite = function(theMachine) {
   TheMachineAgent.call(this, theMachine);
@@ -146,33 +146,33 @@ var AgentWebsite = function(theMachine) {
   }
 
   function _ejsAPI(i18n, lang, langDir) {
-    var title = '',
-        api = {
-          css: [],
-          js: [],
-          title: function(newTitle) {
-            if(typeof newTitle == 'string') {
-              title = newTitle;
-            }
+    let title = '';
+    const api = {
+      css: [],
+      js: [],
+      title: function(newTitle) {
+        if(typeof newTitle == 'string') {
+          title = newTitle;
+        }
 
-            return i18n.__(title);
-          },
-          __: function() {
-            return i18n.__.apply(i18n, arguments);
-          },
-          _n: function() {
-            return i18n._n.apply(i18n, arguments);
-          },
-          base: function() {
-            return langDir == '.' ? '' : '../';
-          },
-          index: function() {
-            return '/' + (langDir == '.' ? '' : langDir + '/');
-          },
-          lang: function() {
-            return lang;
-          }
-        };
+        return i18n.__(title);
+      },
+      __: function() {
+        return i18n.__.apply(i18n, arguments);
+      },
+      _n: function() {
+        return i18n._n.apply(i18n, arguments);
+      },
+      base: function() {
+        return langDir == '.' ? '' : '../';
+      },
+      index: function() {
+        return '/' + (langDir == '.' ? '' : langDir + '/');
+      },
+      lang: function() {
+        return lang;
+      }
+    };
 
     return api;
   }
