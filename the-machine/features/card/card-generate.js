@@ -15,7 +15,7 @@ const PATHS = {
   WEBSITE_PRINT: path.join(process.env.WEBSITE_TARGET, 'cards')
 };
 
-const backCardTemplate = fs.readFileSync(path.resolve(__dirname, 'card-back.html.tpl'), 'utf8');
+const backCardTemplate = fs.readFileSync(path.resolve(__dirname, 'card.html'), 'utf8');
 
 module.exports = (options, log, onGenerationComplete) => {
   options = extend(true, {
@@ -46,14 +46,24 @@ module.exports = (options, log, onGenerationComplete) => {
 
   templates.forEach((template) => {
     _loadedCards.push({
-      html: backCardTemplate.replace('{{img}}', path.join(PATHS.TEMPLATES, template, `${template}-back.jpg`)),
+      html: backCardTemplate.replace(
+        '<div class="card-image"></div>',
+        '<div class="card-image">' +
+          '<img src="' + path.join(PATHS.TEMPLATES, template, `${template}-back.jpg`) + '" />' +
+        '</div>'
+      ),
       name: 'back',
       template: template,
       code: null,
       lang: null
     });
     _loadedCards.push({
-      html: backCardTemplate.replace('{{img}}', path.join(PATHS.TEMPLATES, template, `${template}-the-machine-back.jpg`)),
+      html: backCardTemplate.replace(
+        '<div class="card-image"></div>',
+        '<div class="card-image">' +
+          '<img src="' + path.join(PATHS.TEMPLATES, template, `${template}-the-machine-back.jpg`) + '" />' +
+        '</div>'
+      ),
       name: 'the-machine-back',
       template: template,
       code: null,
