@@ -35,6 +35,13 @@ She will start to speak with its special agents and will generate cards and webs
 
 The Machine really likes you.
 
+## How to run the tests
+
+After installing Node.js (explained in the previous section), start the tests with:
+```
+npm run test
+```
+
 ## Contribute to The Machine brain
 
 This section is dedicated to those who want to develop/fix directly The Machine.
