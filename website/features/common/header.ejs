@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/vendor/fontello/css/fontello.css" type="text/css" />
   <link rel="stylesheet" href="/assets/common/page.css" type="text/css" />
 <% for(var i = 0, len = css.length; i < len; i++) { -%>
-  <link rel="stylesheet" href="<%= base() + css[i] -%>" type="text/css" />
+  <link rel="stylesheet" href="<%= css[i].indexOf('http') > -1 ? css[i] : base() + css[i] -%>" type="text/css" />
 <% } %>
 </head>
 <body>

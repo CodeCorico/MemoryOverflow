@@ -34,7 +34,7 @@
   <script type="text/javascript" src="/vendor/velocityjs/velocity.min.js"></script>
   <script type="text/javascript" src="/assets/common/page.js"></script>
 <% for(var i = 0, len = js.length; i < len; i++) { -%>
-  <script type="text/javascript" src="<%= base() + js[i] -%>"></script>
+  <script type="text/javascript" src="<%= js[i].indexOf('http') > -1 ? js[i] : base() + js[i] -%>"></script>
 <% } %>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
