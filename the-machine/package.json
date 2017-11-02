@@ -10,9 +10,9 @@
     "postinstall": "node postinstall.js",
     "start": "gulp --gulpfile start.js --silent",
     "generate": "node generate",
-    "test": "mocha --timeout 10000 --reporter spec --bail --check-leaks ./features/**/*-test.js",
-    "test-cover": "istanbul cover node_modules/mocha/bin/_mocha --report html -- --timeout 10000 --reporter spec --check-leaks ./features/**/*-test.js",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 10000 --reporter spec --check-leaks ./features/**/*-test.js"
+    "test": "mocha --timeout 10000 --reporter spec --bail ./features/**/*-test.js",
+    "test-cover": "istanbul cover node_modules/mocha/bin/_mocha --report html -- --timeout 10000 --reporter spec ./features/**/*-test.js",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --timeout 10000 --reporter spec ./features/**/*-test.js"
   },
   "repository": {
     "type": "git",
