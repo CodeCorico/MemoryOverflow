@@ -1,262 +1,290 @@
-(function() {
-  'use strict';
+const expect = require('chai').expect;
+const path = require('path');
+const fs = require('fs-extra');
+const PATHS = {
+  THEMACHINE: path.resolve(__dirname, 'the-machine.js'),
+  THEMACHINE_AGENT: path.resolve(__dirname, 'the-machine-agent.js')
+};
 
-  var expect = require('chai').expect,
-      path = require('path'),
-      fs = require('fs'),
-      TheMachine = null,
-      theMachine = null,
-      theMachineOneShot = null,
-      theMachinePath = path.resolve(path.join(__dirname, 'the-machine.js')),
-      TheMachineAgent = null,
-      agent = null,
-      agentOneShot = null,
-      agentPath = path.resolve(path.join(__dirname, 'the-machine-agent.js')),
-      log = null,
-      stdoutWrite = null,
-      lastLog = '';
+let TheMachine = null;
+let theMachine = null;
+let theMachineOneShot = null;
+let TheMachineAgent = null;
+let agent = null;
+let agentOneShot = null;
+let log = null;
+let stdoutWrite = null;
+let stderrWrite = null;
+let lastLog = '';
 
-  function _stopConsoleLog() {
-    _cleanLog();
-    log = console.log;
-    stdoutWrite = process.stdout.write;
+const stopConsoleLog = () => {
+  cleanLog();
+  log = console.log;
+  stdoutWrite = process.stdout.write;
+  stderrWrite = process.stderr.write;
 
-    console.log = function(string) {
-      lastLog = string;
-    };
+  console.log = function(string) {
+    lastLog = string;
+  };
 
-    process.stdout.write = function(string) {
-      lastLog += string;
-    };
-  }
+  process.stdout.write = function(string) {
+    lastLog += string;
+  };
 
-  function _cleanLog() {
-    lastLog = '';
-  }
+  process.stderr.write = function(string) {
+    lastLog += string;
+  };
+}
 
-  function _cleanLastLogConsole() {
-    lastLog = lastLog.replace(/\u001b/g, '').replace(/\[.*?m/g, '');
-  }
+const cleanLog = () => {
+  lastLog = '';
+}
 
-  function _startConsoleLog() {
-    console.log = log;
-    process.stdout.write = stdoutWrite;
-  }
+const cleanLastLogConsole = () => {
+  lastLog = lastLog.replace(/\u001b/g, '').replace(/\[.*?m/g, '');
+}
 
-  describe('The Machine', function() {
+const startConsoleLog = () => {
+  console.log = log;
+  process.stdout.write = stdoutWrite
+  process.stderr.write = stderrWrite;
+}
 
-    describe('In "normal" mode', function() {
+describe('The Machine', function() {
 
-      it('should start', function() {
-        expect(fs.existsSync(theMachinePath)).to.be.true;
+  before(() => {
+    process.env.WEBSITE_TARGET = process.env.WEBSITE_TARGET || '../website-test';
+  });
 
-        TheMachine = require(theMachinePath);
+  after(() => {
+    try {
+      fs.removeSync(process.env.WEBSITE_TARGET);
+    }
+    catch(err) { }
+  });
 
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          theMachine = new TheMachine();
-        }
-        catch(error) {
-          inError = true;
-        }
+  it('should have her files', function() {
+    expect(fs.existsSync(PATHS.THEMACHINE)).to.be.true;
+    expect(fs.existsSync(PATHS.THEMACHINE_AGENT)).to.be.true;
+  });
 
-        _startConsoleLog();
-        expect(inError).to.be.false;
-      });
+  describe('In "normal" mode', function() {
 
-      it('should communicate', function() {
-        var sentence = 'Someone is trying to test my brain.';
+    it('should start', function() {
+      TheMachine = require(PATHS.THEMACHINE);
 
-        _stopConsoleLog();
-        theMachine.says(sentence);
-        _startConsoleLog();
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain(sentence);
+      let inError = false;
 
-        _stopConsoleLog();
-        theMachine.answers({
-          needHello: true
-        });
-        _startConsoleLog();
+      stopConsoleLog();
 
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain('Hello.');
-      });
+      try {
+        theMachine = new TheMachine();
+      }
+      catch(error) {
+        inError = true;
+      }
 
+      startConsoleLog();
+      expect(inError).to.be.false;
     });
 
-    describe('In "one shot" mode', function() {
+    it('should communicate', function() {
+      const sentence = 'Someone is trying to test my brain.';
 
-      it('should start', function() {
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          theMachineOneShot = new TheMachine(true);
-        }
-        catch(error) {
-          inError = true;
-        }
+      stopConsoleLog();
+      theMachine.says(sentence);
+      startConsoleLog();
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain(sentence);
 
-        _startConsoleLog();
-        expect(inError).to.be.false;
+      stopConsoleLog();
+      theMachine.answers({
+        needHello: true
       });
+      startConsoleLog();
 
-      it('should communicate', function() {
-        var sentence = 'Someone is trying to test my brain. Again.';
-
-        _stopConsoleLog();
-        theMachineOneShot.says(sentence);
-        _startConsoleLog();
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain(sentence);
-
-        _stopConsoleLog();
-        theMachineOneShot.answers({
-          needHello: true
-        });
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain('Hello.');
-      });
-
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
     });
 
   });
 
-  describe('The Special Agents', function() {
+  describe('In "one shot" mode', function() {
 
-    describe('In "normal" mode', function() {
+    it('should start', function() {
+      let inError = false;
 
-      it('should start', function() {
-        expect(fs.existsSync(agentPath)).to.be.true;
+      stopConsoleLog();
 
-        TheMachineAgent = require(agentPath);
+      try {
+        theMachineOneShot = new TheMachine(true);
+      }
+      catch(error) {
+        inError = true;
+      }
 
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          agent = new (function() {
-            TheMachineAgent.call(this, theMachine);
-
-            this.name('of tests');
-          })();
-        }
-        catch(error) {
-          inError = true;
-        }
-
-        _startConsoleLog();
-        expect(inError).to.be.false;
-      });
-
-      it('should communicate with The Machine', function() {
-        var sentence = 'Boss are you there?';
-
-        _stopConsoleLog();
-        agent.says(sentence);
-
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('Agent of tests:');
-        expect(lastLog).to.contain(sentence);
-
-        _stopConsoleLog();
-        agent.says(sentence, {
-          needHello: true
-        });
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain('Hello.');
-      });
-
-      it('should have a sentence template', function() {
-        var sentence = agent.saysFormat();
-        expect(sentence).to.contain('Agent of tests');
-        expect(sentence).to.contain('{sentence}');
-      });
-
-      it('should says an error', function() {
-        var sentence = 'I have made a mistake.';
-
-        _stopConsoleLog();
-        agent.saysError(sentence);
-
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('Agent of tests:');
-        expect(lastLog).to.contain(sentence);
-      });
-
-      it('should watch something', function() {
-        var watchFunc = function() {
-          return 'I\'m watching';
-        };
-
-        agent.watch('*.js', watchFunc);
-        var watchers = agent.watchers();
-
-        expect(watchers).to.have.length(1);
-        expect(watchers[0].files).to.equal('*.js');
-        expect(watchers[0].func.toString()).to.equal(watchFunc.toString());
-      });
-
+      startConsoleLog();
+      expect(inError).to.be.false;
     });
 
-    describe('In "one shot" mode', function() {
+    it('should communicate', function() {
+      const sentence = 'Someone is trying to test my brain. Again.';
 
-      it('should start', function() {
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          agentOneShot = new (function() {
-            TheMachineAgent.call(this, theMachineOneShot);
+      stopConsoleLog();
+      theMachineOneShot.says(sentence);
+      startConsoleLog();
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain(sentence);
 
-            this.name('of tests');
-          })();
-        }
-        catch(error) {
-          inError = true;
-        }
-
-        _startConsoleLog();
-        expect(inError).to.be.false;
+      stopConsoleLog();
+      theMachineOneShot.answers({
+        needHello: true
       });
+      startConsoleLog();
 
-      it('should communicate with The Machine', function() {
-        var sentence = 'Boss are you there?';
-
-        _stopConsoleLog();
-        agentOneShot.says(sentence);
-
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('Agent of tests:');
-        expect(lastLog).to.contain(sentence);
-
-        _stopConsoleLog();
-        agentOneShot.says(sentence, {
-          needHello: true
-        });
-        _startConsoleLog();
-
-        _cleanLastLogConsole();
-        expect(lastLog).to.contain('The Machine:');
-        expect(lastLog).to.contain('Hello.');
-      });
-
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
     });
 
   });
 
-})();
+});
+
+describe('The Special Agents', function() {
+
+  describe('In "normal" mode', function() {
+
+    it('should start', function() {
+      expect(fs.existsSync(PATHS.THEMACHINE_AGENT)).to.be.true;
+
+      TheMachineAgent = require(PATHS.THEMACHINE_AGENT);
+
+      let inError = false;
+
+      stopConsoleLog();
+
+      try {
+        agent = new (function() {
+          TheMachineAgent.call(this, theMachine);
+
+          this.name('of tests');
+        })();
+      }
+      catch(error) {
+        inError = true;
+      }
+
+      startConsoleLog();
+      expect(inError).to.be.false;
+    });
+
+    it('should communicate with The Machine', function() {
+      const sentence = 'Boss are you there?';
+
+      stopConsoleLog();
+      agent.says(sentence);
+
+      startConsoleLog();
+
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('Agent of tests:');
+      expect(lastLog).to.contain(sentence);
+
+      stopConsoleLog();
+      agent.says(sentence, {
+        needHello: true
+      });
+      startConsoleLog();
+
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
+    });
+
+    it('should have a sentence template', function() {
+      const sentence = agent.saysFormat();
+
+      expect(sentence).to.contain('Agent of tests');
+      expect(sentence).to.contain('{sentence}');
+    });
+
+    it('should says an error', function() {
+      const sentence = 'I have made a mistake.';
+
+      stopConsoleLog();
+      agent.saysError(sentence);
+
+      startConsoleLog();
+
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('Agent of tests:');
+      expect(lastLog).to.contain(sentence);
+    });
+
+    it('should watch something', function() {
+      const watchFunc = () => {
+        return 'I\'m watching';
+      };
+
+      agent.watch('*.js', watchFunc);
+
+      const watchers = agent.watchers();
+
+      expect(watchers).to.have.length(1);
+      expect(watchers[0].files).to.equal('*.js');
+      expect(watchers[0].func.toString()).to.equal(watchFunc.toString());
+    });
+
+  });
+
+  describe('In "one shot" mode', function() {
+
+    it('should start', function() {
+      let inError = false;
+
+      stopConsoleLog();
+
+      try {
+        agentOneShot = new (function() {
+          TheMachineAgent.call(this, theMachineOneShot);
+
+          this.name('of tests');
+        })();
+      }
+      catch(error) {
+        inError = true;
+      }
+
+      startConsoleLog();
+      expect(inError).to.be.false;
+    });
+
+    it('should communicate with The Machine', function() {
+      const sentence = 'Boss are you there?';
+
+      stopConsoleLog();
+      agentOneShot.says(sentence);
+
+      startConsoleLog();
+
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('Agent of tests:');
+      expect(lastLog).to.contain(sentence);
+
+      stopConsoleLog();
+      agentOneShot.says(sentence, {
+        needHello: true
+      });
+      startConsoleLog();
+
+      cleanLastLogConsole();
+      expect(lastLog).to.contain('The Machine:');
+      expect(lastLog).to.contain('Hello.');
+    });
+
+  });
+});

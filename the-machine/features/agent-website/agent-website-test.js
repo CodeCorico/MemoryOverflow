@@ -1,92 +1,106 @@
-(function() {
-  'use strict';
+const expect = require('chai').expect;
+const path = require('path');
+const fs = require('fs-extra');
+const PATHS = {
+  THEMACHINE_AGENT: path.resolve(__dirname, '../the-machine/the-machine-agent.js'),
+  AGENT_WEBSITE: path.resolve(__dirname, 'agent-website.js')
+};
 
-  var expect = require('chai').expect,
-      path = require('path'),
-      fs = require('fs'),
-      agentWebsitePath = path.resolve(path.join(__dirname, 'agent-website.js')),
-      theMachinePath = path.resolve(path.join(__dirname, '..', 'the-machine', 'the-machine.js')),
-      TheMachine = require(theMachinePath),
-      theMachine = null,
-      theMachineOneShot = null,
-      AgentWebsite = null,
-      agentWebsite = null,
-      agentWebsiteOneShot = null,
-      log = null,
-      stdoutWrite = null,
-      lastLog = '';
+let log = null;
+let stdoutWrite = null;
+let lastLog = '';
 
-  function _stopConsoleLog() {
-    _cleanLog();
-    log = console.log;
-    stdoutWrite = process.stdout.write;
+const stopConsoleLog = () => {
+  cleanLog();
+  log = console.log;
+  stdoutWrite = process.stdout.write;
 
-    console.log = function(string) {
-      lastLog = string;
-    };
+  console.log = function(string) {
+    lastLog = string;
+  };
 
-    process.stdout.write = function(string) {
-      lastLog += string;
-    };
-  }
+  process.stdout.write = function(string) {
+    lastLog += string;
+  };
+};
 
-  function _cleanLog() {
-    lastLog = '';
-  }
+const cleanLog = () => {
+  lastLog = '';
+};
 
-  function _cleanLastLogConsole() {
-    lastLog = lastLog.replace(/\u001b/g, '').replace(/\[.*?m/g, '');
-  }
+const cleanLastLogConsole = () => {
+  lastLog = lastLog.replace(/\u001b/g, '').replace(/\[.*?m/g, '');
+};
 
-  function _startConsoleLog() {
-    console.log = log;
-    process.stdout.write = stdoutWrite;
-  }
+const startConsoleLog = () => {
+  console.log = log;
+  process.stdout.write = stdoutWrite;
+};
 
-  describe('The Agent of Website', function() {
+const TheMachine = function(onShot) {
+  this.answers = () => { };
+  this.isOneShot = () => {
+    return onShot;
+  };
+};
 
-    describe('In "normal" mode', function() {
+describe('The Agent of Website', function() {
 
-      it('should start', function() {
-        expect(fs.existsSync(agentWebsitePath)).to.be.true;
+  before(() => {
+    process.env.WEBSITE_TARGET = process.env.WEBSITE_TARGET || '../website-test';
+  });
 
-        AgentWebsite = require(agentWebsitePath);
+  after(() => {
+    fs.removeSync(process.env.WEBSITE_TARGET);
+  });
 
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          theMachine = new TheMachine();
-          agentWebsite = new AgentWebsite(theMachine);
-        }
-        catch(error) {
-          inError = true;
-        }
+  it('should have the agent files', function() {
+    expect(fs.existsSync(PATHS.THEMACHINE_AGENT)).to.be.true;
+    expect(fs.existsSync(PATHS.AGENT_WEBSITE)).to.be.true;
+  });
 
-        _startConsoleLog();
-        expect(inError).to.be.false;
-      });
+  describe('In "normal" mode', function() {
 
-    });
+    it('should start', function() {
+      let inError = false;
 
-    describe('In "one shot" mode', function() {
+      stopConsoleLog();
 
-      it('should start', function() {
-        var inError = false;
-        _stopConsoleLog();
-        try {
-          theMachineOneShot = new TheMachine(true);
-          agentWebsiteOneShot = new AgentWebsite(theMachineOneShot);
-        }
-        catch(error) {
-          inError = true;
-        }
+      try {
+        new require(PATHS.AGENT_WEBSITE)(new TheMachine(false));
+      }
+      catch(error) {
+        inError = true;
+      }
 
-        _startConsoleLog();
-        expect(inError).to.be.false;
-      });
+      startConsoleLog();
 
+      expect(inError).to.be.false;
     });
 
   });
 
-})();
+  describe('In "one shot" mode', function() {
+
+    it('should start', function() {
+      let inError = false;
+
+      stopConsoleLog();
+
+      try {
+        new require(PATHS.AGENT_WEBSITE)(new TheMachine(true));
+      }
+      catch(error) {
+        startConsoleLog();
+        console.log(error);
+        inError = true;
+      }
+
+      startConsoleLog();
+
+      expect(inError).to.be.false;
+    });
+
+  });
+
+});
