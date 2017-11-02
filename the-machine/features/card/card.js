@@ -46,13 +46,14 @@ function Card (file, template, name) {
           width: value.x2 - value.x1
         });
       }
-      else {
+      else if (key != 'font-urls') {
         $element.css(key, value);
       }
     }
   };
 
   const loadCard = (templateData, card) => {
+    const notAnElement = ['author', 'id', 'name'];
     let cardType = _cardConfig.type;
     let imageFile = path.join(_templatePath, _templateFilePath + '-' + cardType.replace(/\s+/g, '-').toLowerCase() + '.jpg');
 
@@ -78,23 +79,23 @@ function Card (file, template, name) {
     let $content = $('.card-content');
     let cardCode = null;
 
-    // TODO get image width
-    let width = 3485;
-    // TODO get image height
-    let height = 5195;
-
-    $container.css({
-      width: width,
-      height: height
-    });
-
     $image.append($(`<img src="${imageFile}" />`));
 
     for (let key in templateData) {
+      if (notAnElement.indexOf(key) > -1) {
+        continue;
+      }
+
       let values = templateData[key];
 
       if (key == 'default') {
         applyStyles($container, values);
+
+        if (values['font-urls']) {
+          values['font-urls'].forEach((url) => {
+            $('head').append(`<link rel="stylesheet" href="${url}" />`);
+          });
+        }
       }
       else {
         let className = '';
