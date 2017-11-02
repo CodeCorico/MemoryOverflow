@@ -1,27 +1,22 @@
 # MemoryOverflow - Changelog
 
-Versions details history. For each version you can find:
-* Name an version number
-* Date published
-* Link to the release tag
-* Link to the release branch
-* All of the modifications details
-
 <a name="0.1.0"></a>
-# 0.1.0 (2014-?)
-
-[Release 0.1.0]() - [Branch release/0.1.0]()
+# [0.1.0 Allonzo](https://github.com/CodeCorico/MemoryOverflow/releases/tag/1.0.0) (2017-11-02)
 
 ### New cards
+* **Fundamentals Edition**
+  * **Code 18:** The Machine is choleric.
+  * **Code 19:** The machine does't like cheaters.
+  * **Code 20:** The Machine love the brave and proud developers.
+  * **Code 22:** The Machine sees everything.
+  * **Foo:** All starts with a `foo` variable.
+  * **For:** Enter in a basic loop.
+  * **Increment:** Increment a variable.
+  * **Reset Commit:** Back to your previous commit.
 
-- **Foo**
-  - explain
+### New templates
+* **Fototse:** Thanks to @Retovona. "Fototse" means "root" or "origin" in Malagasy.
 
-### Cards modifications
-
-- **Foo**
-  - explain
-
-### The Machine
-
-- nothing
+### New translations
+* **English:** The cards and the website.
+* **French:** The cards and the website.
