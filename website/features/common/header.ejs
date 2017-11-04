@@ -17,8 +17,19 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="/vendor/fontello/css/fontello.css" type="text/css" />
   <link rel="stylesheet" href="/assets/common/page.css" type="text/css" />
-<% for(var i = 0, len = css.length; i < len; i++) { -%>
-  <link rel="stylesheet" href="<%= css[i].indexOf('http') > -1 ? css[i] : base() + css[i] -%>" type="text/css" />
+<%
+  for(var i = 0, len = css.length; i < len; i++) {
+    if (typeof css[i] != 'object') {
+      css[i] = {
+        url: css[i]
+      };
+    }
+-%>
+  <link
+    rel="stylesheet" type="text/css"
+    href="<%= css[i].url.indexOf('http') > -1 ? css[i].url : base() + css[i].url -%>"
+    media="<%= css[i].media ? css[i].media : 'screen' -%>"
+  />
 <% } %>
 </head>
 <body>
