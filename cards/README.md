@@ -31,7 +31,7 @@ Here is the folder configuration:
 /cards/[edition name]/[card name]/
     -> README.md
     -> [card name].md
-    -> [card name].en_EN.po
+    -> [card name].en_US.po
     -> [card name].[translation].po
 ```
 
@@ -111,7 +111,7 @@ Translations files are used to translate encapsulated texts inside card configur
 
 A translation file use the international ISO language code in a [Gettext format](http://www.gnu.org/software/gettext) (.po):
 ```
-[card name].en_EN.po -> English format
+[card name].en_US.po -> English format
 [card name].fr_FR.card -> French format
 ...
 ```

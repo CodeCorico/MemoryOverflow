@@ -35,7 +35,7 @@
         var content = data,
             codes = card.config().codes,
             languages = card.languageFiles(),
-            englishLanguage = languages ? languages['en_EN'] : null;
+            englishLanguage = languages ? languages['en_US'] : null;
 
         if (languages) {
           var parsedContent = {};

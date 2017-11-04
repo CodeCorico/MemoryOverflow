@@ -57,7 +57,7 @@ describe('Card', function() {
     const cardName = 'foo';
     const cardDirectory = path.join(rootDirectory, 'cards/fundamentals/foo');
     const template = 'fototse';
-    const lang = 'en_EN';
+    const lang = 'en_US';
 
     let card = testCardLoad(cardDirectory, cardName, template, lang);
 
