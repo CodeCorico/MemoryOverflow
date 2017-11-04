@@ -1,0 +1,80 @@
+@page {
+  size: A4 landscape;
+  margin: 0;
+  padding: 0;
+}
+
+clear {
+  clear: both;
+}
+
+.body-header, .body-footer, .body-page, .body-content-container {
+  display: none;
+}
+
+.print-area {
+  display: block;
+  color: #000;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.print-area-intro {
+  padding: 30px;
+  text-align: left;
+}
+
+.print-area-intro-column {
+  width: 46%;
+  float: left;
+  margin: 0 2% 0 0;
+}
+
+.print-area-intro-column.even {
+  margin: 0 0 0 2%;
+}
+
+.print-area-top, .print-area-bottom {
+  height: 104.5mm;
+  padding-top: 8.5mm;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.print-area-top {
+  border-bottom: 1px dotted red;
+}
+
+.print-area-top {
+  border-top: 1px dotted red;
+}
+
+.print-area-intro, .print-area-pages {
+  page-break-after: always;
+}
+
+.print-area-intro img {
+  float: right;
+  margin-left: 5mm;
+  height: 30mm;
+}
+
+.print-area-top img, .print-area-bottom img {
+  height: 88mm;
+  margin: 0 5px;
+}
+
+.print-area-pages {
+  margin-top: -10mm;
+  height: 10mm;
+  padding-right: 3mm;
+  text-align: right;
+  overflow: hidden;
+}

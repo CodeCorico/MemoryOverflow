@@ -1,0 +1,102 @@
+<% title('Cards & Editions') -%>
+<% css.push('/assets/cards/cards.css'); -%>
+<% css.push({
+  url: '/assets/cards/cards-print.css',
+  media: 'print'
+}); -%>
+<% js.push('/assets/cards/cards.js'); -%>
+<% include features/common/header -%>
+
+<div class="body-content-container">
+  <div class="city"></div>
+</div>
+
+<article class="body-page">
+
+  <h1><%= __('Cards & Editions') %></h1>
+
+  <p><a href="#" class="print-button"><%= __('Print the cards') %></a></p>
+
+</article>
+
+<div class="print-area">
+  <div class="print-area-intro">
+    <h1><%= __('How to create your cards') %></h1>
+
+    <div class="print-area-intro-column">
+      <h2>1) <%= __('Start') %></h2>
+      <img src="/assets/cards/tuto-start.png" />
+      <p><%= __('Put your pages the faces of the cards on the table. You should not be able to see the cards.') %></p>
+    </div>
+
+    <div class="print-area-intro-column even">
+      <h2>2) <%= __('Fold') %></h2>
+      <img src="/assets/cards/tuto-fold.png" />
+      <p><%= __('Fold your pages in half. The ends must be perfectly aligned. The back and front of the cards should meet.') %></p>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="print-area-intro-column">
+      <h2>3) <%= __('Unfold') %></h2>
+      <img src="/assets/cards/tuto-unfold.png" />
+      <p><%= __('Unfold your pages. The layout is ready to easily fold them again.') %></p>
+    </div>
+
+    <div class="print-area-intro-column even">
+      <h2>4) <%= __('Glue') %></h2>
+      <img src="/assets/cards/tuto-glue.png" />
+      <p><%= __('Apply some glue on the blank part of the page, under the back of the cards.') %></p>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="print-area-intro-column">
+      <h2>5) <%= __('Fold') %></h2>
+      <img src="/assets/cards/tuto-fold.png" />
+      <p><%= __('Re-fold the pages as you did before.') %></p>
+    </div>
+
+    <div class="print-area-intro-column even">
+      <h2>6) <%= __('Cut') %></h2>
+      <img src="/assets/cards/tuto-cut.png" />
+      <p><%= __('Cut off your cards.') %></p>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="print-area-top">
+    <img src="/cards/fototse/code-18.fr_FR.jpg" />
+    <img src="/cards/fototse/code-19.fr_FR.jpg" />
+    <img src="/cards/fototse/foo-javascript.fr_FR.jpg" />
+    <img src="/cards/fototse/reset-commit.fr_FR.jpg" />
+  </div>
+
+  <div class="print-area-bottom">
+    <img src="/cards/fototse/the-machine-back-reversed.jpg" />
+    <img src="/cards/fototse/the-machine-back-reversed.jpg" />
+    <img src="/cards/fototse/back-reversed.jpg" />
+    <img src="/cards/fototse/back-reversed.jpg" />
+  </div>
+
+  <div class="print-area-pages">1/2</div>
+
+  <div class="print-area-top">
+    <img src="/cards/fototse/code-18.fr_FR.jpg" />
+    <img src="/cards/fototse/code-19.fr_FR.jpg" />
+    <img src="/cards/fototse/foo-javascript.fr_FR.jpg" />
+    <img src="/cards/fototse/reset-commit.fr_FR.jpg" />
+  </div>
+
+  <div class="print-area-bottom">
+    <img src="/cards/fototse/the-machine-back-reversed.jpg" />
+    <img src="/cards/fototse/the-machine-back-reversed.jpg" />
+    <img src="/cards/fototse/back-reversed.jpg" />
+    <img src="/cards/fototse/back-reversed.jpg" />
+  </div>
+
+  <div class="print-area-pages">2/2</div>
+</div>
+
+<% include features/common/footer -%>
