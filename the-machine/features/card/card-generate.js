@@ -61,10 +61,34 @@ module.exports = (options, log, onGenerationComplete) => {
       html: backCardTemplate.replace(
         '<div class="card-image"></div>',
         '<div class="card-image">' +
+          '<img class="reversed" src="' + path.join(PATHS.TEMPLATES, template, `${template}-back.jpg`) + '" />' +
+        '</div>'
+      ),
+      name: 'back-reversed',
+      template: template,
+      code: null,
+      lang: null
+    });
+    _loadedCards.push({
+      html: backCardTemplate.replace(
+        '<div class="card-image"></div>',
+        '<div class="card-image">' +
           '<img src="' + path.join(PATHS.TEMPLATES, template, `${template}-the-machine-back.jpg`) + '" />' +
         '</div>'
       ),
       name: 'the-machine-back',
+      template: template,
+      code: null,
+      lang: null
+    });
+    _loadedCards.push({
+      html: backCardTemplate.replace(
+        '<div class="card-image"></div>',
+        '<div class="card-image">' +
+          '<img class="reversed" src="' + path.join(PATHS.TEMPLATES, template, `${template}-the-machine-back.jpg`) + '" />' +
+        '</div>'
+      ),
+      name: 'the-machine-back-reversed',
       template: template,
       code: null,
       lang: null
