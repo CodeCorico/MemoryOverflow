@@ -3,7 +3,7 @@
 The machine does't like cheaters.
 
 * Type: The Machine
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](code-19.md)
 

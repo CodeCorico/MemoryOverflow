@@ -4,7 +4,7 @@ All starts with a `foo` variable.
 
 * Type: Variable
 * Languages: JavaScript, PHP
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](foo.md)
 

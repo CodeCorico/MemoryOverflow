@@ -3,7 +3,7 @@
 The Machine love the brave and proud developers.
 
 * Type: The Machine
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](code-20.md)
 

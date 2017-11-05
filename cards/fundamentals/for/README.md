@@ -4,7 +4,7 @@ Enter in a basic loop.
 
 * Type: Code
 * Languages: JavaScript, PHP
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](for.md)
 

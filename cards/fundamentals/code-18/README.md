@@ -3,7 +3,7 @@
 The Machine is choleric.
 
 * Type: The Machine
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](code-18.md)
 

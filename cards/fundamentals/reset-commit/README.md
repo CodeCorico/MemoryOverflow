@@ -3,7 +3,7 @@
 Back to your previous commit.
 
 * Type: Event
-* Translations: English, French
+* Translations: English (en_US), French (fr_FR)
 
 [Card configuration](reset-commit.md)
 
