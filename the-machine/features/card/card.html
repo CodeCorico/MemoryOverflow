@@ -6,6 +6,11 @@
       html, body {
         margin: 0;
         padding: 0;
+        display: inline-block;
+      }
+
+      .size-min {
+        zoom: 0.3;
       }
 
       .reversed {
@@ -16,14 +21,10 @@
         transform: rotate(180deg);
       }
 
-      .content-screen {
-        width: inherit;
-        height: inherit;
-        position: absolute;
-      }
       .card-container, .card-image {
         position: relative;
       }
+
       .card-content {
         position: absolute;
         width: 100%;
@@ -31,6 +32,7 @@
         top: 0;
         left: 0;
       }
+
       .card-content > span {
         position: absolute;
       }

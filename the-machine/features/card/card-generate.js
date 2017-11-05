@@ -15,6 +15,8 @@ const PATHS = {
   WEBSITE_PRINT: path.join(process.env.WEBSITE_TARGET, 'cards')
 };
 
+const CARD_SIZES = ['', 'min'];
+
 const backCardTemplate = fs.readFileSync(path.resolve(__dirname, 'card.html'), 'utf8');
 
 module.exports = (options, log, onGenerationComplete) => {
@@ -153,7 +155,7 @@ module.exports = (options, log, onGenerationComplete) => {
         complete: '=',
         incomplete: ' ',
         width: cardsLength * 4,
-        total: cardsLength
+        total: cardsLength * CARD_SIZES.length
       });
 
       _bar.render();
@@ -194,8 +196,6 @@ module.exports = (options, log, onGenerationComplete) => {
 
       _generateCard(card.html, card.name, card.template, card.code, card.lang);
 
-      _bar.tick();
-
       setTimeout(() => {
         _generateCards(++i);
       });
@@ -208,32 +208,36 @@ module.exports = (options, log, onGenerationComplete) => {
   }
 
   function _generateCard(html, card, template, code, lang) {
-    var output = card + (code ? '-' + code : '') + (lang ? '.' + lang : ''),
-        htmlFile = path.join(PATHS.WEBSITE_PRINT, template);
+    CARD_SIZES.forEach((size) => {
+      var output = card + (code ? '-' + code : '') + (lang ? '.' + lang : '') + (size ? '.' + size : ''),
+          htmlFile = path.join(PATHS.WEBSITE_PRINT, template);
 
-    fs.ensureDirSync(htmlFile);
-    htmlFile = path.join(htmlFile, output + '.html');
+      fs.ensureDirSync(htmlFile);
+      htmlFile = path.join(htmlFile, output + '.html');
 
-    fs.writeFileSync(htmlFile, html);
+      fs.writeFileSync(htmlFile, html.replace('class="content-screen', 'class="content-screen' + (size ? ' size-' + size : '')));
 
-    try {
-      var imgFile = path.join(PATHS.WEBSITE_PRINT, template);
-      fs.ensureDirSync(imgFile);
-      imgFile = path.join(imgFile, output + '.jpg');
+      try {
+        var imgFile = path.join(PATHS.WEBSITE_PRINT, template);
+        fs.ensureDirSync(imgFile);
+        imgFile = path.join(imgFile, output + '.jpg');
 
-      spawnSync(
-        PATHS.WKHTMLTOIMAGE, [
-          '--disable-javascript',
-          htmlFile,
-          imgFile
-        ]
-      )
+        spawnSync(
+          PATHS.WKHTMLTOIMAGE, [
+            '--disable-javascript',
+            htmlFile,
+            imgFile
+          ]
+        )
 
-      fs.removeSync(htmlFile);
-    }
-    catch (err1) {
-      throw new Error(err1);
-    }
+        fs.removeSync(htmlFile);
+      }
+      catch (err1) {
+        throw new Error(err1);
+      }
+
+      _bar.tick();
+    });
   }
 
   _loadCards();
