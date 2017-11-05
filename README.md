@@ -26,7 +26,7 @@ MemoryOverflow is a card game where two players battle to control The Machine. T
 * [Licence](LICENSE)
 * [Changelog](CHANGELOG.md)
 * [Milestones](https://github.com/CodeCorico/MemoryOverflow/milestones?state=open)
-* [![Discussion chat](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+* [![Discussion chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/CodeCorico/MemoryOverflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Contribute! Become a new Special Agent of The Machine.
 
